@@ -1,6 +1,6 @@
 {
-  "name": "react-app-template-ts",
-  "homepage": "https://manoldonev.github.io/react-app-template-ts",
+  "name": "react-todo-app-ts",
+  "homepage": "https://manoldonev.github.io/react-todo-app-ts",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

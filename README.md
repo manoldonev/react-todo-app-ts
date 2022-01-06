@@ -1,4 +1,4 @@
-![ci workflow](https://github.com/manoldonev/react-app-template-ts/actions/workflows/main.yml/badge.svg)
+![ci workflow](https://github.com/manoldonev/react-todo-app-ts/actions/workflows/main.yml/badge.svg)
 
 # React TypeScript App Template
 
