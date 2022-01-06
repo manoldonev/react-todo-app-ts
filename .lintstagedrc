@@ -1,0 +1,11 @@
+{
+  "*.{html,css}": [
+    "prettier --write"
+  ],
+  "*.{ts,tsx}": [
+    "prettier --write",
+    "npm run lint:fix",
+    "tsc-files --noEmit",
+    "npm run test:related"
+  ]
+}
