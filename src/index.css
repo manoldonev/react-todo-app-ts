@@ -9,6 +9,10 @@
   #root {
     isolation: isolate;
   }
+
+  h3 {
+    @apply text-lg font-semibold;
+  }
 }
 
 @tailwind components;
