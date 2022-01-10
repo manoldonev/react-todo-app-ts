@@ -1,14 +1,14 @@
 import { QueryClientProvider, QueryClient } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
+import { Header } from './components/Header';
 import { Todos } from './components/Todos';
 
 const queryClient = new QueryClient();
 
 const App = (): JSX.Element => (
   <QueryClientProvider client={queryClient}>
-    <h1 className="text-xl font-bold text-center">Todo App</h1>
-
-    <Todos className="p-1.5" />
+    <Header />
+    <Todos />
 
     <ReactQueryDevtools />
   </QueryClientProvider>
