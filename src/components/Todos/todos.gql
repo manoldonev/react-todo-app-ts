@@ -1,5 +1,5 @@
-query Todos {
-  todos {
+query Todos($page: Int, $limit: Int) {
+  todos(page: $page, limit: $limit) {
     id
     task
     done
