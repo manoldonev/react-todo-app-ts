@@ -1,4 +1,5 @@
-import { useQuery, UseQueryOptions } from 'react-query';
+// @ts-nocheck
+import { useQuery, UseQueryOptions, useInfiniteQuery, UseInfiniteQueryOptions, QueryFunctionContext } from 'react-query';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -349,15 +350,18 @@ export type _Service = {
   sdl?: Maybe<Scalars['String']>;
 };
 
-export type TodosQueryVariables = Exact<{ [key: string]: never; }>;
+export type TodosQueryVariables = Exact<{
+  page?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+}>;
 
 
 export type TodosQuery = { __typename?: 'Query', todos?: Array<{ __typename?: 'Todo', id: string, task: string, done: boolean } | null | undefined> | null | undefined };
 
 
 export const TodosDocument = `
-    query Todos {
-  todos {
+    query Todos($page: Int, $limit: Int) {
+  todos(page: $page, limit: $limit) {
     id
     task
     done
@@ -374,5 +378,18 @@ export const useTodosQuery = <
     useQuery<TodosQuery, TError, TData>(
       variables === undefined ? ['Todos'] : ['Todos', variables],
       fetcher<TodosQuery, TodosQueryVariables>(TodosDocument, variables),
+      options
+    );
+export const useInfiniteTodosQuery = <
+      TData = TodosQuery,
+      TError = unknown
+    >(
+      pageParamKey: keyof TodosQueryVariables,
+      variables?: TodosQueryVariables,
+      options?: UseInfiniteQueryOptions<TodosQuery, TError, TData>
+    ) =>
+    useInfiniteQuery<TodosQuery, TError, TData>(
+      variables === undefined ? ['Todos.infinite'] : ['Todos.infinite', variables],
+      (metaData) => fetcher<TodosQuery, TodosQueryVariables>(TodosDocument, {...variables, ...(metaData.pageParam ?? {})})(),
       options
     );

@@ -6,10 +6,9 @@ const queryClient = new QueryClient();
 
 const App = (): JSX.Element => (
   <QueryClientProvider client={queryClient}>
-    <h1 className="text-xl text-center font-bold">Todo App</h1>
-    <div className="flex justify-center">
-      <Todos />
-    </div>
+    <h1 className="text-xl font-bold text-center">Todo App</h1>
+
+    <Todos className="p-1.5" />
 
     <ReactQueryDevtools />
   </QueryClientProvider>
