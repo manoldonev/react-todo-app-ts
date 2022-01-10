@@ -2,7 +2,7 @@ import Masonry from 'react-masonry-component';
 import { convertRemToPixels } from '../../utils';
 import { useTodos } from './useTodos';
 
-const Todos = ({ className }: { className?: string }): JSX.Element => {
+const Todos = (): JSX.Element => {
   const { data, isFetching, sentryRef } = useTodos();
   const masonryOptions = {
     gutter: convertRemToPixels(0.75),
@@ -11,7 +11,7 @@ const Todos = ({ className }: { className?: string }): JSX.Element => {
   };
 
   return (
-    <div className={className}>
+    <div className="p-1.5">
       <Masonry elementType="ul" options={masonryOptions}>
         {data?.pages.map((page) =>
           page.todos?.map((todo) => (
