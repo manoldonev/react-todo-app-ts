@@ -3,7 +3,7 @@ import { SearchIcon } from '@heroicons/react/outline';
 const Header = (): JSX.Element => {
   return (
     <>
-      <h1 className="sticky top-0 z-10 p-2 font-mono text-center text-white l-0 bg-sky-700">Todo App</h1>
+      <h1 className="p-2 font-mono text-center text-white l-0 bg-sky-700">Todo App</h1>
       <div className="sticky top-0 z-10 flex justify-center bg-sky-700">
         <div className="relative w-full xs:w-2/3 lg:w-1/2 my-3 mx-1.5">
           <input
