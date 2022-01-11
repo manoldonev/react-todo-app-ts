@@ -17,7 +17,7 @@ const Todos = (): JSX.Element => {
           page.todos?.map((todo) => (
             <li
               key={todo?.id}
-              className="w-full p-3 mb-3 border rounded-lg xs:w-56 md:w-60 bg-blue-50 border-slate-300"
+              className="w-full p-3 mb-3 border rounded-lg last:mb-20 xs:w-56 md:w-60 bg-blue-50 border-slate-300"
             >
               <h3>Lorem Ipsum</h3>
               <p>{todo?.id}</p>
