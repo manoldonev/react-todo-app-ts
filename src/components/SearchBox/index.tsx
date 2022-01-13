@@ -11,7 +11,7 @@ const SearchBox = (): JSX.Element => {
       />
       <label
         htmlFor="search"
-        className="p-3 bg-white rounded-sm pointer-events-auto select-none peer-focus:rounded-l-none md:rounded-l-none"
+        className="p-3 -ml-px bg-white rounded-sm pointer-events-auto select-none peer-focus:rounded-l-none md:rounded-l-none"
       >
         <SearchIcon className="w-6 h-6 pointer-events-none" />
       </label>
