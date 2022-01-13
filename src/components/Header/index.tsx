@@ -1,10 +1,20 @@
+import { SearchBox } from '../SearchBox';
+
 const Header = (): JSX.Element => {
   return (
     <header className="sticky top-0 z-10 bg-sky-700">
       <div className="flex items-center justify-between p-4">
-        <a className="flex-none mr-auto" href="/">
-          <span className="text-xl font-semibold text-white">Todo App</span>
-        </a>
+        <div className="grid items-center w-full md:flex">
+          <div className="flex justify-start col-start-1 row-start-1 md:mr-4">
+            <a href="/">
+              <span className="text-xl font-semibold text-white ">Todo App</span>
+            </a>
+          </div>
+
+          <form className="col-start-1 row-start-1 pointer-events-none md:w-1/2 md:mx-auto">
+            <SearchBox />
+          </form>
+        </div>
 
         <nav className="flex md:items-center md:w-auto">
           <div className="hidden md:flex">
@@ -18,7 +28,7 @@ const Header = (): JSX.Element => {
               Settings
             </a>
           </div>
-          <div className="flex text-sm">
+          {/* <div className="flex text-sm">
             <a
               className="p-2 ml-2 font-semibold leading-none bg-white border border-gray-100 rounded text-sky-500 hover:border-transparent hover:bg-gray-100"
               href="/login"
@@ -31,7 +41,7 @@ const Header = (): JSX.Element => {
             >
               Sign up
             </a>
-          </div>
+          </div> */}
         </nav>
       </div>
     </header>
