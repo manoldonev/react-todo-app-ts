@@ -1,31 +1,18 @@
-import { SearchIcon } from '@heroicons/react/outline';
+import { SearchBox } from '../SearchBox';
 
 const Header = (): JSX.Element => {
   return (
     <header className="sticky top-0 z-10 bg-sky-700">
-      <div className="flex items-center justify-between p-4 md:flex">
-        <a className="absolute flex-none md:relative md:mr-4" href="/">
-          <span className="text-xl font-semibold text-white ">Todo App</span>
-        </a>
+      <div className="flex items-center justify-between p-4">
+        <div className="grid items-center w-full md:flex">
+          <div className="flex justify-start col-start-1 row-start-1 md:mr-4">
+            <a href="/">
+              <span className="text-xl font-semibold text-white ">Todo App</span>
+            </a>
+          </div>
 
-        <div className="w-full pointer-events-none md:w-1/2 md:mx-auto">
-          <form className="relative">
-            <div className="flex justify-end h-12 pointer-events-auto">
-              <input
-                id="search"
-                type="search"
-                placeholder="Search"
-                className="absolute z-10 w-0 h-full text-lg duration-300 rounded-l-sm outline-none md:w-[calc(100%_-_3rem)] peer md:px-5 focus:px-5 focus:w-[calc(100%_-_3rem)] right-12"
-              />
-              <label
-                htmlFor="search"
-                className="absolute inline-block w-12 h-12 bg-white rounded-sm select-none active:transition-none peer-focus:rounded-r-sm peer-focus:rounded-l-none md:rounded-l-none md:rounded-r-sm"
-              >
-                <div className="flex items-center justify-center w-full h-full">
-                  <SearchIcon className="w-6 h-6 pointer-events-none active:pl-4" />
-                </div>
-              </label>
-            </div>
+          <form className="col-start-1 row-start-1 pointer-events-none md:w-1/2 md:mx-auto">
+            <SearchBox />
           </form>
         </div>
 
