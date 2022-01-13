@@ -1,19 +1,19 @@
-name: ci
+name: deploy
 
 # Controls when the action will run.
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [main]
+  # Triggers the workflow on closed pull request event but only for the main branch
   pull_request:
     branches: [main]
+    types: [closed]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  ci-workflow:
+  deploy-workflow:
+    if: ${{ github.event.pull_request.merged }}
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -30,17 +30,7 @@ jobs:
       - name: npm ci
         run: npm ci
 
-      - name: format
-        run: npm run prettier
-
-      - name: lint
-        run: npm run lint
-
-      - name: typescript
-        run: tsc --project tsconfig.json --noEmit
-
-      - name: test
-        run: npm test
-
-      - name: build
-        run: npm run build --if-present
+      - name: deploy
+        run: npm run deploy --if-present
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
