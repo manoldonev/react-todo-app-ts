@@ -1,6 +1,6 @@
 import { QueryClientProvider, QueryClient } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import { Todos, Header, BottomNavigation } from './components';
+import { Todos, Header, Footer } from './components';
 
 const queryClient = new QueryClient();
 
@@ -13,7 +13,7 @@ const App = (): JSX.Element => {
         <Todos />
         <ReactQueryDevtools />
       </QueryClientProvider>
-      <BottomNavigation />
+      <Footer />
     </div>
   );
 };
