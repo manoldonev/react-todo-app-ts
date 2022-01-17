@@ -1,5 +1,6 @@
 import Masonry from 'react-masonry-component';
 import { convertRemToPixels } from '../../utils';
+import { TodoItem } from './TodoItem';
 import { useTodos } from './useTodos';
 
 const Todos = (): JSX.Element => {
@@ -13,18 +14,7 @@ const Todos = (): JSX.Element => {
   return (
     <div className="p-1.5">
       <Masonry elementType="ul" options={masonryOptions}>
-        {data?.pages.map((page) =>
-          page.todos?.map((todo) => (
-            <li
-              key={todo?.id}
-              className="w-full p-3 mb-3 border rounded-lg last:mb-20 xs:w-56 md:w-60 bg-blue-50 border-slate-300"
-            >
-              <h3>Lorem Ipsum</h3>
-              <p>{todo?.id}</p>
-              <p className="line-clamp-3">{todo?.task}</p>
-            </li>
-          )),
-        )}
+        {data?.pages.map((page) => page.todos?.map((todo) => <TodoItem key={todo?.id} data={todo} />))}
         {isFetching && (
           <li ref={sentryRef}>
             <h3>Loading...</h3>
