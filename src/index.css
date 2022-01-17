@@ -15,6 +15,10 @@
   h3 {
     @apply text-lg font-medium;
   }
+  [type='search'] {
+    -webkit-appearance: none;
+    -webkit-border-radius: initial;
+  }
 }
 
 @tailwind components;
