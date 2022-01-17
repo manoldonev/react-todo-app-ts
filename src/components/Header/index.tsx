@@ -1,4 +1,4 @@
-import { SearchBox } from '../SearchBox';
+import { SearchBox } from './SearchBox';
 
 const Header = (): JSX.Element => {
   return (

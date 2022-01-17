@@ -1,4 +1,4 @@
-import { BottomNavigation } from '../BottomNavigation';
+import { BottomNavigation } from './BottomNavigation';
 import { CtaButton } from '../CtaButton';
 
 const Footer = (): JSX.Element => {
