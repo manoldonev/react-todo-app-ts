@@ -4,10 +4,24 @@ Latest deployment available at https://manoldonev.github.io/react-todo-app-ts/
 
 # React Todo App
 
-- Based on [React TypeScript App](https://github.com/manoldonev/react-app-template-ts) github template repo (ESLint / Prettier / pre-commit hooks / deployment / CI workflow)
+Based on the [React TypeScript App](https://github.com/manoldonev/react-app-template-ts) GitHub template repo:
 
-- GraphQL & react-query code generation
+- TypeScript
+- ESLint
+- Prettier
+- pre-commit hooks
+- CI / deployment GitHub workflows
 
-- Tailwind
+## UX
 
-- Responsive & Mobile-First Design
+- Mobile-first Design
+- Tailwind (utility-first CSS framework)
+
+## Data
+
+- GraphQL
+- `react-query` with automatic hooks generation based on the GraphQL schema
+
+## State Management
+
+- Jotai (primitive and flexible state management for React)

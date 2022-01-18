@@ -1,21 +1,40 @@
 import type { IntersectionObserverHookRefCallback } from 'react-intersection-observer-hook';
 import useInfiniteScroll from 'react-infinite-scroll-hook';
 import type { InfiniteData } from 'react-query';
+import { useAtom } from 'jotai';
 import type { TodosQuery } from '../../generated';
 import { useInfiniteTodosQuery } from '../../generated';
 import { convertRemToPixels } from '../../utils';
+import { queryAtom } from '../Header/SearchBox';
+
+const enum SortDirection {
+  Ascending = 'asc',
+  Descending = 'desc',
+}
 
 const defaultPage = 1;
 const pageSize = 10;
+const sortField = 'id';
+const sortDirection = SortDirection.Descending;
 
 const useTodos = (): {
   data: InfiniteData<TodosQuery> | undefined;
   isFetching: boolean;
   sentryRef: IntersectionObserverHookRefCallback;
 } => {
+  const [query] = useAtom(queryAtom);
+  let input = null;
+  if (query !== '') {
+    // TODO: case-insensitive search
+    input = { task_contains: query };
+  }
+
   const queryVariables = {
     page: defaultPage,
     limit: pageSize,
+    input,
+    sort: sortField,
+    direction: sortDirection,
   };
 
   const { data, hasNextPage, fetchNextPage, isFetchingNextPage, isError } = useInfiniteTodosQuery(

@@ -29,6 +29,7 @@
     "gh-pages": "^3.2.3",
     "graphql": "^16.2.0",
     "husky": "^7.0.4",
+    "jotai": "^1.5.3",
     "lint-staged": "^12.1.5",
     "postcss": "^8.4.5",
     "prettier": "^2.5.1",

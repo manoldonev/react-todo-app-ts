@@ -353,6 +353,9 @@ export type _Service = {
 export type TodosQueryVariables = Exact<{
   page?: InputMaybe<Scalars['Int']>;
   limit?: InputMaybe<Scalars['Int']>;
+  input?: InputMaybe<TodosWhere>;
+  sort?: InputMaybe<Scalars['String']>;
+  direction?: InputMaybe<Scalars['String']>;
 }>;
 
 
@@ -360,8 +363,8 @@ export type TodosQuery = { __typename?: 'Query', todos?: Array<{ __typename?: 'T
 
 
 export const TodosDocument = `
-    query Todos($page: Int, $limit: Int) {
-  todos(page: $page, limit: $limit) {
+    query Todos($page: Int, $limit: Int, $input: TodosWhere, $sort: String, $direction: String) {
+  todos(page: $page, limit: $limit, where: $input, sort: $sort, dir: $direction) {
     id
     task
     done
