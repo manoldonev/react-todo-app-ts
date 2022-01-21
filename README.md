@@ -17,11 +17,15 @@ Based on the [React TypeScript App](https://github.com/manoldonev/react-app-temp
 - Mobile-first Design
 - Tailwind (utility-first CSS framework)
 
-## Data
+## State Management
+
+- Jotai (primitive and flexible state management for React)
+
+## Data (Async State Management)
 
 - GraphQL
 - `react-query` with automatic hooks generation based on the GraphQL schema
 
-## State Management
+## Navigation
 
-- Jotai (primitive and flexible state management for React)
+- React Router v6
