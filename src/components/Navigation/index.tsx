@@ -33,6 +33,7 @@ const BottomNavigation = (): JSX.Element => {
     <nav className="fixed inset-x-0 bottom-0 flex justify-between text-xs text-blue-900 bg-blue-100 md:hidden">
       {navigationItems.map((item) => (
         <NavLink
+          key={item}
           to={mapNavigationRoute(item)}
           className={({ isActive }) =>
             `w-full p-3 text-center transition duration-300 ${
@@ -53,6 +54,7 @@ const Navigation = (): JSX.Element => {
     <nav className="items-center hidden w-auto md:flex">
       {navigationItems.map((item) => (
         <NavLink
+          key={item}
           className={({ isActive }) => `block mr-4 md:text-white ${isActive ? 'underline' : ''}`}
           to={mapNavigationRoute(item)}
         >
