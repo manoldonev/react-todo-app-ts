@@ -1,3 +1,1 @@
-export { Todos } from './Todos';
-export { Header } from './Header';
-export { BottomNavigation } from './Navigation';
+export { SearchBox } from './SearchBox';

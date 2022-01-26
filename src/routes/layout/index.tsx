@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
-import { BottomNavigation, Header } from '../components';
+import { Header } from './Header';
+import { BottomNavigation } from './Navigation';
 
 const Layout = (): JSX.Element => {
   return (

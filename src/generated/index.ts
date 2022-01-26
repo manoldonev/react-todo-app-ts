@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { useQuery, UseQueryOptions, useInfiniteQuery, UseInfiniteQueryOptions, QueryFunctionContext } from 'react-query';
+import { useQuery, UseQueryOptions, useInfiniteQuery, UseInfiniteQueryOptions, useMutation, UseMutationOptions, QueryFunctionContext } from 'react-query';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -361,6 +361,13 @@ export type TodosQueryVariables = Exact<{
 
 export type TodosQuery = { __typename?: 'Query', todos?: Array<{ __typename?: 'Todo', id: string, task: string, done: boolean } | null | undefined> | null | undefined };
 
+export type CreateTodoMutationVariables = Exact<{
+  input: CreateTodoInput;
+}>;
+
+
+export type CreateTodoMutation = { __typename?: 'Mutation', createTodo: { __typename?: 'Todo', id: string, task: string, done: boolean } };
+
 
 export const TodosDocument = `
     query Todos($page: Int, $limit: Int, $input: TodosWhere, $sort: String, $direction: String) {
@@ -394,5 +401,24 @@ export const useInfiniteTodosQuery = <
     useInfiniteQuery<TodosQuery, TError, TData>(
       variables === undefined ? ['Todos.infinite'] : ['Todos.infinite', variables],
       (metaData) => fetcher<TodosQuery, TodosQueryVariables>(TodosDocument, {...variables, ...(metaData.pageParam ?? {})})(),
+      options
+    );
+
+export const CreateTodoDocument = `
+    mutation createTodo($input: CreateTodoInput!) {
+  createTodo(input: $input) {
+    id
+    task
+    done
+  }
+}
+    `;
+export const useCreateTodoMutation = <
+      TError = unknown,
+      TContext = unknown
+    >(options?: UseMutationOptions<CreateTodoMutation, TError, CreateTodoMutationVariables, TContext>) =>
+    useMutation<CreateTodoMutation, TError, CreateTodoMutationVariables, TContext>(
+      'createTodo',
+      (variables?: CreateTodoMutationVariables) => fetcher<CreateTodoMutation, CreateTodoMutationVariables>(CreateTodoDocument, variables)(),
       options
     );

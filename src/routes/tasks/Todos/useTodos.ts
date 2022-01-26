@@ -2,10 +2,10 @@ import type { IntersectionObserverHookRefCallback } from 'react-intersection-obs
 import useInfiniteScroll from 'react-infinite-scroll-hook';
 import type { InfiniteData } from 'react-query';
 import { useAtom } from 'jotai';
-import type { TodosQuery } from '../../generated';
-import { useInfiniteTodosQuery } from '../../generated';
-import { convertRemToPixels } from '../../utils';
-import { queryAtom } from '../Header/SearchBox';
+import type { TodosQuery } from '../../../generated';
+import { useInfiniteTodosQuery } from '../../../generated';
+import { convertRemToPixels } from '../../../utils';
+import { queryAtom } from '../../layout/Header';
 
 const enum SortDirection {
   Ascending = 'asc',

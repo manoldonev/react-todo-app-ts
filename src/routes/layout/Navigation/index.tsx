@@ -3,18 +3,6 @@ import { NavLink } from 'react-router-dom';
 
 export const navigationItems = ['tasks', 'analytics', 'settings'];
 
-const mapNavigationRoute = (item: string): string => {
-  switch (item) {
-    case 'tasks':
-      return '/';
-    case 'analytics':
-    case 'settings':
-      return `/${item}`;
-    default:
-      throw new Error('Unrecognized navigation item');
-  }
-};
-
 const mapNavigationIcon = (item: string): JSX.Element => {
   switch (item) {
     case 'tasks':
@@ -34,7 +22,7 @@ const BottomNavigation = (): JSX.Element => {
       {navigationItems.map((item) => (
         <NavLink
           key={item}
-          to={mapNavigationRoute(item)}
+          to={`/${item}`}
           className={({ isActive }) =>
             `w-full p-3 text-center transition duration-300 ${
               isActive ? 'bg-blue-200 text-blue-800' : ''
@@ -56,26 +44,11 @@ const Navigation = (): JSX.Element => {
         <NavLink
           key={item}
           className={({ isActive }) => `block mr-4 md:text-white ${isActive ? 'underline' : ''}`}
-          to={mapNavigationRoute(item)}
+          to={`/${item}`}
         >
           <span className="capitalize">{item}</span>
         </NavLink>
       ))}
-
-      {/* <div className="flex text-sm">
-        <a
-          className="p-2 ml-2 font-semibold leading-none bg-white border border-gray-100 rounded text-sky-500 hover:border-transparent hover:bg-gray-100"
-          href="/login"
-        >
-          Login
-        </a>
-        <a
-          className="p-2 ml-2 font-semibold leading-none text-gray-100 border rounded border-sky-600 bg-sky-500 hover:border-transparent hover:bg-sky-400"
-          href="/login"
-        >
-          Sign up
-        </a>
-      </div> */}
     </nav>
   );
 };

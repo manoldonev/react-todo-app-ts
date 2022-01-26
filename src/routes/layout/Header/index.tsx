@@ -1,8 +1,23 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { atom, useAtom } from 'jotai';
+import type { ChangeEvent } from 'react';
 import { Navigation } from '../Navigation';
-import { SearchBox } from './SearchBox';
+import { SearchBox } from '../../../components/SearchBox';
+
+export const queryAtom = atom('');
 
 const Header = (): JSX.Element => {
+  const [query, setQuery] = useAtom(queryAtom);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    if (location.pathname !== '/tasks') {
+      navigate('/tasks');
+    }
+    setQuery(e.target.value);
+  };
+
   return (
     <header className="sticky top-0 z-10 bg-sky-700">
       <div className="flex items-center justify-between p-4">
@@ -14,7 +29,7 @@ const Header = (): JSX.Element => {
           </div>
 
           <form className="col-start-1 row-start-1 pointer-events-none md:w-1/2 md:mx-auto">
-            <SearchBox />
+            <SearchBox value={query} onChange={handleChange} />
           </form>
         </div>
 
