@@ -12,6 +12,9 @@
   h1 {
     @apply text-2xl font-extrabold;
   }
+  h2 {
+    @apply text-xl font-bold;
+  }
   h3 {
     @apply text-lg font-medium;
   }
