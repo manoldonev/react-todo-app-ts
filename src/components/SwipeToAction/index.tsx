@@ -2,6 +2,8 @@ import { useMediaQuery } from '@react-hook/media-query';
 import { useRef, useState } from 'react';
 import type { SwipeCallback, SwipeDirections, TapCallback } from 'react-swipeable';
 import { useSwipeable, LEFT } from 'react-swipeable';
+import { BackgroundLayer } from './BackgroundLayer';
+import { ForegroundLayer } from './ForegroundLayer';
 
 // TODO: consider twin.macro for this component?
 const SwipeToAction = ({
@@ -82,23 +84,13 @@ const SwipeToAction = ({
 
   return (
     <div className="relative w-full overflow-hidden">
-      <div
-        ref={backgroundRef}
-        className={`absolute flex items-center w-full h-full px-6 ${
-          swipeDirection === LEFT ? 'justify-end' : 'justify-start'
-        } ${bgClassName ?? ''}`}
-      >
+      <BackgroundLayer ref={backgroundRef} className={bgClassName} swipeDirection={swipeDirection}>
         {backgroundChildren}
-      </div>
-      <div
-        // eslint-disable-next-line @typescript-eslint/unbound-method
-        onMouseDown={swipeableHandlers.onMouseDown}
-        ref={refPassthrough}
-        role="none"
-        className={`touch-pan-y relative w-full h-full ${fgClassName ?? ''}`}
-      >
+      </BackgroundLayer>
+      {/* eslint-disable-next-line @typescript-eslint/unbound-method */}
+      <ForegroundLayer ref={refPassthrough} className={fgClassName} onMouseDown={swipeableHandlers.onMouseDown}>
         {children}
-      </div>
+      </ForegroundLayer>
     </div>
   );
 };
