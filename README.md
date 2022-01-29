@@ -14,7 +14,7 @@ Based on the [React TypeScript App](https://github.com/manoldonev/react-app-temp
 
 ## UX
 
-- Mobile-first Design
+- Mobile-first design
 - Tailwind (utility-first CSS framework)
 
 ## State Management
