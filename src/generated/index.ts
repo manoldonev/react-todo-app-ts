@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { useQuery, UseQueryOptions, useInfiniteQuery, UseInfiniteQueryOptions, useMutation, UseMutationOptions, QueryFunctionContext } from 'react-query';
+import { useMutation, UseMutationOptions, useQuery, UseQueryOptions, useInfiniteQuery, UseInfiniteQueryOptions, QueryFunctionContext } from 'react-query';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -350,6 +350,20 @@ export type _Service = {
   sdl?: Maybe<Scalars['String']>;
 };
 
+export type CreateTodoMutationVariables = Exact<{
+  input: CreateTodoInput;
+}>;
+
+
+export type CreateTodoMutation = { __typename?: 'Mutation', createTodo: { __typename?: 'Todo', id: string, task: string, done: boolean } };
+
+export type DeleteTodoMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type DeleteTodoMutation = { __typename?: 'Mutation', deleteTodo: string };
+
 export type TodosQueryVariables = Exact<{
   page?: InputMaybe<Scalars['Int']>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -361,14 +375,39 @@ export type TodosQueryVariables = Exact<{
 
 export type TodosQuery = { __typename?: 'Query', todos?: Array<{ __typename?: 'Todo', id: string, task: string, done: boolean } | null | undefined> | null | undefined };
 
-export type CreateTodoMutationVariables = Exact<{
-  input: CreateTodoInput;
-}>;
 
-
-export type CreateTodoMutation = { __typename?: 'Mutation', createTodo: { __typename?: 'Todo', id: string, task: string, done: boolean } };
-
-
+export const CreateTodoDocument = `
+    mutation createTodo($input: CreateTodoInput!) {
+  createTodo(input: $input) {
+    id
+    task
+    done
+  }
+}
+    `;
+export const useCreateTodoMutation = <
+      TError = unknown,
+      TContext = unknown
+    >(options?: UseMutationOptions<CreateTodoMutation, TError, CreateTodoMutationVariables, TContext>) =>
+    useMutation<CreateTodoMutation, TError, CreateTodoMutationVariables, TContext>(
+      'createTodo',
+      (variables?: CreateTodoMutationVariables) => fetcher<CreateTodoMutation, CreateTodoMutationVariables>(CreateTodoDocument, variables)(),
+      options
+    );
+export const DeleteTodoDocument = `
+    mutation deleteTodo($id: ID!) {
+  deleteTodo(id: $id)
+}
+    `;
+export const useDeleteTodoMutation = <
+      TError = unknown,
+      TContext = unknown
+    >(options?: UseMutationOptions<DeleteTodoMutation, TError, DeleteTodoMutationVariables, TContext>) =>
+    useMutation<DeleteTodoMutation, TError, DeleteTodoMutationVariables, TContext>(
+      'deleteTodo',
+      (variables?: DeleteTodoMutationVariables) => fetcher<DeleteTodoMutation, DeleteTodoMutationVariables>(DeleteTodoDocument, variables)(),
+      options
+    );
 export const TodosDocument = `
     query Todos($page: Int, $limit: Int, $input: TodosWhere, $sort: String, $direction: String) {
   todos(page: $page, limit: $limit, where: $input, sort: $sort, dir: $direction) {
@@ -401,24 +440,5 @@ export const useInfiniteTodosQuery = <
     useInfiniteQuery<TodosQuery, TError, TData>(
       variables === undefined ? ['Todos.infinite'] : ['Todos.infinite', variables],
       (metaData) => fetcher<TodosQuery, TodosQueryVariables>(TodosDocument, {...variables, ...(metaData.pageParam ?? {})})(),
-      options
-    );
-
-export const CreateTodoDocument = `
-    mutation createTodo($input: CreateTodoInput!) {
-  createTodo(input: $input) {
-    id
-    task
-    done
-  }
-}
-    `;
-export const useCreateTodoMutation = <
-      TError = unknown,
-      TContext = unknown
-    >(options?: UseMutationOptions<CreateTodoMutation, TError, CreateTodoMutationVariables, TContext>) =>
-    useMutation<CreateTodoMutation, TError, CreateTodoMutationVariables, TContext>(
-      'createTodo',
-      (variables?: CreateTodoMutationVariables) => fetcher<CreateTodoMutation, CreateTodoMutationVariables>(CreateTodoDocument, variables)(),
       options
     );
