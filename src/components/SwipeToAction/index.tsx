@@ -11,8 +11,8 @@ const SwipeToAction = ({
   threshold = 0.3,
   onSwiped,
   onTap,
-  backgroundClassName: bgClassName,
-  foregroundClassName: fgClassName,
+  backgroundClassName,
+  foregroundClassName,
 }: {
   children: React.ReactNode;
   backgroundChildren: React.ReactNode;
@@ -78,11 +78,11 @@ const SwipeToAction = ({
 
   return (
     <div className="relative w-full overflow-hidden">
-      <BackgroundLayer ref={backgroundRef} className={bgClassName} swipeDirection={swipeDirection}>
+      <BackgroundLayer ref={backgroundRef} className={backgroundClassName} swipeDirection={swipeDirection}>
         {backgroundChildren}
       </BackgroundLayer>
       {/* eslint-disable-next-line @typescript-eslint/unbound-method */}
-      <ForegroundLayer ref={refPassthrough} className={fgClassName} onMouseDown={swipeableHandlers.onMouseDown}>
+      <ForegroundLayer ref={refPassthrough} className={foregroundClassName} onMouseDown={swipeableHandlers.onMouseDown}>
         {children}
       </ForegroundLayer>
     </div>
