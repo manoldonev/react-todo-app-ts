@@ -1,17 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { Formik } from 'formik';
-import { useQueryClient } from 'react-query';
 import * as Yup from 'yup';
-import { useCreateTodoMutation } from '../../../generated';
+import { useCreateTodo } from './useCreateTodo';
 
 const AddNewForm = ({ onSubmit, onCancel }: { onSubmit: () => void; onCancel: () => void }): JSX.Element => {
-  const queryClient = useQueryClient();
-  const { mutate } = useCreateTodoMutation<Error>({
-    onSuccess: async () => {
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      queryClient.invalidateQueries('Todos.infinite');
-    },
-  });
+  const { mutate: createTodo } = useCreateTodo();
 
   return (
     <Formik
@@ -38,7 +31,7 @@ const AddNewForm = ({ onSubmit, onCancel }: { onSubmit: () => void; onCancel: ()
       onSubmit={(values, { setSubmitting }) => {
         // TODO: extend db schema with real 'title' field
         // TODO: user management (auth)
-        mutate({ input: { task: values.note || values.title, done: false, user_id: '1' } });
+        createTodo({ input: { task: values.note || values.title, done: false, user_id: '1' } });
         setSubmitting(false);
         onSubmit();
       }}
