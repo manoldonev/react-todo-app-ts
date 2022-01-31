@@ -1,4 +1,3 @@
-import { useMediaQuery } from '@react-hook/media-query';
 import { useRef, useState } from 'react';
 import type { SwipeCallback, SwipeDirections, TapCallback } from 'react-swipeable';
 import { useSwipeable, LEFT } from 'react-swipeable';
@@ -76,11 +75,6 @@ const SwipeToAction = ({
     swipeableHandlers.ref(element);
     foregroundRef.current = element;
   };
-
-  const isTouchEnabled = useMediaQuery('(pointer: coarse)');
-  if (!isTouchEnabled) {
-    return <div className={`w-full h-full ${fgClassName ?? ''}`}>{children}</div>;
-  }
 
   return (
     <div className="relative w-full overflow-hidden">
