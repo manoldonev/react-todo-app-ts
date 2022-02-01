@@ -1,9 +1,12 @@
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
-import { Analytics, Layout, NewTask, NewTaskModal, NotFound, Settings, Tasks } from './routes';
+import { Analytics, Layout, NewTask, NewTaskModal, NotFound, Settings, Tasks } from '../routes';
+import { useScrollToTop } from './useScrollToTop';
 
 const App = (): JSX.Element => {
   const location = useLocation();
   const state = location.state as { backgroundLocation?: Location } | null | undefined;
+
+  useScrollToTop();
 
   // TODO: animated routes (no good story for v6 atm, see https://github.com/remix-run/react-router/issues/7117#issuecomment-949096628)
   return (

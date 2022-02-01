@@ -5,9 +5,9 @@ import { BottomNavigation } from './Navigation';
 const Layout = (): JSX.Element => {
   return (
     // NOTE: cannot use Fragment here as it will break the sticky header
-    <div className="h-full overflow-auto">
+    <div>
       <Header />
-      <main className="h-full">
+      <main>
         <Outlet />
       </main>
       <BottomNavigation />
