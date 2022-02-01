@@ -1,26 +1,32 @@
 import { useRef, useState } from 'react';
 import type { SwipeCallback, SwipeDirections, TapCallback } from 'react-swipeable';
-import { useSwipeable, LEFT } from 'react-swipeable';
+import { useSwipeable, LEFT, RIGHT } from 'react-swipeable';
 import { BackgroundLayer } from './BackgroundLayer';
 import { ForegroundLayer } from './ForegroundLayer';
 
 // TODO: consider twin.macro for this component?
 const SwipeToAction = ({
   children,
-  backgroundChildren,
+  leftChildren,
+  rightChildren,
   threshold = 0.3,
-  onSwiped,
+  onSwipedLeft,
+  onSwipedRight,
   onTap,
-  backgroundClassName,
-  foregroundClassName,
+  leftChildrenClassName,
+  rightChildrenClassName,
+  className,
 }: {
   children: React.ReactNode;
-  backgroundChildren: React.ReactNode;
+  leftChildren: React.ReactNode;
+  rightChildren: React.ReactNode;
   threshold?: number;
-  onSwiped?: SwipeCallback;
+  onSwipedLeft?: SwipeCallback;
+  onSwipedRight?: SwipeCallback;
   onTap?: TapCallback;
-  backgroundClassName?: string;
-  foregroundClassName?: string;
+  leftChildrenClassName?: string;
+  rightChildrenClassName?: string;
+  className?: string;
 }): JSX.Element => {
   const foregroundRef = useRef<HTMLDivElement | null>(null);
   const backgroundRef = useRef<HTMLDivElement | null>(null);
@@ -59,8 +65,10 @@ const SwipeToAction = ({
       if (Math.abs(left) >= offsetWidth * threshold) {
         left = eventData.dir === LEFT ? -offsetWidth * 2 : offsetWidth;
 
-        if (onSwiped) {
-          onSwiped(eventData);
+        if (eventData.dir === LEFT && onSwipedLeft) {
+          onSwipedLeft(eventData);
+        } else if (eventData.dir === RIGHT && onSwipedRight) {
+          onSwipedRight(eventData);
         }
       } else {
         left = 0;
@@ -78,11 +86,15 @@ const SwipeToAction = ({
 
   return (
     <div className="relative w-full overflow-hidden">
-      <BackgroundLayer ref={backgroundRef} className={backgroundClassName} swipeDirection={swipeDirection}>
-        {backgroundChildren}
+      <BackgroundLayer
+        ref={backgroundRef}
+        className={swipeDirection === LEFT ? rightChildrenClassName : leftChildrenClassName}
+        swipeDirection={swipeDirection}
+      >
+        {swipeDirection === LEFT ? rightChildren : leftChildren}
       </BackgroundLayer>
       {/* eslint-disable-next-line @typescript-eslint/unbound-method */}
-      <ForegroundLayer ref={refPassthrough} className={foregroundClassName} onMouseDown={swipeableHandlers.onMouseDown}>
+      <ForegroundLayer ref={refPassthrough} className={className} onMouseDown={swipeableHandlers.onMouseDown}>
         {children}
       </ForegroundLayer>
     </div>
