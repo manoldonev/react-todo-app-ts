@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { QueryClientProvider } from 'react-query';
 import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
-import { queryClient } from './queryClient';
+import { queryClient } from '../queryClient';
 
 test('renders learn react link', () => {
   render(
