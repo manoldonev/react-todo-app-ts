@@ -18,17 +18,36 @@ const App = (): JSX.Element => {
   // TODO: animated routes (no good story for v6 atm, see https://github.com/remix-run/react-router/issues/7117#issuecomment-949096628)
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
-      <Suspense fallback={<LoadingIndicator />}>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Navigate to="tasks" />} />
-            <Route path="tasks/*" element={<Tasks />} />
-            <Route path="analytics" element={<Analytics />} />
-            <Route path="settings" element={<Settings />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-        </Routes>
-      </Suspense>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Navigate to="tasks" />} />
+          <Route
+            path="tasks/*"
+            element={
+              <Suspense fallback={<LoadingIndicator />}>
+                <Tasks />
+              </Suspense>
+            }
+          />
+          <Route
+            path="analytics"
+            element={
+              <Suspense fallback={<LoadingIndicator />}>
+                <Analytics />
+              </Suspense>
+            }
+          />
+          <Route
+            path="settings"
+            element={
+              <Suspense fallback={<LoadingIndicator />}>
+                <Settings />
+              </Suspense>
+            }
+          />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
     </ErrorBoundary>
   );
 };
