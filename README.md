@@ -1,4 +1,4 @@
-![ci workflow](https://github.com/manoldonev/react-todo-app-ts/actions/workflows/main.yml/badge.svg) ![deploy workflow](https://github.com/manoldonev/react-todo-app-ts/actions/workflows/deploy.yml/badge.svg)
+![license](https://img.shields.io/github/license/manoldonev/react-todo-app-ts?style=plastic) ![ci workflow](https://github.com/manoldonev/react-todo-app-ts/actions/workflows/main.yml/badge.svg) ![deploy workflow](https://github.com/manoldonev/react-todo-app-ts/actions/workflows/deploy.yml/badge.svg)
 
 Latest deployment available at https://manoldonev.github.io/react-todo-app-ts/
 
@@ -28,4 +28,4 @@ Based on the [React TypeScript App](https://github.com/manoldonev/react-app-temp
 
 ## Navigation
 
-- React Router v6
+- React Router v6 (with routes code-splitting)
