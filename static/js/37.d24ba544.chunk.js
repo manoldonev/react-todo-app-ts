@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_todo_app_ts=self.webpackChunkreact_todo_app_ts||[]).push([[37],{2037:function(n,e,t){t.r(e),t.d(e,{Analytics:function(){return s}});var c=t(184),s=function(){return(0,c.jsx)("div",{className:"min-h-screen p-4 bg-green-100",children:(0,c.jsx)("p",{children:"Analytics"})})}}}]);
+//# sourceMappingURL=37.d24ba544.chunk.js.map
