@@ -42,7 +42,7 @@ const TodoItem = ({
             {data.task}
           </label>
           <ActionBar
-            className="group-hover:opacity-100 mt-1.5 opacity-0 transition-opacity duration-500"
+            className="group-focus-within:opacity-100 group-hover:opacity-100 mt-1.5 opacity-0 transition-opacity duration-500"
             onDelete={deleteItem}
           />
         </div>
