@@ -4,7 +4,7 @@ import type { ChangeEvent } from 'react';
 import { useRef } from 'react';
 import { Navigation } from '../Navigation';
 import { SearchBox } from '../../../components/SearchBox';
-import { useHideOnScroll } from '../hooks/useHideOnScroll';
+import { useHeadroom } from '../../../hooks/useHeadroom';
 
 export const queryAtom = atom('');
 
@@ -15,7 +15,7 @@ const Header = (): JSX.Element => {
 
   const rootRef = useRef<HTMLElement | null>(null);
   // TODO: 'unpinned' does not animate (negative translate transform)
-  useHideOnScroll(rootRef, {
+  useHeadroom(rootRef, {
     headroomOptions: {
       classes: {
         initial: 'transition-transform duration-300 will-change-transform',

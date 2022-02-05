@@ -1,7 +1,7 @@
 import { AdjustmentsIcon, ChartSquareBarIcon, ClipboardListIcon } from '@heroicons/react/outline';
 import { useRef } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useHideOnScroll } from '../hooks/useHideOnScroll';
+import { useHeadroom } from '../../../hooks/useHeadroom';
 
 export const navigationItems = ['tasks', 'analytics', 'settings'];
 
@@ -20,7 +20,7 @@ const mapNavigationIcon = (item: string): JSX.Element => {
 
 const BottomNavigation = (): JSX.Element => {
   const rootRef = useRef<HTMLElement | null>(null);
-  useHideOnScroll(rootRef, {
+  useHeadroom(rootRef, {
     headroomOptions: {
       classes: {
         initial: 'transition-transform duration-300 will-change-transform',
@@ -33,7 +33,7 @@ const BottomNavigation = (): JSX.Element => {
   return (
     <nav
       ref={rootRef}
-      className="fixed inset-x-0 bottom-0 z-10 flex justify-between text-xs text-blue-900 bg-blue-100 md:hidden"
+      className="z-10 fixed inset-x-0 bottom-0 flex justify-between text-xs text-blue-900 bg-blue-100 md:hidden"
     >
       {navigationItems.map((item) => (
         <NavLink

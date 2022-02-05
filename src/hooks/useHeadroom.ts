@@ -4,7 +4,8 @@ import type { HeadroomOptions } from 'headroom.js';
 import type { MutableRefObject } from 'react';
 import { useEffect } from 'react';
 
-const useHideOnScroll = (
+// TODO: consider exposing additional Headroom / Legroom components
+const useHeadroom = (
   rootRef: MutableRefObject<HTMLElement | null>,
   { headroomOptions, autoCalculateOffset = false }: { headroomOptions: HeadroomOptions; autoCalculateOffset?: boolean },
 ): void => {
@@ -36,5 +37,5 @@ const useHideOnScroll = (
   }, [rootRef, headroomOptions, autoCalculateOffset]);
 };
 
-export { useHideOnScroll };
+export { useHeadroom };
 /* eslint-enable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment */
