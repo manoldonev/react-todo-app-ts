@@ -23,7 +23,7 @@ const useHeadroom = (
     const headroom = new Headroom(rootRef.current, <any>options);
     headroom.init();
 
-    // HACK: init/destroy race condition
+    // HACK: init/destroy race condition upon test execution
     // see https://github.com/WickyNilliams/headroom.js/issues/367
     const unsafeHeadroom = <any>headroom;
     if (unsafeHeadroom.scrollTracker == null) {
