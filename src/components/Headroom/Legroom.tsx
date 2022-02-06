@@ -7,7 +7,7 @@ const Legroom = ({ children }: { children: React.ReactElement }): JSX.Element =>
   useHeadroom(rootRef, {
     headroomOptions: {
       classes: {
-        initial: 'transition-transform duration-300 will-change-transform',
+        initial: 'fixed inset-x-0 bottom-0 transition-transform duration-300 will-change-transform',
         pinned: 'translate-y-0',
         unpinned: 'translate-y-full',
       },
