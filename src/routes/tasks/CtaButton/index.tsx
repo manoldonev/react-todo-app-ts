@@ -1,7 +1,7 @@
 import { PlusIcon } from '@heroicons/react/outline';
 import { useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useHeadroom } from '../../../hooks/useHeadroom';
+import { useHeadroom } from '../../../components/Headroom';
 
 const CtaButton = ({ className = '' }: { className?: string }): JSX.Element => {
   const location = useLocation();
