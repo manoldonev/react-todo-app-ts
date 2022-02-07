@@ -19,10 +19,7 @@ const mapNavigationIcon = (item: string): JSX.Element => {
 
 const BottomNavigation = forwardRef<HTMLElement>((_, ref) => {
   return (
-    <nav
-      ref={ref}
-      className="z-10 fixed inset-x-0 bottom-0 flex justify-between text-xs text-blue-900 bg-blue-100 md:hidden"
-    >
+    <nav ref={ref} className="z-10 flex justify-between text-xs text-blue-900 bg-blue-100 md:hidden">
       {navigationItems.map((item) => (
         <NavLink
           key={item}
