@@ -14,11 +14,11 @@ const useHeadroom = (
       return;
     }
 
-    // TODO: override @types/headroom.js declaration to accept { up; down; } offset value
     const options = autoCalculateOffset
       ? { ...headroomOptions, offset: { up: 0, down: rootRef.current.offsetHeight } }
       : headroomOptions;
 
+    // TODO: remove <any> cast once https://github.com/DefinitelyTyped/DefinitelyTyped/pull/58637 is merged
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     const headroom = new Headroom(rootRef.current, <any>options);
     headroom.init();
