@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
 import { queryClient } from '../queryClient';
 
-test('renders learn react link', () => {
+test('renders todo app link', () => {
   render(
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <QueryClientProvider client={queryClient}>
@@ -12,6 +12,7 @@ test('renders learn react link', () => {
       </QueryClientProvider>
     </BrowserRouter>,
   );
+
   const linkElement = screen.getByText(/todo app/i);
   expect(linkElement).toBeInTheDocument();
 });

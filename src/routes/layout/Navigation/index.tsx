@@ -1,4 +1,5 @@
 import { AdjustmentsIcon, ChartSquareBarIcon, ClipboardListIcon } from '@heroicons/react/outline';
+import { forwardRef } from 'react';
 import { NavLink } from 'react-router-dom';
 
 export const navigationItems = ['tasks', 'analytics', 'settings'];
@@ -16,9 +17,9 @@ const mapNavigationIcon = (item: string): JSX.Element => {
   }
 };
 
-const BottomNavigation = (): JSX.Element => {
+const BottomNavigation = forwardRef<HTMLElement>((_, ref) => {
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-10 flex justify-between text-xs text-blue-900 bg-blue-100 md:hidden">
+    <nav ref={ref} className="z-10 flex justify-between text-xs text-blue-900 bg-blue-100 md:hidden">
       {navigationItems.map((item) => (
         <NavLink
           key={item}
@@ -35,7 +36,7 @@ const BottomNavigation = (): JSX.Element => {
       ))}
     </nav>
   );
-};
+});
 
 const Navigation = (): JSX.Element => {
   return (
