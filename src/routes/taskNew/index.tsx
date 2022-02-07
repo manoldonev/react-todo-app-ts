@@ -19,7 +19,7 @@ const NewTask = (): JSX.Element => {
 
 const NewTaskModal = (): JSX.Element => {
   const navigate = useNavigate();
-  const onDismiss = (): void => navigate(-1);
+  const onDismiss = (): void => navigate('/tasks');
 
   return (
     <Dialog
