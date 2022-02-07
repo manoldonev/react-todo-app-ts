@@ -1,10 +1,10 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { useHeadroom } from './hooks/useHeadroom';
 
-const Legroom = ({ children }: { children: React.ReactElement }): JSX.Element => {
-  const rootRef = useRef<HTMLElement | null>(null);
+const Legroom = ({ children, className = '' }: { children: React.ReactNode; className?: string }): JSX.Element => {
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
 
-  useHeadroom(rootRef, {
+  useHeadroom(wrapperRef, {
     headroomOptions: {
       classes: {
         initial: 'fixed inset-x-0 bottom-0 transition-transform duration-300 will-change-transform',
@@ -14,9 +14,11 @@ const Legroom = ({ children }: { children: React.ReactElement }): JSX.Element =>
     },
   });
 
-  const childElement = React.Children.only(children);
-
-  return React.cloneElement(childElement, { ref: rootRef });
+  return (
+    <div className={className} ref={wrapperRef}>
+      {children}
+    </div>
+  );
 };
 
 export { Legroom };

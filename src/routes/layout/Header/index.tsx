@@ -1,13 +1,12 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { atom, useAtom } from 'jotai';
 import type { ChangeEvent } from 'react';
-import { forwardRef } from 'react';
 import { Navigation } from '../Navigation';
 import { SearchBox } from '../../../components/SearchBox';
 
 export const queryAtom = atom('');
 
-const Header = forwardRef<HTMLElement>((_, ref) => {
+const Header = (): JSX.Element => {
   const [query, setQuery] = useAtom(queryAtom);
   const location = useLocation();
   const navigate = useNavigate();
@@ -20,7 +19,7 @@ const Header = forwardRef<HTMLElement>((_, ref) => {
   };
 
   return (
-    <header ref={ref} className="z-10 w-screen bg-sky-700">
+    <header className="w-screen bg-sky-700">
       <div className="flex items-center justify-between p-4">
         <div className="grid items-center w-full md:flex">
           <div className="flex justify-start col-start-1 row-start-1 md:mr-4">
@@ -38,6 +37,6 @@ const Header = forwardRef<HTMLElement>((_, ref) => {
       </div>
     </header>
   );
-});
+};
 
 export { Header };
