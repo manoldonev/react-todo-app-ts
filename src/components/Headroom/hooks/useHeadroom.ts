@@ -4,10 +4,14 @@ import type { HeadroomOptions } from 'headroom.js';
 import type { MutableRefObject } from 'react';
 import { useEffect } from 'react';
 
-// TODO: consider exposing additional Headroom / Legroom components
+// TODO: needs a rewrite (remove headroom.js dependency & hacks)
 const useHeadroom = (
   rootRef: MutableRefObject<HTMLElement | null>,
-  { headroomOptions, autoCalculateOffset = false }: { headroomOptions: HeadroomOptions; autoCalculateOffset?: boolean },
+  {
+    headroomOptions,
+    autoCalculateOffset = false,
+    disableInitialTransitionToUnpinned = false,
+  }: { headroomOptions: HeadroomOptions; autoCalculateOffset?: boolean; disableInitialTransitionToUnpinned?: boolean },
 ): void => {
   useEffect(() => {
     if (rootRef.current == null) {
@@ -17,6 +21,28 @@ const useHeadroom = (
     const options = autoCalculateOffset
       ? { ...headroomOptions, offset: { up: 0, down: rootRef.current.offsetHeight } }
       : headroomOptions;
+
+    /* HACK: Do not add CSS transitions until after we are done with the initial negative transform when transitioning from 'unfixed' to 'unpinned'; otherwise the header flashes into view temporarily while transitioning from 0 to -100% */
+    if (disableInitialTransitionToUnpinned) {
+      const userUnpinnedClassName = options.classes?.unpinned;
+      const userOnTop = options.onTop;
+      options.onTop = function onTop(this) {
+        (this as any).classes.unpinned = `transition-none ${userUnpinnedClassName?.replace('fixed', '').trim() ?? ''}`;
+
+        if (userOnTop) {
+          userOnTop.call(this);
+        }
+      };
+
+      const userOnPin = options.onPin;
+      options.onPin = function onPin(this) {
+        (this as any).classes.unpinned = `${userUnpinnedClassName ?? ''}`;
+
+        if (userOnPin) {
+          userOnPin.call(this);
+        }
+      };
+    }
 
     // TODO: remove <any> cast once https://github.com/DefinitelyTyped/DefinitelyTyped/pull/58637 is merged
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
@@ -34,7 +60,7 @@ const useHeadroom = (
 
     // eslint-disable-next-line consistent-return
     return () => headroom.destroy();
-  }, [rootRef, headroomOptions, autoCalculateOffset]);
+  }, [rootRef, headroomOptions, autoCalculateOffset, disableInitialTransitionToUnpinned]);
 };
 
 export { useHeadroom };
