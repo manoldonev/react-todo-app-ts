@@ -1,10 +1,10 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { useHeadroom } from './hooks/useHeadroom';
 
-const Headroom = ({ children }: { children: React.ReactElement }): JSX.Element => {
-  const rootRef = useRef<HTMLElement | null>(null);
+const Headroom = ({ children, className = '' }: { children: React.ReactNode; className?: string }): JSX.Element => {
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
 
-  useHeadroom(rootRef, {
+  useHeadroom(wrapperRef, {
     headroomOptions: {
       classes: {
         initial: 'transition-transform duration-300 will-change-transform',
@@ -17,9 +17,11 @@ const Headroom = ({ children }: { children: React.ReactElement }): JSX.Element =
     disableInitialTransitionToUnpinned: true,
   });
 
-  const childElement = React.Children.only(children);
-
-  return React.cloneElement(childElement, { ref: rootRef });
+  return (
+    <div className={className} ref={wrapperRef}>
+      {children}
+    </div>
+  );
 };
 
 export { Headroom };

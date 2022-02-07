@@ -7,13 +7,13 @@ const Layout = (): JSX.Element => {
   return (
     // NOTE: cannot use Fragment here as it will break the sticky header
     <div>
-      <Headroom>
+      <Headroom className="z-10">
         <Header />
       </Headroom>
       <main>
         <Outlet />
       </main>
-      <Legroom>
+      <Legroom className="z-10">
         <BottomNavigation />
       </Legroom>
     </div>
