@@ -31,18 +31,32 @@ const SwipeToAction = ({
   const foregroundRef = useRef<HTMLDivElement | null>(null);
   const backgroundRef = useRef<HTMLDivElement | null>(null);
   const [swipeDirection, setSwipeDirection] = useState<SwipeDirections>(LEFT);
+  const isHorizontalSwipe = useRef(false);
 
   const swipeableHandlers = useSwipeable({
     // if tracking mouse see https://github.com/FormidableLabs/react-swipeable/issues/231 for a workaround
     trackMouse: false,
     onTap,
-    onSwipeStart: () => {
+    onSwipeStart: (eventData) => {
+      isHorizontalSwipe.current = eventData.dir === LEFT || eventData.dir === RIGHT;
+
+      if (!isHorizontalSwipe.current) {
+        return;
+      }
+
       if (foregroundRef.current) {
         foregroundRef.current.style.transition = '';
         foregroundRef.current.style.transform = '';
       }
     },
     onSwiping: (eventData) => {
+      if (!isHorizontalSwipe.current) {
+        return;
+      }
+
+      // allow switching between left / right swipe on the go
+      setSwipeDirection(eventData.dir);
+
       if (foregroundRef.current) {
         const transform = `translateX(${eventData.deltaX}px)`;
         foregroundRef.current.style.transform = transform;
@@ -52,10 +66,12 @@ const SwipeToAction = ({
         const opacity = Math.min(Math.abs(eventData.deltaX) / 100, 1);
         backgroundRef.current.style.opacity = opacity.toFixed(2);
       }
-
-      setSwipeDirection(eventData.dir);
     },
     onSwiped: (eventData) => {
+      if (!isHorizontalSwipe.current) {
+        return;
+      }
+
       if (!foregroundRef.current) {
         return;
       }
