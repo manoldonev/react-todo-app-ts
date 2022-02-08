@@ -42,7 +42,7 @@
         "default": "array-simple"
       }
     ],
-    // "@typescript-eslint/consistent-type-exports": "error",
+    "@typescript-eslint/consistent-type-exports": "error",
     "@typescript-eslint/consistent-type-imports": "error",
     "@typescript-eslint/explicit-function-return-type": [
       "error",
@@ -81,12 +81,11 @@
     "testing-library/prefer-explicit-assert": "error",
     "testing-library/prefer-presence-queries": "error",
     "testing-library/prefer-wait-for": "error",
-    // TODO: enable when react-scripts start using eslint-plugin-testing-library v4.3.0+
-    // "testing-library/no-unnecessary-act": "error",
-    // "testing-library/no-wait-for-multiple-assertions": "error",
-    // "testing-library/no-wait-for-side-effects": "error",
-    // "testing-library/prefer-query-by-disappearance": "error",
-    // "testing-library/prefer-user-event": "error",
+    "testing-library/no-unnecessary-act": "error",
+    "testing-library/no-wait-for-multiple-assertions": "error",
+    "testing-library/no-wait-for-side-effects": "error",
+    "testing-library/prefer-query-by-disappearance": "error",
+    "testing-library/prefer-user-event": "error",
     "react/require-default-props": [
       "error",
       {
