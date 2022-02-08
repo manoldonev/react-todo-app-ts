@@ -44,9 +44,7 @@ const useHeadroom = (
       };
     }
 
-    // TODO: remove <any> cast once https://github.com/DefinitelyTyped/DefinitelyTyped/pull/58637 is merged
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    const headroom = new Headroom(rootRef.current, <any>options);
+    const headroom = new Headroom(rootRef.current, options);
     headroom.init();
 
     // HACK: init/destroy race condition upon test execution
