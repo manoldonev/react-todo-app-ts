@@ -12,7 +12,7 @@ const NewTask = (): JSX.Element => {
       <h1 id="label" className="py-4 text-slate-600">
         Add New Item
       </h1>
-      <AddNewForm onSubmit={onDismiss} onCancel={onDismiss} />
+      <AddNewForm onSubmitted={onDismiss} onCancel={onDismiss} />
     </div>
   );
 };
@@ -37,7 +37,7 @@ const NewTaskModal = (): JSX.Element => {
         </button>
       </div>
 
-      <AddNewForm onSubmit={onDismiss} onCancel={onDismiss} />
+      <AddNewForm onSubmitted={onDismiss} onCancel={onDismiss} />
     </Dialog>
   );
 };
