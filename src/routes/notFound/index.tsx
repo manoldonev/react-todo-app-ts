@@ -1,6 +1,6 @@
 const NotFound = (): JSX.Element => {
   return (
-    <div className="h-full p-4 bg-red-100">
+    <div className="min-h-screen p-4 bg-error-container text-on-error-container">
       <p>There&apos;s nothing here!</p>
     </div>
   );

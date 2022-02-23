@@ -9,7 +9,7 @@ const NewTask = (): JSX.Element => {
   const onDismiss = (): void => navigate('/tasks');
   return (
     <div className="flex flex-col max-w-3xl px-5 m-auto">
-      <h1 id="label" className="py-4 text-slate-600">
+      <h1 id="label" className="py-4 text-on-surface">
         Add New Item
       </h1>
       <AddNewForm onSubmitted={onDismiss} onCancel={onDismiss} />
@@ -24,16 +24,16 @@ const NewTaskModal = (): JSX.Element => {
   return (
     <Dialog
       onDismiss={onDismiss}
-      className="flex flex-col w-full h-full max-w-3xl m-auto md:w-2/3 md:h-auto md:my-20"
+      className="flex flex-col w-full h-full max-w-3xl m-auto md:w-2/3 md:h-auto md:my-20 bg-surface text-on-surface"
       aria-labelledby="label"
     >
       <div className="flex items-center mb-10">
-        <h1 id="label" className="mr-auto text-slate-600">
+        <h1 id="label" className="mr-auto">
           Add New Item
         </h1>
         <button type="button" onClick={onDismiss}>
           <VisuallyHidden>Close</VisuallyHidden>
-          <XIcon className="w-10 h-10 text-slate-600" aria-hidden />
+          <XIcon className="w-10 h-10" aria-hidden />
         </button>
       </div>
 

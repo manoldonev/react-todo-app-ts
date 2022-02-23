@@ -24,7 +24,7 @@ const App = (): JSX.Element => {
           <Route
             path="tasks/*"
             element={
-              <Suspense fallback={<LoadingIndicator className="text-blue-900" />}>
+              <Suspense fallback={<LoadingIndicator className="text-primary" />}>
                 <Tasks />
               </Suspense>
             }
@@ -32,7 +32,7 @@ const App = (): JSX.Element => {
           <Route
             path="analytics"
             element={
-              <Suspense fallback={<LoadingIndicator className="text-blue-900" />}>
+              <Suspense fallback={<LoadingIndicator className="text-primary" />}>
                 <Analytics />
               </Suspense>
             }
@@ -40,7 +40,7 @@ const App = (): JSX.Element => {
           <Route
             path="settings"
             element={
-              <Suspense fallback={<LoadingIndicator className="text-blue-900" />}>
+              <Suspense fallback={<LoadingIndicator className="text-primary" />}>
                 <Settings />
               </Suspense>
             }
