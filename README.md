@@ -17,6 +17,11 @@ Based on the [React TypeScript App](https://github.com/manoldonev/react-app-temp
 - Mobile-first design
 - Tailwind (utility-first CSS framework)
 
+## Theming
+
+- Dark Mode Support (using tailwind "class" strategy)
+- Enforced custom "material design" palette instead of the standard tailwind colors to simulate a real-world "branded" app scenario (e.g. "primary" / "secondary" / "error" and variations instead of "red" / "green" / "blue" / etc. -- see https://material-foundation.github.io/material-theme-builder/#/custom)
+
 ## State Management
 
 - Jotai (primitive and flexible state management for React)
