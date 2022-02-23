@@ -14,7 +14,7 @@ const Layout = (): JSX.Element => {
         <Outlet />
       </main>
       <Legroom className="z-10">
-        <BottomNavigation />
+        <BottomNavigation className="md:hidden" />
       </Legroom>
     </div>
   );

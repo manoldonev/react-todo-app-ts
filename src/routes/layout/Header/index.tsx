@@ -3,6 +3,7 @@ import { atom, useAtom } from 'jotai';
 import type { ChangeEvent } from 'react';
 import { Navigation } from '../Navigation';
 import { SearchBox } from '../../../components/SearchBox';
+import { ThemeToggle } from '../../../components/ThemeToggle';
 
 export const queryAtom = atom('');
 
@@ -19,12 +20,12 @@ const Header = (): JSX.Element => {
   };
 
   return (
-    <header className="w-screen bg-sky-700">
+    <header className="w-screen transition-colors bg-primary">
       <div className="flex items-center justify-between p-4">
         <div className="grid items-center w-full md:flex">
           <div className="flex justify-start col-start-1 row-start-1 md:mr-4">
             <Link to="/">
-              <span className="text-xl font-semibold text-white">Todo App</span>
+              <span className="text-xl font-semibold text-on-primary">Todo App</span>
             </Link>
           </div>
 
@@ -33,7 +34,9 @@ const Header = (): JSX.Element => {
           </form>
         </div>
 
-        <Navigation />
+        <Navigation className="hidden md:flex" />
+
+        <ThemeToggle className="hidden md:block" />
       </div>
     </header>
   );

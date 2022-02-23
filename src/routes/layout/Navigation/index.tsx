@@ -16,17 +16,15 @@ const mapNavigationIcon = (item: string): JSX.Element => {
   }
 };
 
-const BottomNavigation = (): JSX.Element => {
+const BottomNavigation = ({ className = '' }: { className?: string }): JSX.Element => {
   return (
-    <nav className="flex justify-between text-xs text-blue-900 bg-blue-100 md:hidden">
+    <nav className={`flex justify-between text-xs bg-primary text-on-primary ${className}`}>
       {navigationItems.map((item) => (
         <NavLink
           key={item}
           to={`/${item}`}
           className={({ isActive }) =>
-            `w-full p-3 text-center transition duration-300 ${
-              isActive ? 'bg-blue-200 text-blue-800' : ''
-            } hover:bg-blue-200 hover:text-blue-800`
+            `w-full p-3 text-center transition duration-300 ${isActive ? 'bg-primary-variant text-on-primary' : ''}`
           }
         >
           {mapNavigationIcon(item)}
@@ -37,15 +35,11 @@ const BottomNavigation = (): JSX.Element => {
   );
 };
 
-const Navigation = (): JSX.Element => {
+const Navigation = ({ className = '' }: { className?: string }): JSX.Element => {
   return (
-    <nav className="items-center hidden w-auto md:flex">
+    <nav className={`items-center w-auto text-on-primary ${className}`}>
       {navigationItems.map((item) => (
-        <NavLink
-          key={item}
-          className={({ isActive }) => `block mr-4 md:text-white ${isActive ? 'underline' : ''}`}
-          to={`/${item}`}
-        >
+        <NavLink key={item} className={({ isActive }) => `block mr-4 ${isActive ? 'underline' : ''}`} to={`/${item}`}>
           <span className="capitalize">{item}</span>
         </NavLink>
       ))}
