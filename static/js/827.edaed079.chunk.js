@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_todo_app_ts=self.webpackChunkreact_todo_app_ts||[]).push([[827],{1827:function(e,t,n){n.r(t),n.d(t,{Settings:function(){return i}});var s=n(9264),r=n(184),i=function(){return(0,r.jsx)("div",{className:"min-h-screen p-4 transition-colors text-on-tertiary bg-tertiary",children:(0,r.jsxs)("div",{className:"flex items-center gap-2 md:hidden",children:[(0,r.jsx)("span",{children:"Toggle theme:"}),(0,r.jsx)(s.T,{})]})})}}}]);
+//# sourceMappingURL=827.edaed079.chunk.js.map
