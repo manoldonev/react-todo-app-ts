@@ -1,9 +1,11 @@
 import type { Dispatch, SetStateAction } from 'react';
 import { useEffect, useState } from 'react';
+import { useHasMounted } from './useHasMounted';
 
 const useLocalStorage = <T>(key: string, defaultValue: T): readonly [T, Dispatch<SetStateAction<T>>] => {
+  const hasMounted = useHasMounted();
   const [value, setValue] = useState<T>(() => {
-    if (typeof window === 'undefined') {
+    if (!hasMounted) {
       return defaultValue;
     }
 
