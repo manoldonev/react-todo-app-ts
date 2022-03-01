@@ -16,10 +16,6 @@ const useColorMode = (): readonly [ColorMode, Dispatch<SetStateAction<ColorMode>
   );
 
   useEffect(() => {
-    if (typeof window === 'undefined') {
-      return;
-    }
-
     const root = window.document.documentElement;
     if (colorMode === ColorMode.Dark) {
       root.classList.add(ColorMode.Dark);
