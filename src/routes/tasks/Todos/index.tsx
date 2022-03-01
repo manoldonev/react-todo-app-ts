@@ -34,7 +34,7 @@ const Todos = (): JSX.Element => {
               <button
                 type="button"
                 onClick={() => setQuery('')}
-                className="text-primary bg-background hover:text-on-primary border border-primary hover:bg-primary-variant focus:ring-4 focus:ring-primary/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-2"
+                className="text-secondary bg-background hover:text-on-secondary border border-secondary outline-none hover:bg-secondary-variant focus:ring-4 focus:ring-secondary/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-2"
               >
                 Reset Search
               </button>

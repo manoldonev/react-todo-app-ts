@@ -89,14 +89,14 @@ const AddNewForm = ({ onSubmitted, onCancel }: { onSubmitted: () => void; onCanc
       <div className="flex justify-center">
         <button
           type="submit"
-          className="w-24 h-12 bg-secondary hover:bg-secondary-variant focus:ring-4 focus:ring-secondary/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center text-on-secondary mr-2"
+          className="w-24 h-12 bg-secondary hover:bg-secondary-variant focus:ring-4 focus:ring-secondary/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center text-on-secondary mr-2 outline-none"
         >
           Save
         </button>
         <button
           type="button"
           onClick={onCancel}
-          className="w-24 h-12 text-secondary bg-background hover:text-on-secondary border border-secondary hover:bg-secondary-variant hover:border-secondary-variant focus:ring-4 focus:ring-secondary/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+          className="w-24 h-12 text-secondary bg-background hover:text-on-secondary border border-secondary hover:bg-secondary-variant outline-none hover:border-secondary-variant focus:ring-4 focus:ring-secondary/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
         >
           Cancel
         </button>
