@@ -26,6 +26,7 @@ module.exports = {
       'primary-container': withOpacityValue('--color-primary-container'),
       'on-primary-container': withOpacityValue('--color-on-primary-container'),
       secondary: withOpacityValue('--color-secondary'),
+      'secondary-variant': withOpacityValue('--color-secondary-variant'),
       'on-secondary': withOpacityValue('--color-on-secondary'),
       'secondary-container': withOpacityValue('--color-secondary-container'),
       'on-secondary-container': withOpacityValue('--color-on-secondary-container'),

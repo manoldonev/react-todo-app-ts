@@ -31,6 +31,7 @@
     --color-primary-container: 224 243 255; /* 190 232 255; */
     --color-on-primary-container: 0 30 43;
     --color-secondary: 184 32 0;
+    --color-secondary-variant: 142 18 0;
     --color-on-secondary: 255 255 255;
     --color-secondary-container: 255 218 209;
     --color-on-secondary-container: 63 4 0;
@@ -58,6 +59,7 @@
     --color-primary-container: 0 77 104;
     --color-on-primary-container: 190 232 255;
     --color-secondary: 255 180 162;
+    --color-secondary-variant: 255 138 111;
     --color-on-secondary: 101 11 0;
     --color-secondary-container: 141 20 0;
     --color-on-secondary-container: 255 218 209;
@@ -69,9 +71,9 @@
     --color-on-error: 96 20 16;
     --color-error-container: 140 29 24;
     --color-on-error-container: 249 222 220;
-    --color-background: 29 27 22;
+    --color-background: 44 44 44;
     --color-on-background: 232 226 217;
-    --color-surface: 29 27 22;
+    --color-surface: 44 44 44;
     --color-on-surface: 232 226 217;
     --color-outline: 147 143 153;
     --color-surface-variant: 73 69 79;
