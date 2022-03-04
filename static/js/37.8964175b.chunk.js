@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkreact_todo_app_ts=self.webpackChunkreact_todo_app_ts||[]).push([[37],{2037:function(n,t,c){c.r(t),c.d(t,{Analytics:function(){return s}});var r=c(184),s=function(){return(0,r.jsx)("div",{className:"min-h-screen p-4 transition-colors bg-background text-on-background",children:(0,r.jsx)("p",{children:"Analytics"})})}}}]);
-//# sourceMappingURL=37.8964175b.chunk.js.map
