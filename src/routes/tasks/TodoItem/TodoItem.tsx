@@ -1,9 +1,9 @@
 import { TrashIcon } from '@heroicons/react/outline';
 import { useMediaQuery } from '@react-hook/media-query';
-import { SwipeToAction } from '../../../components';
+import { SwipeToAction } from '../../../components/SwipeToAction';
 import { ActionBar } from './ActionBar';
-import { useDeleteTodo } from './useDeleteTodo';
-import { useUpdateTodo } from './useUpdateTodo';
+import { useDeleteTodo } from './hooks/useDeleteTodo';
+import { useUpdateTodo } from './hooks/useUpdateTodo';
 
 const TodoItem = ({
   data,

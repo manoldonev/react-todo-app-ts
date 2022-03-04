@@ -3,7 +3,7 @@ import Masonry from 'react-masonry-component';
 import { useAtom } from 'jotai';
 import { convertRemToPixels } from '../../../utils';
 import { TodoItem } from '../TodoItem';
-import { useTodos } from './useTodos';
+import { useTodos } from './hooks/useTodos';
 import { queryAtom } from '../../layout/Header';
 
 const Todos = (): JSX.Element => {
