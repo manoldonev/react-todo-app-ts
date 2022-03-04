@@ -1,7 +1,6 @@
 import { AdjustmentsIcon, ChartSquareBarIcon, ClipboardListIcon } from '@heroicons/react/outline';
 import { NavLink } from 'react-router-dom';
-
-export const navigationItems = ['tasks', 'analytics', 'settings'];
+import { navigationItems } from './navigationItems';
 
 const mapNavigationIcon = (item: string): JSX.Element => {
   switch (item) {
@@ -35,16 +34,4 @@ const BottomNavigation = ({ className = '' }: { className?: string }): JSX.Eleme
   );
 };
 
-const Navigation = ({ className = '' }: { className?: string }): JSX.Element => {
-  return (
-    <nav className={`items-center w-auto text-on-primary ${className}`}>
-      {navigationItems.map((item) => (
-        <NavLink key={item} className={({ isActive }) => `block mr-4 ${isActive ? 'underline' : ''}`} to={`/${item}`}>
-          <span className="capitalize">{item}</span>
-        </NavLink>
-      ))}
-    </nav>
-  );
-};
-
-export { BottomNavigation, Navigation };
+export { BottomNavigation };

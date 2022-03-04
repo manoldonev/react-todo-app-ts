@@ -3,7 +3,7 @@ import type { SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { useCreateTodo } from './useCreateTodo';
+import { useCreateTodo } from './hooks/useCreateTodo';
 
 const validationSchema = yup.object().shape(
   {
