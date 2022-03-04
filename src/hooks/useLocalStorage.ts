@@ -10,7 +10,6 @@ const useLocalStorage = <T>(key: string, defaultValue: T): readonly [T, Dispatch
     }
 
     const storedValue = window.localStorage.getItem(key);
-
     return storedValue != null ? <T>JSON.parse(storedValue) : defaultValue;
   });
 

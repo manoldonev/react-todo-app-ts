@@ -1,7 +1,7 @@
 import { useMediaQuery } from '@react-hook/media-query';
 import type { Dispatch, SetStateAction } from 'react';
 import { useEffect } from 'react';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { useLocalStorage } from '../../../hooks';
 
 enum ColorMode {
   Light = 'light',
