@@ -1,5 +1,5 @@
 import { MoonIcon, SunIcon } from '@heroicons/react/solid';
-import { ColorMode, useColorMode } from './useColorMode';
+import { ColorMode, useColorMode } from './hooks/useColorMode';
 
 const ThemeToggle = ({ className = '' }: { className?: string }): JSX.Element => {
   const [colorMode, setColorMode] = useColorMode();
