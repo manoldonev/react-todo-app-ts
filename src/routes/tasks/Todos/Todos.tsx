@@ -17,10 +17,10 @@ const Todos = (): JSX.Element => {
 
   return (
     <div className="p-1.5 bg-background transition-colors min-h-screen">
-      <Masonry elementType="ul" options={masonryOptions}>
+      <Masonry elementType="ul" options={masonryOptions} data-testid="todo-list">
         {data?.pages.map((page) => page.todos?.map((todo) => <TodoItem key={todo?.id} data={todo} />))}
         {isFetching && (
-          <li ref={sentryRef}>
+          <li ref={sentryRef} role="none">
             <h3 className="text-on-background">Loading...</h3>
           </li>
         )}
