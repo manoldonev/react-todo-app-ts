@@ -117,7 +117,13 @@
     ],
     "import/prefer-default-export": "off",
     "import/no-default-export": "error",
-    "jsx-a11y/label-has-associated-control": ["error", { "assert": "either" }]
+    "jsx-a11y/label-has-associated-control": ["error", { "assert": "either" }],
+    "@typescript-eslint/no-misused-promises": [
+      "error",
+      {
+        "checksVoidReturn": false
+      }
+    ]
   },
   "settings": {
     "react": {
