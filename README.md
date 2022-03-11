@@ -29,7 +29,7 @@ Based on the [React TypeScript App](https://github.com/manoldonev/react-app-temp
 ## Data (Async State Management)
 
 - GraphQL
-- `react-query` with automatic hooks generation based on the GraphQL schema
+- `react-query` with [automatic hooks generation](https://www.graphql-code-generator.com/) based on the GraphQL schema
 
 ## Navigation
 
@@ -38,4 +38,4 @@ Based on the [React TypeScript App](https://github.com/manoldonev/react-app-temp
 ## Testing
 
 - Jest / React Testing Library
-- MSW (Mock Service Worker) data mocking strategy (low-level mocking on the network layer request/response)
+- [MSW](https://mswjs.io/) (Mock Service Worker) API mocking (intercepting requests on the network level)
