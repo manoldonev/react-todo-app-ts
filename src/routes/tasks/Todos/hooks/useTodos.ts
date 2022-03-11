@@ -12,7 +12,7 @@ const enum SortDirection {
   Descending = 'desc',
 }
 
-const defaultPage = 1;
+const pageIndex = 1;
 const pageSize = 10;
 const sortField = 'id';
 const sortDirection = SortDirection.Descending;
@@ -30,7 +30,7 @@ const useTodos = (): {
   }
 
   const queryVariables = {
-    page: defaultPage,
+    page: pageIndex,
     limit: pageSize,
     input,
     sort: sortField,

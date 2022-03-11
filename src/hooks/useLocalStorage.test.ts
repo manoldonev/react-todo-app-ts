@@ -1,9 +1,14 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 import { useLocalStorage } from './useLocalStorage';
 
-const defaultValue = 'DEFAULT';
+// mock useLocalStorage dependency
+jest.mock('./useHasMounted', () => {
+  return {
+    useHasMounted: () => true,
+  };
+});
 
-jest.mock('./useHasMounted');
+const defaultValue = 'DEFAULT';
 
 describe('useLocalStorage hook', () => {
   beforeEach(() => {
