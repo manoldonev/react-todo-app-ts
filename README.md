@@ -19,8 +19,8 @@ Based on the [React TypeScript App](https://github.com/manoldonev/react-app-temp
 
 ## Theming
 
-- Dark Mode Support (using tailwind "class" strategy)
-- Enforced custom "material design" palette instead of the standard tailwind colors to simulate a real-world "branded" app scenario (e.g. "primary" / "secondary" / "error" and variations instead of "red" / "green" / "blue" / etc. -- see https://material-foundation.github.io/material-theme-builder/#/custom)
+- Dark Mode Support (utilizing tailwind "class" strategy)
+- Branding via custom "material design" palette (vs generic tailwind colors scheme)
 
 ## State Management
 
@@ -34,3 +34,8 @@ Based on the [React TypeScript App](https://github.com/manoldonev/react-app-temp
 ## Navigation
 
 - React Router v6 (with routes code-splitting)
+
+## Testing
+
+- Jest / React Testing Library
+- MSW (Mock Service Worker) data mocking strategy (low-level mocking on the network layer request/response)
