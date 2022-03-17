@@ -39,3 +39,4 @@ Based on the [React TypeScript App](https://github.com/manoldonev/react-app-temp
 
 - Jest / React Testing Library
 - [MSW](https://mswjs.io/) (Mock Service Worker) API mocking (intercepting requests on the network level)
+- Dynamically extract and inject the app(tailwind) css to augment the jsdom test environment (see https://github.com/manoldonev/react-todo-app-ts/pull/57) 
