@@ -10,6 +10,7 @@ const NewTaskModal = (): JSX.Element => {
 
   return (
     <Dialog
+      data-testid="add-new-modal"
       onDismiss={onDismiss}
       className="flex flex-col w-full h-full max-w-3xl m-auto md:w-2/3 md:h-auto md:my-20 bg-surface text-on-surface"
       aria-labelledby="label"

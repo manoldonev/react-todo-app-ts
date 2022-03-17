@@ -41,13 +41,12 @@ const useTodos = (): {
     'page',
     queryVariables,
     {
-      getNextPageParam: (_lastPage, allPages) => {
-        // TODO: switch fakeQL implementation to generalize condition
-        if (allPages.length < 5) {
-          return { page: allPages.length + 1 };
+      getNextPageParam: (lastPage, allPages) => {
+        if (lastPage.todos == null || lastPage.todos.length < pageSize) {
+          return null;
         }
 
-        return null;
+        return { page: allPages.length + 1 };
       },
     },
   );

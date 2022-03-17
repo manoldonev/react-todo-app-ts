@@ -4,19 +4,18 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
 import MatchMediaMock from 'jest-matchmedia-mock';
-import { server } from './mocks/server';
+import { server } from './mocks/msw/server';
+import { setupIntersectionObserverMock, setupWindowScrollToMock } from './mocks';
+import { injectTailwindCss } from './mocks/utils';
 
 // eslint-disable-next-line no-new
 const matchMedia = new MatchMediaMock();
 
-Object.defineProperty(window, 'scrollTo', {
-  value: (_x: number, y: number) => {
-    document.documentElement.scrollTop = y;
-  },
-  writable: true,
-});
+beforeAll(() => setupWindowScrollToMock());
 
-export { matchMedia };
+beforeAll(() => setupIntersectionObserverMock());
+
+beforeAll(async () => injectTailwindCss());
 
 // Establish API mocking before all tests.
 beforeAll(() => server.listen());
@@ -27,3 +26,5 @@ afterEach(() => server.resetHandlers());
 
 // Clean up after the tests are finished.
 afterAll(() => server.close());
+
+export { matchMedia };
