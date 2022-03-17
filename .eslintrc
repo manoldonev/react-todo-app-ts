@@ -86,6 +86,7 @@
     "testing-library/no-wait-for-side-effects": "error",
     "testing-library/prefer-query-by-disappearance": "error",
     "testing-library/prefer-user-event": "error",
+    "testing-library/no-debugging-utils": "warn",
     "react/require-default-props": [
       "error",
       {
@@ -123,7 +124,8 @@
       {
         "checksVoidReturn": false
       }
-    ]
+    ],
+    "jest/no-focused-tests": "warn"
   },
   "settings": {
     "react": {

@@ -20,6 +20,7 @@ const CtaButton = ({ className = '' }: { className?: string }): JSX.Element => {
 
   return (
     <button
+      data-testid="cta-button"
       ref={buttonRef}
       type="button"
       aria-label="Add new item"

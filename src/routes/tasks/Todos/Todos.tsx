@@ -16,8 +16,8 @@ const Todos = (): JSX.Element => {
   };
 
   return (
-    <div className="p-1.5 bg-background transition-colors min-h-screen">
-      <Masonry elementType="ul" options={masonryOptions} data-testid="todo-list">
+    <div className="p-1.5 bg-background transition-colors min-h-screen" data-testid="todo-list">
+      <Masonry elementType="ul" options={masonryOptions}>
         {data?.pages.map((page) => page.todos?.map((todo) => <TodoItem key={todo?.id} data={todo} />))}
         {isFetching && (
           <li ref={sentryRef} role="none">
@@ -25,7 +25,7 @@ const Todos = (): JSX.Element => {
           </li>
         )}
       </Masonry>
-      {!isFetching && (data?.pages.length === 0 || data?.pages[0].todos?.length === 0) && (
+      {!isFetching && (data == null || data.pages.length === 0 || data.pages[0].todos?.length === 0) && (
         <div className="flex items-center justify-center min-h-screen pb-40 text-on-background">
           <div className="flex flex-col items-center">
             <EmojiSadIcon className="w-40 h-40" />

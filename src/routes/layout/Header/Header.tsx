@@ -29,7 +29,7 @@ const Header = (): JSX.Element => {
             </Link>
           </div>
 
-          <form className="col-start-1 row-start-1 pointer-events-none md:w-1/2 md:mx-auto">
+          <form role="search" className="col-start-1 row-start-1 pointer-events-none md:w-1/2 md:mx-auto">
             <SearchBox value={query} onChange={handleChange} />
           </form>
         </div>

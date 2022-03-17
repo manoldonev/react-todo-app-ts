@@ -64,7 +64,7 @@ const AddNewForm = ({ onSubmitted, onCancel }: { onSubmitted: () => void; onCanc
         >
           Title
         </label>
-        {touchedFields.title != null && errors.title != null && (
+        {(touchedFields.title != null || touchedFields.note == null) && errors.title != null && (
           <span className="text-sm text-error">{errors.title.message}</span>
         )}
       </div>
@@ -82,7 +82,7 @@ const AddNewForm = ({ onSubmitted, onCancel }: { onSubmitted: () => void; onCanc
         >
           Note
         </label>
-        {touchedFields.note != null && errors.note != null && (
+        {(touchedFields.note != null || touchedFields.title == null) && errors.note != null && (
           <span className="text-sm text-error">{errors.note.message}</span>
         )}
       </div>

@@ -17,13 +17,16 @@ const mapNavigationIcon = (item: string): JSX.Element => {
 
 const BottomNavigation = ({ className = '' }: { className?: string }): JSX.Element => {
   return (
-    <nav className={`flex justify-between text-xs bg-primary text-on-primary ${className}`}>
+    <nav
+      data-testid="bottom-navigation"
+      className={`flex justify-between text-xs bg-primary text-on-primary ${className}`}
+    >
       {navigationItems.map((item) => (
         <NavLink
           key={item}
           to={`/${item}`}
           className={({ isActive }) =>
-            `w-full p-3 text-center transition duration-300 ${isActive ? 'bg-primary-variant text-on-primary' : ''}`
+            `w-full p-3 text-center transition duration-300 ${isActive ? 'bg-primary-variant' : ''}`
           }
         >
           {mapNavigationIcon(item)}

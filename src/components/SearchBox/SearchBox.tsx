@@ -5,8 +5,8 @@ const SearchBox = ({
   value,
   onChange,
 }: {
-  value: string | number | readonly string[] | undefined;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  value?: string | number | readonly string[] | undefined;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }): JSX.Element => {
   return (
     <div className="flex justify-end">
@@ -20,6 +20,7 @@ const SearchBox = ({
       />
       <label
         htmlFor="search"
+        aria-label="Search"
         className="p-3 -ml-px rounded-sm pointer-events-auto select-none bg-primary-container peer-focus:rounded-l-none md:rounded-l-none peer-focus:pointer-events-none text-on-primary-container"
       >
         <SearchIcon className="w-6 h-6 pointer-events-none text-on-primary-container" />
