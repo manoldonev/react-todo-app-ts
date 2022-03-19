@@ -2,9 +2,17 @@
   "*.{html,css}": [
     "prettier --write"
   ],
-  "*.{ts,tsx}": [
+  "cypress/**/*.ts": [
     "prettier --write",
-    "npm run lint:fix",
+    "npm run lint:cypress -- --fix"
+  ],
+  "src/**/*.test.{ts,tsx}": [
+    "prettier --write",
+    "npm run lint:jest -- --fix"
+  ],
+  "src/**/*.!(test).{ts,tsx}": [
+    "prettier --write",
+    "npm run lint:src -- --fix",
     "tsc-files --noEmit",
     "npm run test:related"
   ]
