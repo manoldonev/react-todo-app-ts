@@ -23,5 +23,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# temporary test file
+# test files
 /src/generated/output.css
+/cypress/screenshots
+/cypress/videos

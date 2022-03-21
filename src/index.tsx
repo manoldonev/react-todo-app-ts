@@ -11,14 +11,14 @@ import { queryClient } from './queryClient';
 import { reportWebVitals } from './reportWebVitals';
 
 const main = async (): Promise<void> => {
-  // if (process.env.NODE_ENV === 'development') {
-  //   const { worker } = await import('./mocks/msw/browser');
-  //   await worker.start({
-  //     serviceWorker: {
-  //       url: `${process.env.PUBLIC_URL}/mockServiceWorker.js`,
-  //     },
-  //   });
-  // }
+  if (process.env.NODE_ENV === 'development') {
+    const { worker } = await import('./mocks/msw/browser');
+    await worker.start({
+      serviceWorker: {
+        url: `${process.env.PUBLIC_URL}/mockServiceWorker.js`,
+      },
+    });
+  }
 
   ReactDOM.render(
     <React.StrictMode>
