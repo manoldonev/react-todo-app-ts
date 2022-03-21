@@ -68,7 +68,7 @@ describe('SearchBox', () => {
 
     changeHandler.mockClear();
     changeHandler.mockImplementationOnce((e: ChangeEvent<HTMLInputElement>) => {
-      expect(e.currentTarget.value).toEqual('');
+      expect(e.currentTarget.value).toBe('');
     });
 
     userEvent.clear(inputElement);

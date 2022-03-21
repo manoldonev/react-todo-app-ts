@@ -5,5 +5,12 @@
   "editor.tabSize": 2,
   "editor.wordWrap": "bounded",
   "editor.wordWrapColumn": 120,
-  "css.lint.unknownAtRules": "ignore"
+  "css.lint.unknownAtRules": "ignore",
+  "eslint.options": {
+    "overrideConfig": {
+      "parserOptions": {
+        "createDefaultProgram": true
+      }
+    }
+  }
 }

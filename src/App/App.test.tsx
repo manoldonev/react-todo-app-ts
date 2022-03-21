@@ -7,9 +7,6 @@ import { queryClient } from '../queryClient';
 import { matchMedia } from '../setupTests';
 
 const TestApp = (): JSX.Element => {
-  // mock touch screen (as we can only test mobile behavior)
-  matchMedia.useMediaQuery('(pointer: coarse)');
-
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <QueryClientProvider client={queryClient}>
@@ -27,6 +24,9 @@ const simulateTapEvent = (element: Element): void => {
 describe('Todo App', () => {
   beforeEach(() => {
     matchMedia.clear();
+
+    // mock touch screen (as we can only test mobile behavior)
+    matchMedia.useMediaQuery('(pointer: coarse)');
   });
 
   /* NOTE: it is not possible to properly test tailwind responsive ui behavior 
@@ -57,7 +57,7 @@ describe('Todo App', () => {
 
       const listScope = within(listElement);
       const itemElements = await listScope.findAllByRole('listitem');
-      expect(itemElements.length).toEqual(10);
+      expect(itemElements).toHaveLength(10);
 
       const fabElement = screen.getByTestId('cta-button');
       expect(fabElement).toBeVisible();
@@ -76,7 +76,7 @@ describe('Todo App', () => {
       const listElement = await screen.findByTestId('todo-list');
       const listScope = within(listElement);
       const itemElements = await listScope.findAllByRole('listitem');
-      expect(itemElements.length).toEqual(10);
+      expect(itemElements).toHaveLength(10);
 
       const checkboxElement = listScope.queryByRole('checkbox');
       expect(checkboxElement).not.toBeInTheDocument();
@@ -91,7 +91,7 @@ describe('Todo App', () => {
       const bottomNavElement = screen.getByTestId('bottom-navigation');
       const navScope = within(bottomNavElement);
       const linkElements = navScope.getAllByRole('link');
-      expect(linkElements.length).toEqual(3);
+      expect(linkElements).toHaveLength(3);
 
       const tasksElement = linkElements[0];
       expect(tasksElement).toBeVisible();
@@ -153,19 +153,19 @@ describe('Todo App', () => {
       const listScope = within(listElement);
 
       let itemElements = await listScope.findAllByRole('listitem');
-      expect(itemElements.length).toEqual(10);
+      expect(itemElements).toHaveLength(10);
 
       const searchElement = screen.getByRole('searchbox');
       expect(searchElement).toBeVisible();
 
       userEvent.type(searchElement, 'vivacious');
       itemElements = await listScope.findAllByRole('listitem');
-      expect(itemElements.length).toEqual(1);
+      expect(itemElements).toHaveLength(1);
 
       userEvent.clear(searchElement);
       userEvent.type(searchElement, 'asdf');
       itemElements = listScope.queryAllByRole('listitem');
-      expect(itemElements.length).toEqual(0);
+      expect(itemElements).toHaveLength(0);
 
       const resetElement = screen.getByText(/reset search/i);
       expect(resetElement).toBeVisible();
@@ -175,7 +175,7 @@ describe('Todo App', () => {
 
       expect(listElement).toBeVisible();
       itemElements = await listScope.findAllByRole('listitem');
-      expect(itemElements.length).toEqual(10);
+      expect(itemElements).toHaveLength(10);
       expect(searchElement).toHaveValue('');
     });
 
@@ -187,7 +187,7 @@ describe('Todo App', () => {
       const listScope = within(listElement);
 
       let itemElements = await listScope.findAllByRole('listitem');
-      expect(itemElements.length).toEqual(10);
+      expect(itemElements).toHaveLength(10);
 
       const fabElement = screen.getByTestId('cta-button');
       expect(fabElement).toBeVisible();
@@ -200,7 +200,7 @@ describe('Todo App', () => {
 
       const modalScope = within(modalElement);
       const inputElements = modalScope.getAllByRole('textbox');
-      expect(inputElements.length).toEqual(2);
+      expect(inputElements).toHaveLength(2);
 
       const noteElement = inputElements[1];
       const testValue = 'Add the qwerty!';
@@ -226,7 +226,7 @@ describe('Todo App', () => {
       const listScope = within(listElement);
 
       let itemElements = await listScope.findAllByRole('listitem');
-      expect(itemElements.length).toEqual(10);
+      expect(itemElements).toHaveLength(10);
 
       const fabElement = screen.getByTestId('cta-button');
       expect(fabElement).toBeVisible();
@@ -245,11 +245,11 @@ describe('Todo App', () => {
 
       const errorElements = await modalScope.findAllByText(/at least one of the fields is required/i);
 
-      expect(errorElements.length).toEqual(2);
+      expect(errorElements).toHaveLength(2);
       errorElements.forEach((errorElement) => expect(errorElement).toBeVisible());
 
       const inputElements = modalScope.getAllByRole('textbox');
-      expect(inputElements.length).toEqual(2);
+      expect(inputElements).toHaveLength(2);
 
       const titleElement = inputElements[0];
       const testValue = 'Add the deadbeef!';
@@ -273,7 +273,7 @@ describe('Todo App', () => {
       const listScope = within(listElement);
 
       let itemElements = await listScope.findAllByRole('listitem');
-      expect(itemElements.length).toEqual(10);
+      expect(itemElements).toHaveLength(10);
       const firstElement = itemElements[0];
 
       const fabElement = screen.getByTestId('cta-button');
@@ -305,7 +305,7 @@ describe('Todo App', () => {
       const listScope = within(listElement);
 
       const itemElements = await listScope.findAllByRole('listitem');
-      expect(itemElements.length).toEqual(10);
+      expect(itemElements).toHaveLength(10);
 
       const labelMatcher = /write the damn resolver!/i;
       const labelElement = screen.getByText(labelMatcher);
