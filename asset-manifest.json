@@ -1,27 +1,23 @@
 {
   "files": {
     "main.css": "/react-todo-app-ts/static/css/main.b8f3694e.css",
-    "main.js": "/react-todo-app-ts/static/js/main.67ad6127.js",
-    "static/js/144.499a356d.chunk.js": "/react-todo-app-ts/static/js/144.499a356d.chunk.js",
-    "static/js/407.5bfc530c.chunk.js": "/react-todo-app-ts/static/js/407.5bfc530c.chunk.js",
+    "main.js": "/react-todo-app-ts/static/js/main.bfce4366.js",
+    "static/js/407.bf5be2fb.chunk.js": "/react-todo-app-ts/static/js/407.bf5be2fb.chunk.js",
     "static/js/445.44064ca0.chunk.js": "/react-todo-app-ts/static/js/445.44064ca0.chunk.js",
     "static/js/986.758b659e.chunk.js": "/react-todo-app-ts/static/js/986.758b659e.chunk.js",
     "static/js/787.0c30b624.chunk.js": "/react-todo-app-ts/static/js/787.0c30b624.chunk.js",
-    "static/js/378.dab3fd57.chunk.js": "/react-todo-app-ts/static/js/378.dab3fd57.chunk.js",
-    "static/js/123.0bc8d2ea.chunk.js": "/react-todo-app-ts/static/js/123.0bc8d2ea.chunk.js",
+    "static/js/378.88d71332.chunk.js": "/react-todo-app-ts/static/js/378.88d71332.chunk.js",
     "index.html": "/react-todo-app-ts/index.html",
     "main.b8f3694e.css.map": "/react-todo-app-ts/static/css/main.b8f3694e.css.map",
-    "main.67ad6127.js.map": "/react-todo-app-ts/static/js/main.67ad6127.js.map",
-    "144.499a356d.chunk.js.map": "/react-todo-app-ts/static/js/144.499a356d.chunk.js.map",
-    "407.5bfc530c.chunk.js.map": "/react-todo-app-ts/static/js/407.5bfc530c.chunk.js.map",
+    "main.bfce4366.js.map": "/react-todo-app-ts/static/js/main.bfce4366.js.map",
+    "407.bf5be2fb.chunk.js.map": "/react-todo-app-ts/static/js/407.bf5be2fb.chunk.js.map",
     "445.44064ca0.chunk.js.map": "/react-todo-app-ts/static/js/445.44064ca0.chunk.js.map",
     "986.758b659e.chunk.js.map": "/react-todo-app-ts/static/js/986.758b659e.chunk.js.map",
     "787.0c30b624.chunk.js.map": "/react-todo-app-ts/static/js/787.0c30b624.chunk.js.map",
-    "378.dab3fd57.chunk.js.map": "/react-todo-app-ts/static/js/378.dab3fd57.chunk.js.map",
-    "123.0bc8d2ea.chunk.js.map": "/react-todo-app-ts/static/js/123.0bc8d2ea.chunk.js.map"
+    "378.88d71332.chunk.js.map": "/react-todo-app-ts/static/js/378.88d71332.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b8f3694e.css",
-    "static/js/main.67ad6127.js"
+    "static/js/main.bfce4366.js"
   ]
 }
