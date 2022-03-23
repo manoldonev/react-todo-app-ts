@@ -25,3 +25,40 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
 import '@testing-library/cypress/add-commands';
+
+Cypress.Commands.add('createTask', (task: string) => {
+  cy.findByTestId('cta-button').click();
+  cy.findByTestId('add-new-form')
+    .within(() => {
+      cy.findAllByRole('textbox').first().type(task);
+    })
+    .submit();
+
+  cy.findByText(task).should('be.visible');
+});
+
+Cypress.Commands.add('deleteTask', (task: string) => {
+  cy.findByText(task)
+    .trigger('touchstart', {
+      touches: [{ clientY: 40, clientX: 0 }],
+      waitForAnimations: false,
+    })
+    .trigger('touchmove', {
+      touches: [{ clientY: 40, clientX: -50 }],
+      waitForAnimations: false,
+    })
+    .trigger('touchmove', {
+      touches: [{ clientY: 40, clientX: -100 }],
+      waitForAnimations: false,
+    })
+    .trigger('touchmove', {
+      touches: [{ clientY: 40, clientX: -150 }],
+      waitForAnimations: false,
+    })
+    .trigger('touchend', {
+      touches: [{ clientY: 40, clientX: -160 }],
+      waitForAnimations: false,
+    });
+
+  cy.findByText(task).should('not.be.visible');
+});
