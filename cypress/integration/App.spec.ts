@@ -103,6 +103,8 @@ describe('Todo App', () => {
           touches: [{ clientY: 40, clientX: -160 }],
           waitForAnimations: false,
         });
+
+      cy.findByText(testValue).should('not.be.visible');
     });
   });
 

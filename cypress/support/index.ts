@@ -14,3 +14,16 @@
 // ***********************************************************
 
 import './commands';
+
+// TODO: msw & cypress combo triggers test runner endless loop
+// https://github.com/mswjs/msw/issues/744
+// https://github.com/cypress-io/cypress/issues/16742
+// import { worker } from '../../src/mocks/msw/browser';
+
+// before(async () => {
+//   return worker.start({
+//     serviceWorker: {
+//       url: `/react-todo-app-ts/mockServiceWorker.js`,
+//     },
+//   });
+// });
