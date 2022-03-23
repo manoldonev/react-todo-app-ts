@@ -49,7 +49,7 @@ const AddNewForm = ({ onSubmitted, onCancel }: { onSubmitted: () => void; onCanc
   };
 
   return (
-    <form className="bg-surface" onSubmit={handleSubmit(onSubmit)}>
+    <form data-testid="add-new-form" className="bg-surface" onSubmit={handleSubmit(onSubmit)}>
       <div className="relative">
         <input
           id="title"
