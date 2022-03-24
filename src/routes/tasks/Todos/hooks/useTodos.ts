@@ -48,6 +48,7 @@ const useTodos = (): {
 
         return { page: allPages.length + 1 };
       },
+      keepPreviousData: true,
     },
   );
 
