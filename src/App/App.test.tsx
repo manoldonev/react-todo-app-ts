@@ -52,7 +52,7 @@ describe('Todo App', () => {
       const searchFormElement = screen.getByRole('search');
       expect(searchFormElement).toBeVisible();
 
-      const listElement = await screen.findByTestId('todo-list');
+      const listElement = await screen.findByRole('list');
       expect(listElement).toBeVisible();
 
       const listScope = within(listElement);
@@ -73,7 +73,7 @@ describe('Todo App', () => {
     test('renders no checkboxes for todo items', async () => {
       render(<TestApp />);
 
-      const listElement = await screen.findByTestId('todo-list');
+      const listElement = await screen.findByRole('list');
       const listScope = within(listElement);
       const itemElements = await listScope.findAllByRole('listitem');
       expect(itemElements).toHaveLength(10);
@@ -85,7 +85,7 @@ describe('Todo App', () => {
     test('renders correct bottom navigation items', async () => {
       render(<TestApp />);
 
-      const listElement = await screen.findByTestId('todo-list');
+      const listElement = await screen.findByRole('list');
       expect(listElement).toBeVisible();
 
       const bottomNavElement = screen.getByTestId('bottom-navigation');
@@ -112,7 +112,7 @@ describe('Todo App', () => {
     test('switches tabs through bottom navigation', async () => {
       render(<TestApp />);
 
-      let listElement = await screen.findByTestId('todo-list');
+      let listElement = await screen.findByRole('list');
       expect(listElement).toBeVisible();
 
       const bottomNavElement = screen.getByTestId('bottom-navigation');
@@ -139,7 +139,7 @@ describe('Todo App', () => {
       expect(tasksLink).toBeVisible();
 
       tasksLink.click();
-      listElement = await screen.findByTestId('todo-list');
+      listElement = await screen.findByRole('list');
       expect(listElement).toBeVisible();
       expect(analyticsTabElement).not.toBeVisible();
       expect(settingsTabElement).not.toBeVisible();
@@ -148,7 +148,7 @@ describe('Todo App', () => {
     test('search for todo item', async () => {
       render(<TestApp />);
 
-      const listElement = await screen.findByTestId('todo-list');
+      const listElement = await screen.findByRole('list');
       expect(listElement).toBeVisible();
       const listScope = within(listElement);
 
@@ -181,7 +181,7 @@ describe('Todo App', () => {
     test('create todo item', async () => {
       render(<TestApp />);
 
-      const listElement = await screen.findByTestId('todo-list');
+      const listElement = await screen.findByRole('list');
       expect(listElement).toBeVisible();
       const listScope = within(listElement);
 
@@ -201,7 +201,7 @@ describe('Todo App', () => {
       const inputElements = modalScope.getAllByRole('textbox');
       expect(inputElements).toHaveLength(2);
 
-      const noteElement = inputElements[1];
+      const noteElement = modalScope.getByPlaceholderText(/note/i);
       const testValue = 'Add the qwerty!';
 
       userEvent.type(noteElement, testValue);
@@ -220,7 +220,7 @@ describe('Todo App', () => {
     test('create todo item validation', async () => {
       render(<TestApp />);
 
-      const listElement = await screen.findByTestId('todo-list');
+      const listElement = await screen.findByRole('list');
       expect(listElement).toBeVisible();
       const listScope = within(listElement);
 
@@ -250,7 +250,7 @@ describe('Todo App', () => {
       const inputElements = modalScope.getAllByRole('textbox');
       expect(inputElements).toHaveLength(2);
 
-      const titleElement = inputElements[0];
+      const titleElement = modalScope.getByPlaceholderText(/title/i);
       const testValue = 'Add the deadbeef!';
 
       userEvent.type(titleElement, testValue);
@@ -267,7 +267,7 @@ describe('Todo App', () => {
     test('cancel create todo item should have no side effects', async () => {
       render(<TestApp />);
 
-      const listElement = await screen.findByTestId('todo-list');
+      const listElement = await screen.findByRole('list');
       expect(listElement).toBeVisible();
       const listScope = within(listElement);
 
@@ -299,7 +299,7 @@ describe('Todo App', () => {
     test('update todo item', async () => {
       render(<TestApp />);
 
-      const listElement = await screen.findByTestId('todo-list');
+      const listElement = await screen.findByRole('list');
       expect(listElement).toBeVisible();
       const listScope = within(listElement);
 

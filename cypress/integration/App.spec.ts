@@ -19,7 +19,7 @@ describe('Todo App', () => {
 
       cy.findByRole('search').should('be.visible');
 
-      cy.findByTestId('todo-list')
+      cy.findByRole('list')
         .should('be.visible')
         .within(() => {
           cy.findAllByRole('listitem').should('have.length', 10);
@@ -129,7 +129,7 @@ describe('Todo App', () => {
 
       cy.findByRole('search').should('be.visible');
 
-      cy.findByTestId('todo-list')
+      cy.findByRole('list')
         .should('be.visible')
         .within(() => {
           cy.findAllByRole('listitem').should('have.length', 10);

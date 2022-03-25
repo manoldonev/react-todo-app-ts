@@ -16,7 +16,7 @@ const Todos = (): JSX.Element => {
   };
 
   return (
-    <div className="p-1.5 bg-background transition-colors min-h-screen" data-testid="todo-list">
+    <div className="p-1.5 bg-background transition-colors min-h-screen">
       <Masonry elementType="ul" options={masonryOptions}>
         {data?.pages.map((page) => page.todos?.map((todo) => <TodoItem key={todo?.id} data={todo} />))}
         {isFetching && (
