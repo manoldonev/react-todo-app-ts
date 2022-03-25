@@ -159,13 +159,12 @@ describe('Todo App', () => {
       expect(searchElement).toBeVisible();
 
       userEvent.type(searchElement, 'vivacious');
-      itemElements = await listScope.findAllByRole('listitem');
-      expect(itemElements).toHaveLength(1);
+      await waitFor(async () => expect(await listScope.findAllByRole('listitem')).toHaveLength(1));
 
       userEvent.clear(searchElement);
       userEvent.type(searchElement, 'asdf');
-      itemElements = listScope.queryAllByRole('listitem');
-      expect(itemElements).toHaveLength(0);
+
+      await waitFor(async () => expect(listScope.queryAllByRole('listitem')).toHaveLength(0));
 
       const resetElement = screen.getByText(/reset search/i);
       expect(resetElement).toBeVisible();
