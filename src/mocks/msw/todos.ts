@@ -1,3 +1,4 @@
+// TODO: replace hardcoded mock data with @mswjs/data & faker combination
 const todos = [
   {
     id: '1',
