@@ -1,1 +1,5 @@
-{ "projectId": "rrrdjw", "baseUrl": "http://localhost:3000/react-todo-app-ts" }
+{
+  "baseUrl": "http://localhost:3000/react-todo-app-ts",
+  "projectId": "rrrdjw",
+  "video": false
+}
