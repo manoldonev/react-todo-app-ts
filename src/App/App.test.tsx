@@ -1,10 +1,26 @@
 import { fireEvent, render, screen, waitFor, waitForElementToBeRemoved, within } from '@testing-library/react';
-import { QueryClientProvider } from 'react-query';
+import { QueryCache, QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 import { App } from './App';
-import { queryClient } from '../queryClient';
 import { matchMedia } from '../setupTests';
+import { server } from '../mocks/msw/server';
+import { mockTodosQuery } from '../generated';
+
+const queryErrorHandler = jest.fn();
+
+const queryCache = new QueryCache({
+  onError: queryErrorHandler,
+});
+
+const queryClient = new QueryClient({
+  queryCache,
+  defaultOptions: {
+    queries: {
+      retry: false,
+    },
+  },
+});
 
 const TestApp = (): JSX.Element => {
   return (
@@ -16,6 +32,10 @@ const TestApp = (): JSX.Element => {
   );
 };
 
+afterEach(() => {
+  queryCache.clear();
+});
+
 const simulateTapEvent = (element: Element): void => {
   fireEvent.touchStart(element, { touches: [{ clientX: 0, clientY: 0 }] });
   fireEvent.touchEnd(element, { touches: [{ clientX: 0, clientY: 0 }] });
@@ -23,6 +43,8 @@ const simulateTapEvent = (element: Element): void => {
 
 describe('Todo App', () => {
   beforeEach(() => {
+    jest.resetAllMocks();
+
     matchMedia.clear();
 
     // mock touch screen (as we can only test mobile behavior)
@@ -58,6 +80,45 @@ describe('Todo App', () => {
       const listScope = within(listElement);
       const itemElements = await listScope.findAllByRole('listitem');
       expect(itemElements).toHaveLength(10);
+
+      const fabElement = screen.getByTestId('cta-button');
+      expect(fabElement).toBeVisible();
+      expect(fabElement).toHaveClass('fixed');
+
+      const topNavElement = screen.getByTestId('top-navigation');
+      expect(topNavElement).not.toBeVisible();
+
+      const bottomNavElement = screen.getByTestId('bottom-navigation');
+      expect(bottomNavElement).toBeVisible();
+
+      expect(queryErrorHandler).not.toHaveBeenCalled();
+    });
+
+    test('handles server error gracefully', async () => {
+      jest.spyOn(console, 'error').mockImplementation(() => {});
+      server.use(
+        mockTodosQuery((_req, res, ctx) => {
+          return res.once(ctx.status(500), ctx.errors([{ message: 'Mocked server error' }]));
+        }),
+      );
+
+      render(<TestApp />);
+
+      await waitFor(() => expect(queryErrorHandler).toHaveBeenCalledTimes(1));
+
+      const linkElement = screen.getByText(/todo app/i);
+      expect(linkElement).toBeVisible();
+
+      const searchFormElement = screen.getByRole('search');
+      expect(searchFormElement).toBeVisible();
+
+      const listElement = await screen.findByRole('list');
+      const listScope = within(listElement);
+
+      expect(listScope.queryAllByRole('listitem')).toHaveLength(0);
+
+      const noItemsElement = screen.getByText(/no items available/i);
+      expect(noItemsElement).toBeVisible();
 
       const fabElement = screen.getByTestId('cta-button');
       expect(fabElement).toBeVisible();
