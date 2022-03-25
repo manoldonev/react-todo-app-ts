@@ -25,7 +25,7 @@ const Header = (): JSX.Element => {
         <div className="grid items-center w-full md:flex">
           <div className="flex justify-start col-start-1 row-start-1 md:mr-4">
             <Link to="/">
-              <span className="text-xl font-semibold text-on-primary">Todo App</span>
+              <h1 className="text-on-primary">Todo App</h1>
             </Link>
           </div>
 

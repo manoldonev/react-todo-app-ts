@@ -14,6 +14,7 @@
 // ***********************************************************
 
 import './commands';
+import 'cypress-axe';
 
 // TODO: msw & cypress combo triggers test runner endless loop
 // https://github.com/mswjs/msw/issues/744

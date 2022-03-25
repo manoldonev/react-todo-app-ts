@@ -15,8 +15,20 @@
  * @type {Cypress.PluginConfig}
  */
 // eslint-disable-next-line import/no-default-export
-export default (_on: Cypress.PluginEvents, config: Cypress.PluginConfigOptions): Cypress.PluginConfigOptions => {
+export default (on: Cypress.PluginEvents, config: Cypress.PluginConfigOptions): Cypress.PluginConfigOptions => {
   // `on` is used to hook into various events Cypress emits
+  on('task', {
+    log(message) {
+      // eslint-disable-next-line no-console
+      console.log(message);
+      return null;
+    },
+    table(message) {
+      // eslint-disable-next-line no-console
+      console.table(message);
+      return null;
+    },
+  });
   // `config` is the resolved Cypress config
   return config;
 };
