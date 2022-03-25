@@ -21,7 +21,7 @@ const Todos = (): JSX.Element => {
         {data?.pages.map((page) => page.todos?.map((todo) => <TodoItem key={todo?.id} data={todo} />))}
         {isFetching && (
           <li ref={sentryRef} role="none">
-            <h3 className="text-on-background">Loading...</h3>
+            <h2 className="text-on-background">Loading...</h2>
           </li>
         )}
       </Masonry>

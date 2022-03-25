@@ -30,12 +30,12 @@ const TodoItem = ({
     return (
       <li className="w-full mb-3 group last:mb-20 xs:w-56 md:w-60">
         <div className="px-3 transition-colors border rounded-lg bg-primary-container border-outline text-on-primary-container">
-          <h3
-            className={`${data.done ? 'line-through text-on-primary-container/60' : ''}`}
-          >{`Lorem Ipsum #${data.id}`}</h3>
+          <h2
+            className={`${data.done ? 'line-through text-on-primary-container/75' : ''}`}
+          >{`Lorem Ipsum #${data.id}`}</h2>
           <label
             htmlFor={data.id}
-            className={`flex line-clamp-3 ${data.done ? 'line-through text-on-primary-container/60' : ''}`}
+            className={`flex line-clamp-3 ${data.done ? 'line-through text-on-primary-container/75' : ''}`}
           >
             <input
               type="checkbox"
@@ -67,10 +67,10 @@ const TodoItem = ({
         rightChildren={<TrashIcon className="w-6 h-6" />}
         rightChildrenClassName="bg-error-container text-on-error-container border border-outline rounded-lg"
       >
-        <h3
-          className={`${data.done ? 'line-through text-on-primary-container/60' : ''}`}
-        >{`Lorem Ipsum #${data.id}`}</h3>
-        <label className={`flex line-clamp-3 ${data.done ? 'line-through text-on-primary-container/60' : ''}`}>
+        <h2
+          className={`${data.done ? 'line-through text-on-primary-container/75' : ''}`}
+        >{`Lorem Ipsum #${data.id}`}</h2>
+        <label className={`flex line-clamp-3 ${data.done ? 'line-through text-on-primary-container/75' : ''}`}>
           {data.task}
         </label>
       </SwipeToAction>

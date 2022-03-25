@@ -1,3 +1,24 @@
+import type { Result } from 'axe-core';
+
+const terminalLog = (violations: Result[]): void => {
+  cy.task(
+    'log',
+    `${violations.length} accessibility violation${violations.length === 1 ? '' : 's'} ${
+      violations.length === 1 ? 'was' : 'were'
+    } detected`,
+  );
+
+  // pluck specific keys to keep the table readable
+  const violationData = violations.map(({ id, impact, description, nodes }) => ({
+    id,
+    impact,
+    description,
+    nodes: nodes.length,
+  }));
+
+  cy.task('table', violationData);
+};
+
 describe('Todo App', () => {
   describe('on mobile', () => {
     before(() => {
@@ -30,6 +51,18 @@ describe('Todo App', () => {
       cy.findByTestId('top-navigation').should('not.be.visible');
 
       cy.findByTestId('bottom-navigation').should('be.visible');
+
+      cy.injectAxe();
+      // TODO: investigate discrepancy with Lighthouse color-contrast check
+      cy.configureAxe({
+        rules: [
+          {
+            id: 'color-contrast',
+            enabled: false,
+          },
+        ],
+      });
+      cy.checkA11y(undefined, undefined, terminalLog);
     });
 
     it('creates todo item', () => {
@@ -140,6 +173,18 @@ describe('Todo App', () => {
       cy.findByTestId('top-navigation').should('be.visible');
 
       cy.findByTestId('bottom-navigation').should('not.be.visible');
+
+      cy.injectAxe();
+      // TODO: investigate discrepancy with Lighthouse color-contrast check
+      cy.configureAxe({
+        rules: [
+          {
+            id: 'color-contrast',
+            enabled: false,
+          },
+        ],
+      });
+      cy.checkA11y(undefined, undefined, terminalLog);
     });
   });
 });

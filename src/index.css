@@ -10,12 +10,9 @@
     isolation: isolate;
   }
   h1 {
-    @apply text-2xl font-extrabold;
+    @apply text-xl font-semibold;
   }
   h2 {
-    @apply text-xl font-bold;
-  }
-  h3 {
     @apply text-lg font-medium my-3;
   }
   [type='search'] {

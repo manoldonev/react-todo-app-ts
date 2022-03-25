@@ -10,7 +10,7 @@ const ErrorFallback = ({
       <div role="alert">
         <div className="px-4 py-2 font-bold rounded-t text-on-error bg-error">Oops!</div>
         <div className="flex flex-col px-4 py-3 border border-t-0 rounded-b border-error text-on-error-container bg-error-container">
-          <h3>Something went wrong:</h3>
+          <h2>Something went wrong:</h2>
           <pre className="break-all whitespace-pre-wrap">{error.message}</pre>
           <button
             type="button"
