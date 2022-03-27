@@ -32,10 +32,6 @@ const TestApp = (): JSX.Element => {
   );
 };
 
-afterEach(() => {
-  queryCache.clear();
-});
-
 const simulateTapEvent = (element: Element): void => {
   fireEvent.touchStart(element, { touches: [{ clientX: 0, clientY: 0 }] });
   fireEvent.touchEnd(element, { touches: [{ clientX: 0, clientY: 0 }] });
@@ -49,6 +45,10 @@ describe('Todo App', () => {
 
     // mock touch screen (as we can only test mobile behavior)
     matchMedia.useMediaQuery('(pointer: coarse)');
+  });
+
+  afterEach(() => {
+    queryCache.clear();
   });
 
   /* NOTE: it is not possible to properly test tailwind responsive ui behavior 
@@ -115,7 +115,7 @@ describe('Todo App', () => {
       const listElement = await screen.findByRole('list');
       const listScope = within(listElement);
 
-      expect(listScope.queryAllByRole('listitem')).toHaveLength(0);
+      expect(listScope.queryByRole('listitem')).not.toBeInTheDocument();
 
       const noItemsElement = screen.getByText(/no items available/i);
       expect(noItemsElement).toBeVisible();
@@ -220,12 +220,12 @@ describe('Todo App', () => {
       expect(searchElement).toBeVisible();
 
       userEvent.type(searchElement, 'vivacious');
-      await waitFor(async () => expect(await listScope.findAllByRole('listitem')).toHaveLength(1));
+      expect(await listScope.findByRole('listitem')).toBeInTheDocument();
 
       userEvent.clear(searchElement);
       userEvent.type(searchElement, 'asdf');
 
-      await waitFor(async () => expect(listScope.queryAllByRole('listitem')).toHaveLength(0));
+      await waitFor(async () => expect(listScope.queryByRole('listitem')).not.toBeInTheDocument());
 
       const resetElement = screen.getByText(/reset search/i);
       expect(resetElement).toBeVisible();
