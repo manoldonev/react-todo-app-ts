@@ -8,7 +8,6 @@ const terminalLog = (violations: Result[]): void => {
     } detected`,
   );
 
-  // pluck specific keys to keep the table readable
   const violationData = violations.map(({ id, impact, description, nodes }) => ({
     id,
     impact,
@@ -76,7 +75,8 @@ describe('Todo App', () => {
           cy.findByText(/save/i).click();
         });
 
-      cy.findByText(testValue).should('be.visible').deleteTask(testValue);
+      cy.findByText(testValue).should('be.visible');
+      cy.deleteTask(testValue);
     });
 
     it('creates todo item requires validation', () => {
@@ -112,32 +112,7 @@ describe('Todo App', () => {
     it('deletes todo item', () => {
       const testValue = `cy ${Date.now()}`;
       cy.createTask(testValue);
-      cy.findByText(/todo app/i).should('be.visible');
-
-      cy.findAllByRole('listitem')
-        .first()
-        .trigger('touchstart', {
-          touches: [{ clientY: 40, clientX: 0 }],
-          waitForAnimations: false,
-        })
-        .trigger('touchmove', {
-          touches: [{ clientY: 40, clientX: -50 }],
-          waitForAnimations: false,
-        })
-        .trigger('touchmove', {
-          touches: [{ clientY: 40, clientX: -100 }],
-          waitForAnimations: false,
-        })
-        .trigger('touchmove', {
-          touches: [{ clientY: 40, clientX: -150 }],
-          waitForAnimations: false,
-        })
-        .trigger('touchend', {
-          touches: [{ clientY: 40, clientX: -160 }],
-          waitForAnimations: false,
-        });
-
-      cy.findByText(testValue).should('not.be.visible');
+      cy.deleteTask(testValue).should('not.exist');
     });
   });
 

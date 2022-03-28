@@ -58,7 +58,6 @@ Cypress.Commands.add('deleteTask', (task: string) => {
     .trigger('touchend', {
       touches: [{ clientY: 40, clientX: -160 }],
       waitForAnimations: false,
-    });
-
-  cy.findByText(task).should('not.be.visible');
+    })
+    .should('not.exist');
 });
