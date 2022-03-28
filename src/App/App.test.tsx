@@ -225,7 +225,7 @@ describe('Todo App', () => {
       userEvent.clear(searchElement);
       userEvent.type(searchElement, 'asdf');
 
-      await waitFor(async () => expect(listScope.queryByRole('listitem')).not.toBeInTheDocument());
+      await waitForElementToBeRemoved(() => listScope.queryAllByRole('listitem'));
 
       const resetElement = screen.getByText(/reset search/i);
       expect(resetElement).toBeVisible();
@@ -273,7 +273,8 @@ describe('Todo App', () => {
       userEvent.click(saveButton);
       await waitForElementToBeRemoved(() => screen.queryByTestId(modalTestId));
 
-      await waitFor(() => expect(listScope.queryByText(testValue)).toBeVisible());
+      expect(await listScope.findByText(testValue)).toBeVisible();
+
       itemElements = listScope.getAllByRole('listitem');
       expect(itemElements[0]).toHaveTextContent(testValue);
     });
@@ -320,7 +321,8 @@ describe('Todo App', () => {
 
       await waitForElementToBeRemoved(() => screen.queryByTestId(modalTestId));
 
-      await waitFor(() => expect(listScope.queryByText(testValue)).toBeVisible());
+      expect(await listScope.findByText(testValue)).toBeVisible();
+
       itemElements = listScope.getAllByRole('listitem');
       expect(itemElements[0]).toHaveTextContent(testValue);
     });
