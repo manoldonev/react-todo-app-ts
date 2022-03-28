@@ -37,6 +37,7 @@ Based on the [React TypeScript App](https://github.com/manoldonev/react-app-temp
 
 ## Testing
 
-- Jest / React Testing Library setup (dynamically extract & inject tailwind css in jsdom test environment -- see https://github.com/manoldonev/react-todo-app-ts/pull/57)
-- Cypress e2e setup (with GitHub Actions workflow integration)
+- End-to-end testing: Cypress (with GitHub Actions workflow)
+- Unit & Integration testing: Jest with React Testing Library setup (dynamically extract & inject tailwind css in jsdom test environment -- see https://github.com/manoldonev/react-todo-app-ts/pull/57)
+- Static Analysis: TypeScript & ESLint
 - [MSW](https://mswjs.io/) (Mock Service Worker) API mocking (intercepting requests on the network level)
