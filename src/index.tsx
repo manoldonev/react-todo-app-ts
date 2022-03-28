@@ -11,14 +11,21 @@ import { queryClient } from './queryClient';
 import { reportWebVitals } from './reportWebVitals';
 
 const main = async (): Promise<void> => {
-  // if (process.env.NODE_ENV === 'development') {
-  //   const { worker } = await import('./mocks/msw/browser');
-  //   await worker.start({
-  //     serviceWorker: {
-  //       url: `${process.env.PUBLIC_URL}/mockServiceWorker.js`,
-  //     },
-  //   });
-  // }
+  if (process.env.REACT_APP_API_MOCKING === 'enabled') {
+    const { worker } = await import('./mocks/msw/browser');
+    await worker.start({
+      serviceWorker: {
+        url: `${process.env.PUBLIC_URL}/mockServiceWorker.js`,
+      },
+      onUnhandledRequest: ({ url }, print) => {
+        if (!url.pathname.startsWith('/graphql')) {
+          return;
+        }
+
+        print.error();
+      },
+    });
+  }
 
   ReactDOM.render(
     <React.StrictMode>
