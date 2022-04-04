@@ -48,6 +48,7 @@ const useHeadroom = (
     headroom.init();
 
     // HACK: init/destroy race condition upon test execution
+    // NOTE: also triggered by react 18 strict mode (component unmount/remount)
     // see https://github.com/WickyNilliams/headroom.js/issues/367
     const unsafeHeadroom = <any>headroom;
     if (unsafeHeadroom.scrollTracker == null) {

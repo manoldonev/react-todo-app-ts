@@ -16,8 +16,11 @@ const Todos = (): JSX.Element => {
   };
 
   return (
-    <div className="p-1.5 bg-background transition-colors min-h-screen">
-      <Masonry elementType="ul" options={masonryOptions}>
+    <div className="min-h-screen p-2.5 transition-colors bg-background">
+      {/* NOTE: react18 strict mode (component unmount/remount) breaks the underlying masonry-layout in at least two ways */}
+      {/* HACK: The outer element loses its relative positioning so force it explicitly */}
+      {/* TODO: Resizing the window does not trigger new layout of the Masonry component */}
+      <Masonry elementType="ul" className="relative" options={masonryOptions}>
         {data?.pages.map((page) => page.todos?.map((todo) => <TodoItem key={todo?.id} data={todo} />))}
         {isFetching && (
           <li ref={sentryRef} role="none">
