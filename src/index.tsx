@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import '@reach/dialog/styles.css';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
@@ -27,7 +27,13 @@ const main = async (): Promise<void> => {
     });
   }
 
-  ReactDOM.render(
+  const container = document.getElementById('root');
+  if (container == null) {
+    return;
+  }
+
+  const root = createRoot(container);
+  root.render(
     <React.StrictMode>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <QueryClientProvider client={queryClient}>
@@ -37,7 +43,6 @@ const main = async (): Promise<void> => {
         </QueryClientProvider>
       </BrowserRouter>
     </React.StrictMode>,
-    document.getElementById('root'),
   );
 
   // If you want to start measuring performance in your app, pass a function

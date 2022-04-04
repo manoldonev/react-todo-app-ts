@@ -22,7 +22,7 @@ describe('SearchBox', () => {
     expect(inputElement).toHaveFocus();
   });
 
-  test('change value with event notification', () => {
+  test('change value with event notification', async () => {
     const changeHandler = jest.fn();
     render(<SearchBox onChange={changeHandler} />);
 
@@ -36,16 +36,16 @@ describe('SearchBox', () => {
       expect(e.currentTarget.value).toEqual(firstLetter);
     });
 
-    userEvent.type(inputElement, firstLetter);
+    await userEvent.type(inputElement, firstLetter);
     expect(inputElement).toHaveValue(firstLetter);
     expect(changeHandler).toHaveBeenCalledTimes(1);
 
-    userEvent.type(inputElement, rest.join(''));
+    await userEvent.type(inputElement, rest.join(''));
     expect(inputElement).toHaveValue('test value');
     expect(changeHandler).toHaveBeenCalledTimes('test value'.length);
   });
 
-  test('delete value with event notification', () => {
+  test('delete value with event notification', async () => {
     const changeHandler = jest.fn();
     render(<SearchBox onChange={changeHandler} />);
 
@@ -54,7 +54,7 @@ describe('SearchBox', () => {
 
     const testValue = 'test value';
 
-    userEvent.type(inputElement, testValue);
+    await userEvent.type(inputElement, testValue);
     expect(inputElement).toHaveValue(testValue);
 
     changeHandler.mockClear();
@@ -62,7 +62,7 @@ describe('SearchBox', () => {
       expect(e.currentTarget.value).toEqual(testValue.slice(0, -1));
     });
 
-    userEvent.type(inputElement, '{backspace}');
+    await userEvent.type(inputElement, '{backspace}');
     expect(changeHandler).toHaveBeenCalledTimes(1);
     expect(inputElement).toHaveValue(testValue.slice(0, -1));
 
@@ -71,7 +71,7 @@ describe('SearchBox', () => {
       expect(e.currentTarget.value).toBe('');
     });
 
-    userEvent.clear(inputElement);
+    await userEvent.clear(inputElement);
     expect(changeHandler).toHaveBeenCalledTimes(1);
     expect(inputElement).toHaveValue('');
   });

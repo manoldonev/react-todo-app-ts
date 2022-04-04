@@ -219,19 +219,20 @@ describe('Todo App', () => {
       const searchElement = screen.getByRole('searchbox');
       expect(searchElement).toBeVisible();
 
-      userEvent.type(searchElement, 'vivacious');
+      await userEvent.type(searchElement, 'vivacious');
       expect(await listScope.findByRole('listitem')).toBeInTheDocument();
 
-      userEvent.clear(searchElement);
-      userEvent.type(searchElement, 'asdf');
+      await userEvent.clear(searchElement);
+      await userEvent.type(searchElement, 'asdf');
 
       await waitForElementToBeRemoved(() => listScope.queryAllByRole('listitem'));
 
-      const resetElement = screen.getByText(/reset search/i);
+      const resetButtonMatcher = /reset search/i;
+      const resetElement = screen.getByText(resetButtonMatcher);
       expect(resetElement).toBeVisible();
 
       resetElement.click();
-      expect(resetElement).not.toBeInTheDocument();
+      await waitForElementToBeRemoved(() => screen.queryByText(resetButtonMatcher));
 
       expect(listElement).toBeVisible();
       itemElements = await listScope.findAllByRole('listitem');
@@ -252,7 +253,7 @@ describe('Todo App', () => {
       const fabElement = screen.getByTestId('cta-button');
       expect(fabElement).toBeVisible();
 
-      userEvent.click(fabElement);
+      await userEvent.click(fabElement);
 
       const modalTestId = 'add-new-modal';
       const modalElement = screen.getByTestId(modalTestId);
@@ -265,12 +266,12 @@ describe('Todo App', () => {
       const noteElement = modalScope.getByPlaceholderText(/note/i);
       const testValue = 'Add the qwerty!';
 
-      userEvent.type(noteElement, testValue);
+      await userEvent.type(noteElement, testValue);
 
       const saveButton = modalScope.getByText(/save/i);
       expect(saveButton).toBeVisible();
 
-      userEvent.click(saveButton);
+      await userEvent.click(saveButton);
       await waitForElementToBeRemoved(() => screen.queryByTestId(modalTestId));
 
       expect(await listScope.findByText(testValue)).toBeVisible();
@@ -292,7 +293,7 @@ describe('Todo App', () => {
       const fabElement = screen.getByTestId('cta-button');
       expect(fabElement).toBeVisible();
 
-      userEvent.click(fabElement);
+      await userEvent.click(fabElement);
 
       const modalTestId = 'add-new-modal';
       const modalElement = screen.getByTestId(modalTestId);
@@ -302,7 +303,7 @@ describe('Todo App', () => {
       const saveButton = modalScope.getByText(/save/i);
       expect(saveButton).toBeVisible();
 
-      userEvent.click(saveButton);
+      await userEvent.click(saveButton);
 
       const errorElements = await modalScope.findAllByText(/at least one of the fields is required/i);
 
@@ -315,9 +316,9 @@ describe('Todo App', () => {
       const titleElement = modalScope.getByPlaceholderText(/title/i);
       const testValue = 'Add the deadbeef!';
 
-      userEvent.type(titleElement, testValue);
+      await userEvent.type(titleElement, testValue);
 
-      userEvent.click(saveButton);
+      await userEvent.click(saveButton);
 
       await waitForElementToBeRemoved(() => screen.queryByTestId(modalTestId));
 
@@ -341,7 +342,7 @@ describe('Todo App', () => {
       const fabElement = screen.getByTestId('cta-button');
       expect(fabElement).toBeVisible();
 
-      userEvent.click(fabElement);
+      await userEvent.click(fabElement);
 
       const modalTestId = 'add-new-modal';
       const modalElement = screen.getByTestId(modalTestId);
@@ -351,7 +352,7 @@ describe('Todo App', () => {
       const closeButton = modalScope.getByText(/close/i);
       expect(closeButton).toBeVisible();
 
-      userEvent.click(closeButton);
+      await userEvent.click(closeButton);
 
       expect(screen.queryByTestId(modalTestId)).not.toBeInTheDocument();
 
