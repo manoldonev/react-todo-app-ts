@@ -3,6 +3,7 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
+import 'whatwg-fetch';
 import MatchMediaMock from 'jest-matchmedia-mock';
 import { server } from './mocks/msw/server';
 import { setupIntersectionObserverMock, setupWindowScrollToMock } from './mocks';

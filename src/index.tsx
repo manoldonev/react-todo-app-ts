@@ -11,11 +11,11 @@ import { queryClient } from './queryClient';
 import { reportWebVitals } from './reportWebVitals';
 
 const main = async (): Promise<void> => {
-  if (process.env.REACT_APP_API_MOCKING === 'enabled') {
+  if (import.meta.env.VITE_API_MOCKING === 'enabled') {
     const { worker } = await import('./mocks/msw/browser');
     await worker.start({
       serviceWorker: {
-        url: `${process.env.PUBLIC_URL}/mockServiceWorker.js`,
+        url: `${import.meta.env.BASE_URL}mockServiceWorker.js`,
       },
       onUnhandledRequest: ({ url }, print) => {
         if (!url.pathname.startsWith('/graphql')) {
@@ -35,7 +35,7 @@ const main = async (): Promise<void> => {
   const root = createRoot(container);
   root.render(
     <React.StrictMode>
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <QueryClientProvider client={queryClient}>
           <App />
           <Toaster position="top-center" />
