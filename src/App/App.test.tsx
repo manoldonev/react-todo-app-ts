@@ -3,7 +3,7 @@ import { QueryCache, QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 import { App } from './App';
-import { matchMedia } from '../setupTests';
+import { matchMedia } from '../jest.setup';
 import { server } from '../mocks/msw/server';
 import { mockTodosQuery } from '../generated';
 
@@ -54,7 +54,7 @@ describe('Todo App', () => {
   /* NOTE: it is not possible to properly test tailwind responsive ui behavior 
   with Jest(jsdom). Generally jsdom neither loads the application css files, 
   nor does it support media queries. We can address the former by manually 
-  assembling and injecting the tailwind css styles (see setupTests.ts), 
+  assembling and injecting the tailwind css styles (see jest.setup.ts), 
   however, the latter is a bigger and [currently] unsolvable problem. Mocking 
   media query support (window.matchMedia) is possible either manually or via 
   packages like jest-matchmedia-mock but this only patches scenarios where the 

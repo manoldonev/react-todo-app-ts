@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import { matchMedia } from '../../../setupTests';
+import { matchMedia } from '../../../jest.setup';
 import { useColorMode, ColorMode } from './useColorMode';
 
 describe('useColorMode hook', () => {
