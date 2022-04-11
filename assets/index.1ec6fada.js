@@ -1,1 +1,0 @@
-import{a as n}from"./index.b7ff0b37.js";const a=()=>n("div",{"data-testid":"analytics",className:"min-h-screen p-4 transition-colors bg-background text-on-background",children:n("p",{children:"Analytics"})});export{a as Analytics};
