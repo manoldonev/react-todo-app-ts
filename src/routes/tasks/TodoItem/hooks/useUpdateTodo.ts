@@ -7,7 +7,7 @@ const useUpdateTodo = (): UseMutationResult<UpdateTodoMutation, Error, UpdateTod
   const queryClient = useQueryClient();
 
   return useUpdateTodoMutation({
-    onSuccess: async () => queryClient.invalidateQueries('Todos.infinite'),
+    onSuccess: async () => queryClient.invalidateQueries(['Todos.infinite']),
   });
 };
 

@@ -7,7 +7,7 @@ const useDeleteTodo = (): UseMutationResult<DeleteTodoMutation, Error, DeleteTod
   const queryClient = useQueryClient();
 
   return useDeleteTodoMutation({
-    onSuccess: async () => queryClient.invalidateQueries('Todos.infinite'),
+    onSuccess: async () => queryClient.invalidateQueries(['Todos.infinite']),
   });
 };
 
