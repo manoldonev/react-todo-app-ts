@@ -6,6 +6,8 @@ Latest deployment available at https://manoldonev.github.io/react-todo-app-ts/
 
 Based on the [React TypeScript App](https://github.com/manoldonev/react-app-template-ts) GitHub template repo:
 
+- Vite (super-fast project tooling)
+- React 18
 - TypeScript
 - ESLint
 - Prettier
