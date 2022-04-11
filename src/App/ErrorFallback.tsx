@@ -6,16 +6,16 @@ const ErrorFallback = ({
   resetErrorBoundary: () => void;
 }): JSX.Element => {
   return (
-    <main className="flex items-center justify-center max-w-2xl min-h-screen p-3 mx-auto">
+    <main className="mx-auto flex min-h-screen max-w-2xl items-center justify-center p-3">
       <div role="alert">
-        <div className="px-4 py-2 font-bold rounded-t text-on-error bg-error">Oops!</div>
-        <div className="flex flex-col px-4 py-3 border border-t-0 rounded-b border-error text-on-error-container bg-error-container">
+        <div className="rounded-t bg-error px-4 py-2 font-bold text-on-error">Oops!</div>
+        <div className="flex flex-col rounded-b border border-t-0 border-error bg-error-container px-4 py-3 text-on-error-container">
           <h2>Something went wrong:</h2>
-          <pre className="break-all whitespace-pre-wrap">{error.message}</pre>
+          <pre className="whitespace-pre-wrap break-all">{error.message}</pre>
           <button
             type="button"
             onClick={resetErrorBoundary}
-            className="mx-auto mt-5 w-24 h-12 text-error hover:text-on-error border border-error hover:bg-error focus:ring-4 focus:ring-error/25 font-medium rounded-lg text-sm px-5 py-2.5 text-center whitespace-nowrap bg-on-error"
+            className="mx-auto mt-5 h-12 w-24 whitespace-nowrap rounded-lg border border-error bg-on-error px-5 py-2.5 text-center text-sm font-medium text-error hover:bg-error hover:text-on-error focus:ring-4 focus:ring-error/25"
           >
             Try again
           </button>

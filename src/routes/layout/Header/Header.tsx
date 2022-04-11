@@ -20,16 +20,16 @@ const Header = (): JSX.Element => {
   };
 
   return (
-    <header className="w-screen transition-colors bg-primary">
+    <header className="w-screen bg-primary transition-colors">
       <div className="flex items-center justify-between p-4">
-        <div className="grid items-center w-full md:flex">
-          <div className="flex justify-start col-start-1 row-start-1 md:mr-4">
+        <div className="grid w-full items-center md:flex">
+          <div className="col-start-1 row-start-1 flex justify-start md:mr-4">
             <Link to="/">
               <h1 className="text-on-primary">Todo App</h1>
             </Link>
           </div>
 
-          <form role="search" className="col-start-1 row-start-1 pointer-events-none md:w-1/2 md:mx-auto">
+          <form role="search" className="pointer-events-none col-start-1 row-start-1 md:mx-auto md:w-1/2">
             <SearchBox value={query} onChange={handleChange} />
           </form>
         </div>

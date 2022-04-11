@@ -12,16 +12,16 @@ const NewTaskModal = (): JSX.Element => {
     <Dialog
       data-testid="add-new-modal"
       onDismiss={onDismiss}
-      className="flex flex-col w-full h-full max-w-3xl m-auto md:w-2/3 md:h-auto md:my-20 bg-surface text-on-surface"
+      className="m-auto flex h-full w-full max-w-3xl flex-col bg-surface text-on-surface md:my-20 md:h-auto md:w-2/3"
       aria-labelledby="label"
     >
-      <div className="flex items-center mb-10">
+      <div className="mb-10 flex items-center">
         <h1 id="label" className="mr-auto">
           Add New Item
         </h1>
         <button type="button" onClick={onDismiss}>
           <VisuallyHidden>Close</VisuallyHidden>
-          <XIcon className="w-10 h-10" aria-hidden />
+          <XIcon className="h-10 w-10" aria-hidden />
         </button>
       </div>
 

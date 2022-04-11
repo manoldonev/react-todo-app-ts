@@ -5,11 +5,11 @@ import { navigationItems } from './navigationItems';
 const mapNavigationIcon = (item: string): JSX.Element => {
   switch (item) {
     case 'tasks':
-      return <ClipboardListIcon className="w-6 h-6 mx-auto mb-1" />;
+      return <ClipboardListIcon className="mx-auto mb-1 h-6 w-6" />;
     case 'analytics':
-      return <ChartSquareBarIcon className="w-6 h-6 mx-auto mb-1" />;
+      return <ChartSquareBarIcon className="mx-auto mb-1 h-6 w-6" />;
     case 'settings':
-      return <AdjustmentsIcon className="w-6 h-6 mx-auto mb-1" />;
+      return <AdjustmentsIcon className="mx-auto mb-1 h-6 w-6" />;
     default:
       throw new Error('Unrecognized navigation item.');
   }
@@ -19,7 +19,7 @@ const BottomNavigation = ({ className = '' }: { className?: string }): JSX.Eleme
   return (
     <nav
       data-testid="bottom-navigation"
-      className={`flex justify-between text-xs bg-primary text-on-primary ${className}`}
+      className={`flex justify-between bg-primary text-xs text-on-primary ${className}`}
     >
       {navigationItems.map((item) => (
         <NavLink

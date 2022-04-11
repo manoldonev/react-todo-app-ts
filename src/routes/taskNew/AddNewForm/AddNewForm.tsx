@@ -56,11 +56,11 @@ const AddNewForm = ({ onSubmitted, onCancel }: { onSubmitted: () => void; onCanc
           type="text"
           placeholder="Title"
           {...register('title')}
-          className="w-full h-12 px-3 text-lg placeholder-transparent border rounded-md text-on-primary-container border-outline/50 outline-primary bg-primary-container/20 peer"
+          className="peer h-12 w-full rounded-md border border-outline/50 bg-primary-container/20 px-3 text-lg text-on-primary-container placeholder-transparent outline-primary"
         />
         <label
           htmlFor="title"
-          className="absolute left-0 peer-placeholder-shown:top-2.5 peer-placeholder-shown:left-3.5 peer-focus:first-line:-top-3.5 peer-placeholder-shown:text-outline/60 peer-placeholder-shown:text-lg text-sm -top-6 transition-all"
+          className="absolute left-0 -top-6 text-sm transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:left-3.5 peer-placeholder-shown:text-lg peer-placeholder-shown:text-outline/60 peer-focus:first-line:-top-3.5"
         >
           Title
         </label>
@@ -74,11 +74,11 @@ const AddNewForm = ({ onSubmitted, onCancel }: { onSubmitted: () => void; onCanc
           placeholder="Note"
           {...register('note')}
           rows={2}
-          className="block w-full p-3 text-lg text-on-primary-container placeholder-transparent border border-outline/50 rounded-md resize-y min-h-[3.5rem] bg-primary-container/20 outline-primary peer"
+          className="peer block min-h-[3.5rem] w-full resize-y rounded-md border border-outline/50 bg-primary-container/20 p-3 text-lg text-on-primary-container placeholder-transparent outline-primary"
         />
         <label
           htmlFor="note"
-          className="absolute left-0 peer-placeholder-shown:top-3.5 peer-placeholder-shown:left-3.5 peer-focus:first-line:-top-3.5 peer-placeholder-shown:text-outline/60 peer-placeholder-shown:text-lg text-sm -top-6 transition-all"
+          className="absolute left-0 -top-6 text-sm transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:left-3.5 peer-placeholder-shown:text-lg peer-placeholder-shown:text-outline/60 peer-focus:first-line:-top-3.5"
         >
           Note
         </label>
@@ -89,14 +89,14 @@ const AddNewForm = ({ onSubmitted, onCancel }: { onSubmitted: () => void; onCanc
       <div className="flex justify-center">
         <button
           type="submit"
-          className="w-24 h-12 bg-secondary hover:bg-secondary-variant focus:ring-4 focus:ring-secondary/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center text-on-secondary mr-2 outline-none"
+          className="mr-2 h-12 w-24 rounded-lg bg-secondary px-5 py-2.5 text-center text-sm font-medium text-on-secondary outline-none hover:bg-secondary-variant focus:ring-4 focus:ring-secondary/50"
         >
           Save
         </button>
         <button
           type="button"
           onClick={onCancel}
-          className="w-24 h-12 text-secondary bg-background hover:text-on-secondary border border-secondary hover:bg-secondary-variant outline-none hover:border-secondary-variant focus:ring-4 focus:ring-secondary/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+          className="h-12 w-24 rounded-lg border border-secondary bg-background px-5 py-2.5 text-center text-sm font-medium text-secondary outline-none hover:border-secondary-variant hover:bg-secondary-variant hover:text-on-secondary focus:ring-4 focus:ring-secondary/50"
         >
           Cancel
         </button>

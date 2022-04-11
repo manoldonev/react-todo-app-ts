@@ -15,7 +15,7 @@ const ForegroundLayer = forwardRef<
       onMouseDown={onMouseDown}
       ref={ref}
       role="none"
-      className={`touch-pan-y relative w-full h-full ${className ?? ''}`}
+      className={`relative h-full w-full touch-pan-y ${className ?? ''}`}
     >
       {children}
     </div>

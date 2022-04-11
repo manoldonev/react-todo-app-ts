@@ -13,7 +13,7 @@
     @apply text-xl font-semibold;
   }
   h2 {
-    @apply text-lg font-medium my-3;
+    @apply my-3 text-lg font-medium;
   }
   [type='search'] {
     -webkit-appearance: none;

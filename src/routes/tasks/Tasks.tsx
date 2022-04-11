@@ -16,7 +16,7 @@ const Tasks = (): JSX.Element => {
             <>
               <Todos />
               {/* TODO: FAB accessibility and/or keyboard hotkey */}
-              <CtaButton className="fixed z-10 md:bottom-8 bottom-24 right-6" />
+              <CtaButton className="fixed bottom-24 right-6 z-10 md:bottom-8" />
             </>
           }
         />

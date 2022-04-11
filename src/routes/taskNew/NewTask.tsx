@@ -5,7 +5,7 @@ const NewTask = (): JSX.Element => {
   const navigate = useNavigate();
   const onDismiss = (): void => navigate('/tasks');
   return (
-    <div className="flex flex-col max-w-3xl px-5 m-auto">
+    <div className="m-auto flex max-w-3xl flex-col px-5">
       <h1 id="label" className="py-4 text-on-surface">
         Add New Item
       </h1>
