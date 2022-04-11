@@ -9,7 +9,7 @@ const BackgroundLayer = forwardRef<
   return (
     <div
       ref={ref}
-      className={`absolute flex items-center w-full h-full px-6 ${
+      className={`absolute flex h-full w-full items-center px-6 ${
         swipeDirection === LEFT ? 'justify-end' : 'justify-start'
       } ${className ?? ''}`}
     >

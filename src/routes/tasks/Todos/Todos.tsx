@@ -16,7 +16,7 @@ const Todos = (): JSX.Element => {
   };
 
   return (
-    <div className="min-h-screen p-2.5 transition-colors bg-background">
+    <div className="min-h-screen bg-background p-2.5 transition-colors">
       {/* NOTE: react18 strict mode (component unmount/remount) breaks the underlying masonry-layout in at least two ways */}
       {/* HACK: The outer element loses its relative positioning so force it explicitly */}
       {/* TODO: Resizing the window does not trigger new layout of the Masonry component */}
@@ -29,15 +29,15 @@ const Todos = (): JSX.Element => {
         )}
       </Masonry>
       {!isFetching && (data == null || data.pages.length === 0 || data.pages[0].todos?.length === 0) && (
-        <div className="flex items-center justify-center min-h-screen pb-40 text-on-background">
+        <div className="flex min-h-screen items-center justify-center pb-40 text-on-background">
           <div className="flex flex-col items-center">
-            <EmojiSadIcon className="w-40 h-40" />
+            <EmojiSadIcon className="h-40 w-40" />
             <span>No items available</span>
             {query !== '' && (
               <button
                 type="button"
                 onClick={() => setQuery('')}
-                className="text-secondary bg-background hover:text-on-secondary border border-secondary outline-none hover:bg-secondary-variant focus:ring-4 focus:ring-secondary/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-2"
+                className="mt-2 rounded-lg border border-secondary bg-background px-5 py-2.5 text-center text-sm font-medium text-secondary outline-none hover:bg-secondary-variant hover:text-on-secondary focus:ring-4 focus:ring-secondary/50"
               >
                 Reset Search
               </button>

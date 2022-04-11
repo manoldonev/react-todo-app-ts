@@ -10,10 +10,10 @@ const ThemeToggle = ({ className = '' }: { className?: string }): JSX.Element =>
       type="button"
       onClick={() => setColorMode(isDarkMode ? ColorMode.Light : ColorMode.Dark)}
       aria-label="Toggle Theme"
-      className={`text-on-primary/75 ring-0 hover:text-background rounded-full text-sm p-2.5 ${className}`}
+      className={`rounded-full p-2.5 text-sm text-on-primary/75 ring-0 hover:text-background ${className}`}
     >
-      <SunIcon className={`${!isDarkMode ? 'hidden' : ''} w-5 h-5`} />
-      <MoonIcon className={`${isDarkMode ? 'hidden' : ''} w-5 h-5`} />
+      <SunIcon className={`${!isDarkMode ? 'hidden' : ''} h-5 w-5`} />
+      <MoonIcon className={`${isDarkMode ? 'hidden' : ''} h-5 w-5`} />
     </button>
   );
 };

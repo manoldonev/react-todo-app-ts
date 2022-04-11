@@ -16,14 +16,14 @@ const SearchBox = ({
         value={value}
         onChange={onChange}
         placeholder="Search"
-        className="z-10 w-0 h-12 text-lg duration-300 rounded-l-sm outline-none md:w-[calc(100%_-_3rem+_1px)] peer md:px-5 focus:px-5 focus:w-[calc(100%_-_3rem+_1px)] pointer-events-auto bg-primary-container  text-on-primary-container placeholder-on-primary-container/75"
+        className="peer pointer-events-auto z-10 h-12 w-0 rounded-l-sm bg-primary-container text-lg text-on-primary-container placeholder-on-primary-container/75 outline-none duration-300 focus:w-[calc(100%_-_3rem+_1px)] focus:px-5  md:w-[calc(100%_-_3rem+_1px)] md:px-5"
       />
       <label
         htmlFor="search"
         aria-label="Search"
-        className="p-3 -ml-px rounded-sm pointer-events-auto select-none bg-primary-container peer-focus:rounded-l-none md:rounded-l-none peer-focus:pointer-events-none text-on-primary-container"
+        className="pointer-events-auto -ml-px select-none rounded-sm bg-primary-container p-3 text-on-primary-container peer-focus:pointer-events-none peer-focus:rounded-l-none md:rounded-l-none"
       >
-        <SearchIcon className="w-6 h-6 pointer-events-none text-on-primary-container" />
+        <SearchIcon className="pointer-events-none h-6 w-6 text-on-primary-container" />
       </label>
     </div>
   );

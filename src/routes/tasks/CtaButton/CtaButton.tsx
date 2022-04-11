@@ -25,7 +25,7 @@ const CtaButton = ({ className = '' }: { className?: string }): JSX.Element => {
       type="button"
       aria-label="Add new item"
       onClick={() => navigate('/tasks/new', { state: { backgroundLocation: location } })}
-      className={`text-on-secondary transition duration-200 ease-in bg-secondary rounded-full shadow w-14 h-14 hover:bg-secondary-variant active:shadow-lg focus:outline-none ${className}`}
+      className={`h-14 w-14 rounded-full bg-secondary text-on-secondary shadow transition duration-200 ease-in hover:bg-secondary-variant focus:outline-none active:shadow-lg ${className}`}
     >
       <PlusIcon />
     </button>
