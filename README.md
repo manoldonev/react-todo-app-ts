@@ -13,6 +13,7 @@ Based on the [React TypeScript App](https://github.com/manoldonev/react-app-temp
 - Prettier
 - pre-commit hooks
 - CI / deployment GitHub workflows
+- Dependency management via [Renovate](https://www.whitesourcesoftware.com/free-developer-tools/renovate/)
 
 ## UX
 
