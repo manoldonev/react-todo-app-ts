@@ -4,15 +4,15 @@
   ],
   "cypress/**/*.ts": [
     "prettier --write",
-    "npm run lint:cypress -- --fix"
+    "npm run lint:cypress -- --cache --fix"
   ],
   "src/**/*.test.{ts,tsx}": [
     "prettier --write",
-    "npm run lint:jest -- --fix"
+    "npm run lint:jest -- --cache --fix"
   ],
   "src/**/*.!(test).{ts,tsx}": [
     "prettier --write",
-    "npm run lint:src -- --fix",
+    "npm run lint:src -- --cache --fix",
     "tsc-files --noEmit",
     "npm run test:related"
   ]
