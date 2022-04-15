@@ -1,4 +1,4 @@
-name: cypress e2e
+name: cypress
 
 # Controls when the action will run.
 on:
