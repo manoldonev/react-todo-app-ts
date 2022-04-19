@@ -112,10 +112,7 @@ describe('Todo App', () => {
       const searchFormElement = screen.getByRole('search');
       expect(searchFormElement).toBeVisible();
 
-      const listElement = await screen.findByRole('list');
-      const listScope = within(listElement);
-
-      expect(listScope.queryByRole('listitem')).not.toBeInTheDocument();
+      expect(screen.queryByRole('list')).not.toBeInTheDocument();
 
       const noItemsElement = screen.getByText(/no items available/i);
       expect(noItemsElement).toBeVisible();
@@ -209,9 +206,9 @@ describe('Todo App', () => {
     test('search for todo item', async () => {
       render(<TestApp />);
 
-      const listElement = await screen.findByRole('list');
+      let listElement = await screen.findByRole('list');
       expect(listElement).toBeVisible();
-      const listScope = within(listElement);
+      let listScope = within(listElement);
 
       let itemElements = await listScope.findAllByRole('listitem');
       expect(itemElements).toHaveLength(10);
@@ -226,7 +223,7 @@ describe('Todo App', () => {
       await user.clear(searchElement);
       await user.type(searchElement, 'asdf');
 
-      await waitForElementToBeRemoved(() => listScope.queryAllByRole('listitem'));
+      await waitForElementToBeRemoved(() => screen.queryByRole('list'));
 
       const resetButtonMatcher = /reset search/i;
       const resetElement = screen.getByText(resetButtonMatcher);
@@ -235,7 +232,10 @@ describe('Todo App', () => {
       resetElement.click();
       await waitForElementToBeRemoved(() => screen.queryByText(resetButtonMatcher));
 
-      expect(listElement).toBeVisible();
+      expect(screen.queryByRole('list')).toBeVisible();
+      listElement = screen.getByRole('list');
+      listScope = within(listElement);
+
       itemElements = await listScope.findAllByRole('listitem');
       expect(itemElements).toHaveLength(10);
       expect(searchElement).toHaveValue('');
