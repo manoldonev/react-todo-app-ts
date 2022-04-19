@@ -19,7 +19,8 @@ const sortDirection = SortDirection.Descending;
 
 const useTodos = (): {
   data: InfiniteData<TodosQuery> | undefined;
-  isFetching: boolean;
+  hasNextPage: boolean;
+  isLoading: boolean;
   sentryRef: IntersectionObserverHookRefCallback;
 } => {
   const [query] = useAtom(queryAtom);
@@ -37,32 +38,34 @@ const useTodos = (): {
     direction: sortDirection,
   };
 
-  const { data, hasNextPage, fetchNextPage, isFetchingNextPage, isError } = useInfiniteTodosQuery(
-    'page',
-    queryVariables,
-    {
-      getNextPageParam: (lastPage, allPages) => {
-        if (lastPage.todos == null || lastPage.todos.length < pageSize) {
-          return null;
-        }
+  const {
+    data,
+    hasNextPage: hasNext,
+    fetchNextPage,
+    isLoading,
+    isError,
+  } = useInfiniteTodosQuery('page', queryVariables, {
+    getNextPageParam: (lastPage, allPages) => {
+      if (lastPage.todos == null || lastPage.todos.length < pageSize) {
+        return null;
+      }
 
-        return { page: allPages.length + 1 };
-      },
-      keepPreviousData: true,
+      return { page: allPages.length + 1 };
     },
-  );
+    keepPreviousData: true,
+  });
+
+  const hasNextPage = hasNext ?? false;
 
   const [sentryRef] = useInfiniteScroll({
-    loading: isFetchingNextPage,
-    hasNextPage: hasNextPage ?? false,
+    loading: isLoading,
+    hasNextPage,
     onLoadMore: fetchNextPage,
     disabled: isError,
     rootMargin: `0px 0px ${convertRemToPixels(6.25)}px 0px`,
   });
 
-  const isFetching = isFetchingNextPage || (hasNextPage ?? false);
-
-  return { data, isFetching, sentryRef };
+  return { data, hasNextPage, isLoading, sentryRef };
 };
 
 export { useTodos };

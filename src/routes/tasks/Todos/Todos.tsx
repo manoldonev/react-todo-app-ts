@@ -7,7 +7,8 @@ import { useTodos } from './hooks/useTodos';
 import { queryAtom } from '../../layout/Header';
 
 const Todos = (): JSX.Element => {
-  const { data, isFetching, sentryRef } = useTodos();
+  const { data, hasNextPage, isLoading, sentryRef } = useTodos();
+  const isEmpty = !isLoading && (data == null || data.pages.length === 0 || data.pages[0].todos?.length === 0);
   const [query, setQuery] = useAtom(queryAtom);
   const masonryOptions = {
     gutter: convertRemToPixels(0.75),
@@ -23,19 +24,20 @@ const Todos = (): JSX.Element => {
 
   return (
     <div className="min-h-screen bg-background p-2.5 transition-colors">
-      {/* NOTE: react18 strict mode (component unmount/remount) breaks the underlying masonry-layout in at least two ways */}
-      {/* HACK: The outer element loses its relative positioning so force it explicitly */}
-      {/* TODO: Resizing the window does not trigger new layout of the Masonry component */}
-      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-      <Masonry {...masonryProps}>
-        {data?.pages.map((page) => page.todos?.map((todo) => <TodoItem key={todo?.id} data={todo} />))}
-        {isFetching && (
-          <li ref={sentryRef} role="none">
-            <h2 className="text-on-background">Loading...</h2>
-          </li>
-        )}
-      </Masonry>
-      {!isFetching && (data == null || data.pages.length === 0 || data.pages[0].todos?.length === 0) && (
+      {!isEmpty ? (
+        /* NOTE: react18 strict mode (component unmount/remount) breaks the underlying masonry-layout in at least two ways */
+        /* HACK: The outer element loses its relative positioning so force it explicitly */
+        /* TODO: Resizing the window does not trigger new layout of the Masonry component */
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        <Masonry {...masonryProps}>
+          {data?.pages.map((page) => page.todos?.map((todo) => <TodoItem key={todo?.id} data={todo} />))}
+          {hasNextPage && (
+            <li ref={sentryRef} role="none">
+              <h2 className="text-on-background">Loading...</h2>
+            </li>
+          )}
+        </Masonry>
+      ) : (
         <div className="flex min-h-screen items-center justify-center pb-40 text-on-background">
           <div className="flex flex-col items-center">
             <EmojiSadIcon className="h-40 w-40" />
