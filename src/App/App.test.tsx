@@ -385,5 +385,6 @@ describe('Todo App', () => {
 
     // TODO: add keyboard support to test in jsdom
     test.todo('delete todo item');
+    test.todo('handles optimistic delete server error gracefully');
   });
 });
