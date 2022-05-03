@@ -3,6 +3,15 @@ import { matchMedia } from '../../../jest.setup';
 import { useColorMode, ColorMode } from './useColorMode';
 
 describe('useColorMode hook', () => {
+  beforeAll(() => {
+    // HACK: remove when renderHook API adds support for React 18
+    jest.spyOn(console, 'error').mockImplementation(() => {});
+  });
+
+  afterAll(() => {
+    jest.clearAllMocks();
+  });
+
   beforeEach(() => {
     matchMedia.clear();
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
