@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor, waitForElementToBeRemoved, within } from '@testing-library/react';
+import { act, fireEvent, render, screen, waitFor, waitForElementToBeRemoved, within } from '@testing-library/react';
 import { QueryCache, QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
@@ -18,7 +18,15 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       retry: false,
+      cacheTime: Infinity,
     },
+  },
+  logger: {
+    // eslint-disable-next-line no-console
+    log: console.log,
+    // eslint-disable-next-line no-console
+    warn: console.warn,
+    error: () => {},
   },
 });
 
@@ -47,8 +55,12 @@ describe('Todo App', () => {
     matchMedia.useMediaQuery('(pointer: coarse)');
   });
 
-  afterEach(() => {
+  afterEach(async () => {
     queryCache.clear();
+
+    // HACK: let Jest clean up properly the re-render triggered by the async GraphQL request (addresses "[...] not wrapped in act(...)" warning)
+    // eslint-disable-next-line testing-library/no-wait-for-empty-callback
+    await waitFor(() => {});
   });
 
   /* NOTE: it is not possible to properly test tailwind responsive ui behavior 
@@ -95,7 +107,6 @@ describe('Todo App', () => {
     });
 
     test('handles server error gracefully', async () => {
-      jest.spyOn(console, 'error').mockImplementation(() => {});
       server.use(
         mockTodosQuery((_req, res, ctx) => {
           return res.once(ctx.status(500), ctx.errors([{ message: 'Mocked server error' }]));
@@ -179,7 +190,7 @@ describe('Todo App', () => {
       const analyticsLink = navScope.getByText(/analytics/i);
       expect(analyticsLink).toBeVisible();
 
-      analyticsLink.click();
+      act(() => analyticsLink.click());
       const analyticsTabElement = await screen.findByTestId('analytics');
       expect(analyticsTabElement).toBeVisible();
       expect(listElement).not.toBeVisible();
@@ -187,7 +198,7 @@ describe('Todo App', () => {
       const settingsLink = navScope.getByText(/settings/i);
       expect(settingsLink).toBeVisible();
 
-      settingsLink.click();
+      act(() => settingsLink.click());
       const settingsTabElement = await screen.findByTestId('settings');
       expect(settingsTabElement).toBeVisible();
       expect(analyticsTabElement).not.toBeVisible();
@@ -196,7 +207,7 @@ describe('Todo App', () => {
       const tasksLink = navScope.getByText(/tasks/i);
       expect(tasksLink).toBeVisible();
 
-      tasksLink.click();
+      act(() => tasksLink.click());
       listElement = await screen.findByRole('list');
       expect(listElement).toBeVisible();
       expect(analyticsTabElement).not.toBeVisible();
@@ -218,6 +229,7 @@ describe('Todo App', () => {
 
       const user = userEvent.setup();
       await user.type(searchElement, 'vivacious');
+
       expect(await listScope.findByRole('listitem')).toBeInTheDocument();
 
       await user.clear(searchElement);
@@ -229,8 +241,8 @@ describe('Todo App', () => {
       const resetElement = screen.getByText(resetButtonMatcher);
       expect(resetElement).toBeVisible();
 
-      resetElement.click();
-      await waitForElementToBeRemoved(() => screen.queryByText(resetButtonMatcher));
+      act(() => resetElement.click());
+      expect(screen.queryByText(resetButtonMatcher)).not.toBeInTheDocument();
 
       expect(screen.queryByRole('list')).toBeVisible();
       listElement = screen.getByRole('list');

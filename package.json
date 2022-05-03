@@ -60,7 +60,7 @@
     "immer": "^9.0.12",
     "jest": "^27.5.1",
     "jest-matchmedia-mock": "^1.1.0",
-    "jotai": "^1.5.3",
+    "jotai": "^1.6.5",
     "lint-staged": "^12.1.5",
     "msw": "^0.39.0",
     "postcss": "^8.4.5",

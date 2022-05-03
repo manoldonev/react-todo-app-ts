@@ -4,6 +4,15 @@ import { useLocalStorage } from './useLocalStorage';
 const defaultValue = 'DEFAULT';
 
 describe('useLocalStorage hook', () => {
+  beforeAll(() => {
+    // HACK: remove when renderHook API adds support for React 18
+    jest.spyOn(console, 'error').mockImplementation(() => {});
+  });
+
+  afterAll(() => {
+    jest.clearAllMocks();
+  });
+
   beforeEach(() => {
     window.localStorage.clear();
   });
