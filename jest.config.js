@@ -11,4 +11,5 @@ module.exports = {
     '^.+\\.(t|j)sx?$': ['ts-jest'],
   },
   setupFilesAfterEnv: ['./src/jest.setup.ts'],
+  resolver: '<rootDir>/.jest/resolver.js',
 };
