@@ -3,6 +3,7 @@ import { useQueryClient } from 'react-query';
 import produce from 'immer';
 import type { DeleteTodoMutation, DeleteTodoMutationVariables, TodosQuery } from '../../../../generated';
 import { useDeleteTodoMutation } from '../../../../generated';
+import { todoKeys } from '../../../../queryKeyFactory';
 
 interface MutationContext {
   previousQueries: Array<[QueryKey, InfiniteData<TodosQuery>]>;
@@ -13,10 +14,10 @@ const useDeleteTodo = (): UseMutationResult<DeleteTodoMutation, Error, DeleteTod
 
   return useDeleteTodoMutation<Error, MutationContext>({
     onMutate: async ({ id }) => {
-      await queryClient.cancelQueries(['Todos.infinite']);
+      await queryClient.cancelQueries(todoKeys.all);
 
       const queryFilter: { queryKey: string[]; type: 'active' | 'inactive' | 'all' } = {
-        queryKey: ['Todos.infinite'],
+        queryKey: [...todoKeys.all],
         type: 'active',
       };
 
@@ -49,10 +50,7 @@ const useDeleteTodo = (): UseMutationResult<DeleteTodoMutation, Error, DeleteTod
         queryClient.setQueryData(...query);
       });
     },
-    onSettled: async () => {
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      queryClient.invalidateQueries(['Todos.infinite']);
-    },
+    onSettled: async () => queryClient.invalidateQueries(todoKeys.all),
   });
 };
 export { useDeleteTodo };
