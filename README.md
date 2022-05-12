@@ -15,15 +15,11 @@ Based on the [React TypeScript App](https://github.com/manoldonev/react-app-temp
 - CI / deployment GitHub workflows
 - Dependency management via [Renovate](https://www.whitesourcesoftware.com/free-developer-tools/renovate/)
 
-## UX
+## UX & Theming
 
+- Material Design System powered by Tailwind (with custom "branding" color palettes)
 - Mobile-first design
-- Tailwind (utility-first CSS framework)
-
-## Theming
-
-- Dark Mode Support (utilizing tailwind "class" strategy)
-- Branding via custom "material design" palette (vs generic tailwind colors scheme)
+- Dark Mode Support
 
 ## State Management
 
