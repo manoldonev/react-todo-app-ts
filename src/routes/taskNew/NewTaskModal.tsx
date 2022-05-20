@@ -12,20 +12,22 @@ const NewTaskModal = (): JSX.Element => {
     <Dialog
       data-testid="add-new-modal"
       onDismiss={onDismiss}
-      className="m-auto flex h-full w-full max-w-3xl flex-col bg-surface text-on-surface md:my-20 md:h-auto md:w-2/3"
+      className="m-auto flex h-full w-full max-w-3xl flex-col bg-background p-0 pb-8 text-on-surface md:my-20 md:h-auto md:w-2/3"
       aria-labelledby="label"
     >
-      <div className="mb-10 flex items-center">
-        <h1 id="label" className="mr-auto">
+      <div className="mb-8 flex items-center bg-primary px-8 pt-6 pb-4">
+        <h1 id="label" className="mr-auto bg-primary text-on-primary">
           Add New Item
         </h1>
         <button type="button" onClick={onDismiss}>
           <VisuallyHidden>Close</VisuallyHidden>
-          <XIcon className="h-10 w-10" aria-hidden />
+          <XIcon className="h-10 w-10 text-on-primary" aria-hidden />
         </button>
       </div>
 
-      <AddNewForm onSubmitted={onDismiss} onCancel={onDismiss} />
+      <div className="px-8">
+        <AddNewForm onSubmitted={onDismiss} onCancel={onDismiss} />
+      </div>
     </Dialog>
   );
 };
