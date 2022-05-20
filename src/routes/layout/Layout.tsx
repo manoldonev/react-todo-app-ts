@@ -6,7 +6,7 @@ import { BottomNavigation } from './Navigation';
 const Layout = (): JSX.Element => {
   return (
     // NOTE: cannot use Fragment here as it will break the sticky header
-    <div>
+    <div className="min-h-screen bg-background">
       <Headroom className="z-10">
         <Header />
       </Headroom>

@@ -27,7 +27,7 @@ const CtaButton = ({ className = '' }: { className?: string }): JSX.Element => {
       onClick={() => navigate('/tasks/new', { state: { backgroundLocation: location } })}
       className={`h-14 w-14 rounded-full bg-secondary text-on-secondary shadow transition duration-200 ease-in hover:bg-secondary-variant focus:outline-none active:shadow-lg ${className}`}
     >
-      <PlusIcon />
+      <PlusIcon className="h-5 w-full" />
     </button>
   );
 };
