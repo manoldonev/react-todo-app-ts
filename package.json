@@ -63,7 +63,7 @@
     "jest-matchmedia-mock": "^1.1.0",
     "jotai": "^1.6.5",
     "lint-staged": "^12.1.5",
-    "msw": "^0.39.0",
+    "msw": "^0.41.0",
     "postcss": "^8.4.5",
     "prettier": "^2.6.2",
     "prettier-plugin-tailwindcss": "^0.1.8",
