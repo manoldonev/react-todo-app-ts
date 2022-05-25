@@ -1,1 +1,1 @@
-export { Header, queryAtom } from './Header';
+export { Header } from './Header';

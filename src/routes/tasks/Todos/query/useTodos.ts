@@ -5,7 +5,7 @@ import { useAtom } from 'jotai';
 import type { TodosQuery } from '../../../../generated';
 import { useInfiniteTodosQuery } from '../../../../generated';
 import { convertRemToPixels } from '../../../../utils';
-import { queryAtom } from '../../../layout/Header';
+import { queryAtom } from '../../../../atoms';
 
 const enum SortDirection {
   Ascending = 'asc',

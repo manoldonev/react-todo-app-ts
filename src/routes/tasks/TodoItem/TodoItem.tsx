@@ -2,8 +2,7 @@ import { TrashIcon } from '@heroicons/react/outline';
 import { useMediaQuery } from '@react-hook/media-query';
 import { SwipeToAction } from '../../../components/SwipeToAction';
 import { ActionBar } from './ActionBar';
-import { useDeleteTodo } from './hooks/useDeleteTodo';
-import { useUpdateTodo } from './hooks/useUpdateTodo';
+import { useUpdateTodo, useDeleteTodo } from './query';
 
 const TodoItem = ({
   data,
