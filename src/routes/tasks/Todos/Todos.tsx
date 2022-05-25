@@ -3,8 +3,8 @@ import Masonry from 'react-masonry-component';
 import { useAtom } from 'jotai';
 import { convertRemToPixels } from '../../../utils';
 import { TodoItem } from '../TodoItem';
-import { useTodos } from './hooks/useTodos';
-import { queryAtom } from '../../layout/Header';
+import { useTodos } from './query';
+import { queryAtom } from '../../../atoms';
 
 const Todos = (): JSX.Element => {
   const { data, hasNextPage, isEmpty, sentryRef } = useTodos();

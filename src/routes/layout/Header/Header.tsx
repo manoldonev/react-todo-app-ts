@@ -1,11 +1,10 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { atom, useAtom } from 'jotai';
+import { useAtom } from 'jotai';
 import type { ChangeEvent } from 'react';
 import { Navigation } from '../Navigation';
 import { SearchBox } from '../../../components/SearchBox';
 import { ThemeToggle } from '../../../components/ThemeToggle';
-
-export const queryAtom = atom('');
+import { queryAtom } from '../../../atoms';
 
 const Header = (): JSX.Element => {
   const [query, setQuery] = useAtom(queryAtom);
