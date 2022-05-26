@@ -20,7 +20,7 @@
     "@react-hook/media-query": "^1.1.1",
     "@tailwindcss/line-clamp": "^0.4.0",
     "@testing-library/cypress": "^8.0.2",
-    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.0.0",
     "@testing-library/react-hooks": "^8.0.0",
     "@testing-library/user-event": "^14.0.4",
@@ -29,6 +29,7 @@
     "@types/node": "^16.11.19",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "@types/testing-library__jest-dom": "^5.14.3",
     "@typescript-eslint/eslint-plugin": "^5.9.0",
     "@typescript-eslint/parser": "^5.9.0",
     "@vitejs/plugin-react": "^1.3.0",
@@ -73,6 +74,7 @@
     "react-hook-form": "^7.27.0",
     "react-hot-toast": "^2.2.0",
     "react-infinite-scroll-hook": "^4.0.1",
+    "react-intersection-observer-hook": "^2.0.4",
     "react-masonry-component": "^6.3.0",
     "react-query": "^4.0.0-beta.7",
     "react-router-dom": "^6.2.1",
@@ -124,5 +126,16 @@
   },
   "msw": {
     "workerDirectory": "public"
-  }
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "react": "18",
+        "react-dom": "18",
+        "@types/react": "18",
+        "graphql": "16"
+      }
+    }
+  },
+  "packageManager": "pnpm@7.1.5"
 }
