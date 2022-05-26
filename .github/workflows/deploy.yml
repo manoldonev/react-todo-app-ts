@@ -23,6 +23,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Set @actions user
+        uses: fregante/setup-git-user@v1
+
       - name: Install Node.js 16.x
         uses: actions/setup-node@v3
         with:
@@ -49,10 +52,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-
-      - run: git config user.email "manol.donev@gmail.com"
-
-      - run: git config user.name "Manol Donev"
 
       - name: Deploy with gh-pages
         run: |
