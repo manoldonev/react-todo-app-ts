@@ -4,16 +4,16 @@
   ],
   "cypress/**/*.ts": [
     "prettier --write",
-    "npm run lint:cypress -- --cache --fix --cache-location ./node_modules/.cache/.eslintcache"
+    "pnpm run lint:cypress --cache --fix --cache-location ./node_modules/.cache/.eslintcache"
   ],
   "src/**/*.test.{ts,tsx}": [
     "prettier --write",
-    "npm run lint:jest -- --cache --fix --cache-location ./node_modules/.cache/.eslintcache"
+    "pnpm run lint:jest --cache --fix --cache-location ./node_modules/.cache/.eslintcache"
   ],
   "src/**/*.!(test).{ts,tsx}": [
     "prettier --write",
-    "npm run lint:src -- --cache --fix --cache-location ./node_modules/.cache/.eslintcache",
+    "pnpm run lint:src --cache --fix --cache-location ./node_modules/.cache/.eslintcache",
     "tsc-files --noEmit",
-    "npm run test:related"
+    "pnpm run test:related"
   ]
 }
