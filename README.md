@@ -14,14 +14,12 @@ Based on the [React TypeScript App](https://github.com/manoldonev/react-app-temp
 - pre-commit hooks
 - CI / deployment GitHub workflows
 - Dependency management via [Renovate](https://www.whitesourcesoftware.com/free-developer-tools/renovate/)
+- Package management via [pnpm](https://pnpm.io/)
 
-## UX
+## UX & Theming
 
 - Mobile-first design
 - Tailwind (utility-first CSS framework)
-
-## Theming
-
 - Dark Mode Support (utilizing tailwind "class" strategy)
 - Branding via custom "material design" palette (vs generic tailwind colors scheme)
 
