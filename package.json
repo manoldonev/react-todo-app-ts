@@ -133,7 +133,8 @@
         "react": "18",
         "react-dom": "18",
         "@types/react": "18",
-        "graphql": "16"
+        "graphql": "16",
+        "@types/jest": "28"
       }
     }
   },
