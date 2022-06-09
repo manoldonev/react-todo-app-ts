@@ -9724,7 +9724,7 @@ packages:
     hasBin: true
     peerDependencies:
       '@babel/core': '>=7.0.0-beta.0 <8'
-      '@types/jest': ^27.0.0
+      '@types/jest': ^27.0.0 || 28
       babel-jest: ^28.0.0
       esbuild: '*'
       jest: ^28.0.0
