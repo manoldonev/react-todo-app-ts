@@ -1,3 +1,4 @@
 /public/mockServiceWorker.js
 /src/generated/**/*.ts
 *.config.js
+*.config.ts
