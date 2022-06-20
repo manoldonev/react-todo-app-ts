@@ -15,6 +15,7 @@ const Header = (): JSX.Element => {
     if (location.pathname !== '/tasks') {
       navigate('/tasks');
     }
+
     setQuery(e.target.value);
   };
 
@@ -28,7 +29,11 @@ const Header = (): JSX.Element => {
             </Link>
           </div>
 
-          <form role="search" className="pointer-events-none col-start-1 row-start-1 md:mx-auto md:w-1/2">
+          <form
+            onSubmit={(e) => e.preventDefault()}
+            role="search"
+            className="pointer-events-none col-start-1 row-start-1 md:mx-auto md:w-1/2"
+          >
             <SearchBox value={query} onChange={handleChange} />
           </form>
         </div>

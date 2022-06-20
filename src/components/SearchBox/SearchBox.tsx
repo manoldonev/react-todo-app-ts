@@ -16,7 +16,7 @@ const SearchBox = ({
         value={value}
         onChange={onChange}
         placeholder="Search"
-        className="peer pointer-events-auto z-10 h-12 w-0 rounded-l-sm bg-primary-container text-lg text-on-primary-container placeholder-on-primary-container/75 outline-none duration-300 focus:w-[calc(100%_-_3rem+_1px)] focus:px-5  md:w-[calc(100%_-_3rem+_1px)] md:px-5"
+        className="peer pointer-events-auto z-10 h-12 w-0 rounded-l-sm bg-primary-container text-lg text-on-primary-container placeholder-on-primary-container/75 outline-none duration-300 focus:w-[calc(100%_-_3rem+_1px)] focus:px-5 md:w-[calc(100%_-_3rem+_1px)] md:px-5"
       />
       <label
         htmlFor="search"
