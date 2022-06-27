@@ -1,4 +1,4 @@
-![license](https://img.shields.io/github/license/manoldonev/react-todo-app-ts?style=plastic) ![ci workflow](https://github.com/manoldonev/react-todo-app-ts/workflows/ci/badge.svg) ![deploy workflow](https://github.com/manoldonev/react-todo-app-ts/workflows/deploy/badge.svg) ![cypress workflow](https://github.com/manoldonev/react-todo-app-ts/workflows/cypress/badge.svg)
+![license](https://img.shields.io/github/license/manoldonev/react-todo-app-ts?style=plastic) ![ci workflow](https://github.com/manoldonev/react-todo-app-ts/workflows/ci/badge.svg) ![deploy workflow](https://github.com/manoldonev/react-todo-app-ts/workflows/deploy/badge.svg) ![cypress workflow](https://github.com/manoldonev/react-todo-app-ts/workflows/cypress/badge.svg) ![pnpm](https://img.shields.io/badge/maintained%20with-pnpm-cc00ff.svg?logo=pnpm)
 
 Latest deployment available at https://manoldonev.github.io/react-todo-app-ts/
 
