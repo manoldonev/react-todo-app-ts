@@ -2,12 +2,13 @@ import { act, fireEvent, render, screen, waitFor, waitForElementToBeRemoved, wit
 import { QueryCache, QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 import { App } from './App';
-import { matchMedia } from '../jest.setup';
+import { matchMedia } from '../vitest.setup';
 import { server } from '../mocks/msw/server';
 import { mockTodosQuery } from '../generated';
 
-const queryErrorHandler = jest.fn();
+const queryErrorHandler = vi.fn();
 
 const queryCache = new QueryCache({
   onError: queryErrorHandler,
@@ -47,7 +48,7 @@ const simulateTapEvent = (element: Element): void => {
 
 describe('Todo App', () => {
   beforeEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
 
     matchMedia.clear();
 
@@ -57,20 +58,14 @@ describe('Todo App', () => {
 
   afterEach(async () => {
     queryCache.clear();
-
-    // HACK: let Jest clean up properly the re-render triggered by the async GraphQL request (addresses "[...] not wrapped in act(...)" warning)
-    // eslint-disable-next-line testing-library/no-wait-for-empty-callback
-    await waitFor(() => {});
   });
 
   /* NOTE: it is not possible to properly test tailwind responsive ui behavior 
-  with Jest(jsdom). Generally jsdom neither loads the application css files, 
+  with jsdom. Generally jsdom neither loads the application css files, 
   nor does it support media queries. We can address the former by manually 
-  assembling and injecting the tailwind css styles (see jest.setup.ts), 
+  assembling and injecting the tailwind css styles (see vitest.setup.ts), 
   however, the latter is a bigger and [currently] unsolvable problem. Mocking 
-  media query support (window.matchMedia) is possible either manually or via 
-  packages like jest-matchmedia-mock but this only patches scenarios where the 
-  component under test actually calls window.matchMedia(...) programmatically. 
+  media query support (window.matchMedia) is possible but this only patches scenarios where the component under test actually calls window.matchMedia(...) programmatically. 
   In our [tailwind] scenario we are dynamically injecting the css (including the 
   @media statements for sm/md/lg/etc. screen modifiers) but jsdom does not 
   trigger media query computation hence the screen modifiers remain inactive. As 

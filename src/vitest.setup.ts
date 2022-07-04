@@ -1,21 +1,11 @@
-// jest-dom adds custom jest matchers for asserting on DOM nodes.
-// allows you to do things like:
-// expect(element).toHaveTextContent(/react/i)
-// learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
 import '@testing-library/jest-dom/extend-expect';
 import 'whatwg-fetch';
-import MatchMediaMock from 'jest-matchmedia-mock';
 import { server } from './mocks/msw/server';
-import { setupIntersectionObserverMock, setupWindowScrollToMock } from './mocks';
+import './mocks/IntersectionObserver';
+import './mocks/windowScrollTo';
 import { injectTailwindCss } from './mocks/utils';
-
-// eslint-disable-next-line no-new
-const matchMedia = new MatchMediaMock();
-
-beforeAll(() => setupWindowScrollToMock());
-
-beforeAll(() => setupIntersectionObserverMock());
+import MatchMediaMock from './mocks/windowMatchMedia';
 
 beforeAll(async () => injectTailwindCss());
 
@@ -28,5 +18,8 @@ afterEach(() => server.resetHandlers());
 
 // Clean up after the tests are finished.
 afterAll(() => server.close());
+
+// eslint-disable-next-line no-new
+const matchMedia = new MatchMediaMock();
 
 export { matchMedia };

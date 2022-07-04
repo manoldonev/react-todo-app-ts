@@ -1,3 +1,5 @@
+import { beforeAll } from 'vitest';
+
 const setupIntersectionObserverMock = ({
   root = null,
   rootMargin = '',
@@ -30,13 +32,4 @@ const setupIntersectionObserverMock = ({
   });
 };
 
-const setupWindowScrollToMock = (): void => {
-  Object.defineProperty(window, 'scrollTo', {
-    value: (_x: number, y: number) => {
-      document.documentElement.scrollTop = y;
-    },
-    writable: true,
-  });
-};
-
-export { setupIntersectionObserverMock, setupWindowScrollToMock };
+beforeAll(() => setupIntersectionObserverMock());
