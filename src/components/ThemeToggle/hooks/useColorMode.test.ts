@@ -1,15 +1,16 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import { matchMedia } from '../../../jest.setup';
+import { vi } from 'vitest';
+import { matchMedia } from '../../../vitest.setup';
 import { useColorMode, ColorMode } from './useColorMode';
 
 describe('useColorMode hook', () => {
   beforeAll(() => {
     // HACK: remove when renderHook API adds support for React 18
-    jest.spyOn(console, 'error').mockImplementation(() => {});
+    vi.spyOn(console, 'error').mockImplementation(() => {});
   });
 
   afterAll(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   beforeEach(() => {

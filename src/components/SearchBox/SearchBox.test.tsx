@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import type { ChangeEvent } from 'react';
+import { vi } from 'vitest';
 import { SearchBox } from './SearchBox';
 
 describe('SearchBox', () => {
@@ -23,7 +24,7 @@ describe('SearchBox', () => {
   });
 
   test('change value with event notification', async () => {
-    const changeHandler = jest.fn();
+    const changeHandler = vi.fn();
     render(<SearchBox onChange={changeHandler} />);
 
     const inputElement = screen.getByRole('searchbox');
@@ -46,7 +47,7 @@ describe('SearchBox', () => {
   });
 
   test('delete value with event notification', async () => {
-    const changeHandler = jest.fn();
+    const changeHandler = vi.fn();
     render(<SearchBox onChange={changeHandler} />);
 
     const inputElement = screen.getByRole('searchbox');

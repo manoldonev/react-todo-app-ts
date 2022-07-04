@@ -3,7 +3,7 @@
   "compilerOptions": {
     "noEmit": true,
     // be explicit about types included
-    // to avoid clashing with Jest types
+    // to avoid clashing with Vitest types
     "types": ["cypress", "@testing-library/cypress", "cypress-axe"],
     "isolatedModules": false
   },

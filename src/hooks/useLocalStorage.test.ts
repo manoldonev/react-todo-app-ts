@@ -1,4 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks';
+import { vi } from 'vitest';
 import { useLocalStorage } from './useLocalStorage';
 
 const defaultValue = 'DEFAULT';
@@ -6,11 +7,11 @@ const defaultValue = 'DEFAULT';
 describe('useLocalStorage hook', () => {
   beforeAll(() => {
     // HACK: remove when renderHook API adds support for React 18
-    jest.spyOn(console, 'error').mockImplementation(() => {});
+    vi.spyOn(console, 'error').mockImplementation(() => {});
   });
 
   afterAll(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   beforeEach(() => {
