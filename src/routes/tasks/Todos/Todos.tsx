@@ -1,35 +1,26 @@
 import { EmojiSadIcon } from '@heroicons/react/outline';
-import Masonry from 'react-masonry-component';
 import { useAtom } from 'jotai';
 import { convertRemToPixels } from '../../../utils';
 import { TodoItem } from '../TodoItem';
 import { useTodos } from './query';
 import { queryAtom } from '../../../atoms';
+import { Masonry } from '../../../components/Masonry';
+
+const masonryOptions = {
+  gutter: convertRemToPixels(0.75),
+  stagger: '0.03s',
+  horizontalOrder: false,
+};
 
 const Todos = (): JSX.Element => {
   const { data, hasNextPage, isEmpty, sentryRef } = useTodos();
   const [query, setQuery] = useAtom(queryAtom);
-  const masonryOptions = {
-    gutter: convertRemToPixels(0.75),
-    stagger: '0.03s',
-    horizontalOrder: false,
-  };
-
-  const masonryProps = {
-    elementType: 'ul',
-    className: 'relative',
-    options: masonryOptions,
-  };
 
   return (
     <div className="min-h-screen bg-background p-2.5 transition-colors">
       {!isEmpty ? (
-        /* NOTE: react18 strict mode (component unmount/remount) breaks the underlying masonry-layout in at least two ways */
-        /* HACK: The outer element loses its relative positioning so force it explicitly */
-        /* TODO: Resizing the window does not trigger new layout of the Masonry component */
         <>
-          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-          <Masonry {...masonryProps}>
+          <Masonry as="ul" options={masonryOptions}>
             {data?.pages.map((page) => page.todos?.map((todo) => <TodoItem key={todo?.id} data={todo} />))}
           </Masonry>
           {hasNextPage && (
