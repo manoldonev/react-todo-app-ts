@@ -9,7 +9,7 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       return require('./cypress/plugins/index.ts').default(on, config);
     },
-    baseUrl: 'http://localhost:3000/react-todo-app-ts',
+    baseUrl: 'http://localhost:5173/react-todo-app-ts',
     specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}',
   },
 });
