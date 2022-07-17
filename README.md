@@ -42,3 +42,7 @@ Based on the [React TypeScript App](https://github.com/manoldonev/react-app-temp
 - Unit & Integration testing: Vitest with React Testing Library setup (dynamically extract & inject tailwind css in jsdom test environment -- see https://github.com/manoldonev/react-todo-app-ts/pull/57)
 - Static Analysis: TypeScript & ESLint
 - [MSW](https://mswjs.io/) (Mock Service Worker) API mocking (intercepting requests on the network level)
+
+## Preview
+
+<img src="https://user-images.githubusercontent.com/2650247/179395094-8351c8f8-48e4-4b54-9321-9662dd76e892.png" width="333px" height="721px">  <img src="https://user-images.githubusercontent.com/2650247/179395321-c163fdd5-0131-4378-832d-cf017d63e63f.png" width="665px" height="712px">
