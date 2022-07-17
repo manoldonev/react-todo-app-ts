@@ -5,10 +5,10 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "pwa-chrome",
+      "type": "chrome",
       "request": "launch",
       "name": "Launch Chrome against localhost",
-      "url": "http://localhost:3000/react-todo-app-ts/",
+      "url": "http://localhost:5173/react-todo-app-ts/",
       "webRoot": "${workspaceFolder}"
     }
   ]
