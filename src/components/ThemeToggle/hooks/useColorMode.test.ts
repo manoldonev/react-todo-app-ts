@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import { vi } from 'vitest';
+import { afterAll, beforeAll, beforeEach, describe, expect, test, vi } from 'vitest';
 import { matchMedia } from '../../../vitest.setup';
 import { useColorMode, ColorMode } from './useColorMode';
 

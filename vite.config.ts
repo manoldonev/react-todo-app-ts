@@ -8,7 +8,6 @@ export default defineConfig({
   publicDir: './public',
   test: {
     environment: 'jsdom',
-    globals: true,
     setupFiles: './src/vitest.setup.ts',
     include: ['src/**/*.test.{tsx,ts}'],
   },
