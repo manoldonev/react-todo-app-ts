@@ -30,7 +30,7 @@ Based on the [React TypeScript App](https://github.com/manoldonev/react-app-temp
 ## Data (Async State Management)
 
 - GraphQL
-- `react-query` with [automatic hooks generation](https://www.graphql-code-generator.com/) based on the GraphQL schema
+- `@tanstack/react-query` with [automatic hooks generation](https://www.graphql-code-generator.com/) based on the GraphQL schema
 
 ## Navigation
 
@@ -45,4 +45,4 @@ Based on the [React TypeScript App](https://github.com/manoldonev/react-app-temp
 
 ## Preview
 
-<img src="https://user-images.githubusercontent.com/2650247/179395094-8351c8f8-48e4-4b54-9321-9662dd76e892.png" width="333px" height="721px">  <img src="https://user-images.githubusercontent.com/2650247/179395321-c163fdd5-0131-4378-832d-cf017d63e63f.png" width="665px" height="712px">
+<img src="https://user-images.githubusercontent.com/2650247/179395094-8351c8f8-48e4-4b54-9321-9662dd76e892.png" width="333px" height="721px"> <img src="https://user-images.githubusercontent.com/2650247/179395321-c163fdd5-0131-4378-832d-cf017d63e63f.png" width="665px" height="712px">

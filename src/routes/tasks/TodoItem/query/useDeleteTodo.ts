@@ -1,5 +1,5 @@
-import type { InfiniteData, QueryKey, UseMutationResult } from 'react-query';
-import { useQueryClient } from 'react-query';
+import type { InfiniteData, QueryKey, UseMutationResult } from '@tanstack/react-query';
+import { useQueryClient } from '@tanstack/react-query';
 import produce from 'immer';
 import type { DeleteTodoMutation, DeleteTodoMutationVariables, TodosQuery } from '../../../../generated';
 import { useDeleteTodoMutation } from '../../../../generated';
