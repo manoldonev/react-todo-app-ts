@@ -2,7 +2,7 @@ import { act, fireEvent, render, screen, waitFor, waitForElementToBeRemoved, wit
 import { QueryCache, QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
-import { vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 import { App } from './App';
 import { matchMedia } from '../vitest.setup';
 import { server } from '../mocks/msw/server';
@@ -60,20 +60,20 @@ describe('Todo App', () => {
     queryCache.clear();
   });
 
-  /* NOTE: it is not possible to properly test tailwind responsive ui behavior 
-  with jsdom. Generally jsdom neither loads the application css files, 
-  nor does it support media queries. We can address the former by manually 
-  assembling and injecting the tailwind css styles (see vitest.setup.ts), 
-  however, the latter is a bigger and [currently] unsolvable problem. Mocking 
-  media query support (window.matchMedia) is possible but this only patches scenarios where the component under test actually calls window.matchMedia(...) programmatically. 
-  In our [tailwind] scenario we are dynamically injecting the css (including the 
-  @media statements for sm/md/lg/etc. screen modifiers) but jsdom does not 
-  trigger media query computation hence the screen modifiers remain inactive. As 
-  tailwind is a mobile-first library this effectively means we are stuck with the 
+  /* NOTE: it is not possible to properly test tailwind responsive ui behavior
+  with jsdom. Generally jsdom neither loads the application css files,
+  nor does it support media queries. We can address the former by manually
+  assembling and injecting the tailwind css styles (see vitest.setup.ts),
+  however, the latter is a bigger and [currently] unsolvable problem. Mocking
+  media query support (window.matchMedia) is possible but this only patches scenarios where the component under test actually calls window.matchMedia(...) programmatically.
+  In our [tailwind] scenario we are dynamically injecting the css (including the
+  @media statements for sm/md/lg/etc. screen modifiers) but jsdom does not
+  trigger media query computation hence the screen modifiers remain inactive. As
+  tailwind is a mobile-first library this effectively means we are stuck with the
   mobile view for testing). */
   describe('on mobile (touch-enabled) screen', () => {
     test('renders without crashing', async () => {
-      render(<TestApp />);
+      const { unmount } = render(<TestApp />);
 
       const linkElement = screen.getByText(/todo app/i);
       expect(linkElement).toBeVisible();
@@ -99,6 +99,8 @@ describe('Todo App', () => {
       expect(bottomNavElement).toBeVisible();
 
       expect(queryErrorHandler).not.toHaveBeenCalled();
+
+      unmount();
     });
 
     test('handles server error gracefully', async () => {
@@ -108,7 +110,7 @@ describe('Todo App', () => {
         }),
       );
 
-      render(<TestApp />);
+      const { unmount } = render(<TestApp />);
 
       await waitFor(() => expect(queryErrorHandler).toHaveBeenCalledTimes(1));
 
@@ -132,10 +134,12 @@ describe('Todo App', () => {
 
       const bottomNavElement = screen.getByTestId('bottom-navigation');
       expect(bottomNavElement).toBeVisible();
+
+      unmount();
     });
 
     test('renders no checkboxes for todo items', async () => {
-      render(<TestApp />);
+      const { unmount } = render(<TestApp />);
 
       const listElement = await screen.findByRole('list');
       const listScope = within(listElement);
@@ -144,10 +148,12 @@ describe('Todo App', () => {
 
       const checkboxElement = listScope.queryByRole('checkbox');
       expect(checkboxElement).not.toBeInTheDocument();
+
+      unmount();
     });
 
     test('renders correct bottom navigation items', async () => {
-      render(<TestApp />);
+      const { unmount } = render(<TestApp />);
 
       const listElement = await screen.findByRole('list');
       expect(listElement).toBeVisible();
@@ -171,10 +177,12 @@ describe('Todo App', () => {
       expect(settingsElement).toBeVisible();
       expect(settingsElement).toHaveTextContent(/settings/);
       expect(settingsElement).not.toHaveClass('bg-primary-variant');
+
+      unmount();
     });
 
     test('switches tabs through bottom navigation', async () => {
-      render(<TestApp />);
+      const { unmount } = render(<TestApp />);
 
       let listElement = await screen.findByRole('list');
       expect(listElement).toBeVisible();
@@ -207,10 +215,12 @@ describe('Todo App', () => {
       expect(listElement).toBeVisible();
       expect(analyticsTabElement).not.toBeVisible();
       expect(settingsTabElement).not.toBeVisible();
+
+      unmount();
     });
 
     test('search for todo item', async () => {
-      render(<TestApp />);
+      const { unmount } = render(<TestApp />);
 
       let listElement = await screen.findByRole('list');
       expect(listElement).toBeVisible();
@@ -246,10 +256,12 @@ describe('Todo App', () => {
       itemElements = await listScope.findAllByRole('listitem');
       expect(itemElements).toHaveLength(10);
       expect(searchElement).toHaveValue('');
+
+      unmount();
     });
 
     test('create todo item', async () => {
-      render(<TestApp />);
+      const { unmount } = render(<TestApp />);
 
       const listElement = await screen.findByRole('list');
       expect(listElement).toBeVisible();
@@ -287,10 +299,12 @@ describe('Todo App', () => {
 
       itemElements = listScope.getAllByRole('listitem');
       expect(itemElements[0]).toHaveTextContent(testValue);
+
+      unmount();
     });
 
     test('create todo item validation', async () => {
-      render(<TestApp />);
+      const { unmount } = render(<TestApp />);
 
       const listElement = await screen.findByRole('list');
       expect(listElement).toBeVisible();
@@ -336,10 +350,12 @@ describe('Todo App', () => {
 
       itemElements = listScope.getAllByRole('listitem');
       expect(itemElements[0]).toHaveTextContent(testValue);
+
+      unmount();
     });
 
     test('cancel create todo item should have no side effects', async () => {
-      render(<TestApp />);
+      const { unmount } = render(<TestApp />);
 
       const listElement = await screen.findByRole('list');
       expect(listElement).toBeVisible();
@@ -369,10 +385,12 @@ describe('Todo App', () => {
 
       itemElements = listScope.getAllByRole('listitem');
       expect(itemElements[0]).toEqual(firstElement);
+
+      unmount();
     });
 
     test('update todo item', async () => {
-      render(<TestApp />);
+      const { unmount } = render(<TestApp />);
 
       const listElement = await screen.findByRole('list');
       expect(listElement).toBeVisible();
@@ -388,6 +406,8 @@ describe('Todo App', () => {
       simulateTapEvent(labelElement);
 
       await waitFor(() => expect(screen.getByText(labelMatcher)).toHaveClass('line-through'));
+
+      unmount();
     });
 
     // TODO: add keyboard support to test in jsdom

@@ -1,19 +1,21 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import type { ChangeEvent } from 'react';
-import { vi } from 'vitest';
+import { describe, expect, test, vi } from 'vitest';
 import { SearchBox } from './SearchBox';
 
 describe('SearchBox', () => {
   test('renders without crashing', async () => {
-    render(<SearchBox />);
+    const { unmount } = render(<SearchBox />);
 
     const inputElement = screen.getByRole('searchbox');
     expect(inputElement).toBeVisible();
+
+    unmount();
   });
 
   test('is focusable', () => {
-    render(<SearchBox />);
+    const { unmount } = render(<SearchBox />);
 
     const inputElement = screen.getByRole('searchbox');
     expect(inputElement).toBeVisible();
@@ -21,11 +23,13 @@ describe('SearchBox', () => {
 
     inputElement.focus();
     expect(inputElement).toHaveFocus();
+
+    unmount();
   });
 
   test('change value with event notification', async () => {
     const changeHandler = vi.fn();
-    render(<SearchBox onChange={changeHandler} />);
+    const { unmount } = render(<SearchBox onChange={changeHandler} />);
 
     const inputElement = screen.getByRole('searchbox');
     expect(inputElement).toHaveValue('');
@@ -44,11 +48,13 @@ describe('SearchBox', () => {
     await userEvent.type(inputElement, rest.join(''));
     expect(inputElement).toHaveValue('test value');
     expect(changeHandler).toHaveBeenCalledTimes('test value'.length);
+
+    unmount();
   });
 
   test('delete value with event notification', async () => {
     const changeHandler = vi.fn();
-    render(<SearchBox onChange={changeHandler} />);
+    const { unmount } = render(<SearchBox onChange={changeHandler} />);
 
     const inputElement = screen.getByRole('searchbox');
     expect(inputElement).toHaveValue('');
@@ -75,6 +81,8 @@ describe('SearchBox', () => {
     await userEvent.clear(inputElement);
     expect(changeHandler).toHaveBeenCalledTimes(1);
     expect(inputElement).toHaveValue('');
+
+    unmount();
   });
 
   // NOTE: apparently asserting width changes based on

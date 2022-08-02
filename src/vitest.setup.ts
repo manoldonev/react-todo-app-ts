@@ -1,6 +1,7 @@
-import '@testing-library/jest-dom';
-import '@testing-library/jest-dom/extend-expect';
+import type { TestingLibraryMatchers } from '@testing-library/jest-dom/matchers';
+import matchers from '@testing-library/jest-dom/matchers';
 import 'whatwg-fetch';
+import { afterAll, afterEach, beforeAll, expect } from 'vitest';
 import { server } from './mocks/msw/server';
 import './mocks/IntersectionObserver';
 import './mocks/windowScrollTo';
@@ -23,3 +24,12 @@ afterAll(() => server.close());
 const matchMedia = new MatchMediaMock();
 
 export { matchMedia };
+
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace Vi {
+    interface JestAssertion<T = any> extends jest.Matchers<void, T>, TestingLibraryMatchers<T, void> {}
+  }
+}
+
+expect.extend(matchers);
