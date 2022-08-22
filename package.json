@@ -19,6 +19,8 @@
     "@reach/visually-hidden": "^0.17.0",
     "@react-hook/media-query": "^1.1.1",
     "@rooks/use-mutation-observer": "^4.11.2",
+    "@sentry/react": "^7.11.1",
+    "@sentry/tracing": "^7.11.1",
     "@tailwindcss/line-clamp": "^0.4.0",
     "@tanstack/react-query": "^4.0.10",
     "@tanstack/react-query-devtools": "^4.0.10",

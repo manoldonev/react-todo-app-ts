@@ -6,11 +6,25 @@ import { BrowserRouter } from 'react-router-dom';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Toaster } from 'react-hot-toast';
+import { BrowserTracing } from '@sentry/tracing';
+import * as Sentry from '@sentry/react';
 import { App } from './App';
 import { queryClient } from './queryClient';
 import { reportWebVitals } from './reportWebVitals';
 
-const main = async (): Promise<void> => {
+const initializeSentry = (): void => {
+  Sentry.init({
+    dsn: 'https://7928643206cc472292e39de724627115@o1372548.ingest.sentry.io/6677629',
+    integrations: [new BrowserTracing()],
+
+    // Set tracesSampleRate to 1.0 to capture 100%
+    // of transactions for performance monitoring.
+    // We recommend adjusting this value in production
+    tracesSampleRate: 1.0,
+  });
+};
+
+const initializeMsw = async (): Promise<void> => {
   if (import.meta.env.VITE_API_MOCKING === 'enabled') {
     const { worker } = await import('./mocks/msw/browser');
     await worker.start({
@@ -26,6 +40,11 @@ const main = async (): Promise<void> => {
       },
     });
   }
+};
+
+const main = async (): Promise<void> => {
+  initializeSentry();
+  await initializeMsw();
 
   const container = document.getElementById('root');
   if (container == null) {
