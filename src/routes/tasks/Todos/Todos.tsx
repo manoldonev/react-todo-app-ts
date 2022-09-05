@@ -1,4 +1,4 @@
-import { EmojiSadIcon } from '@heroicons/react/outline';
+import { FaceFrownIcon } from '@heroicons/react/24/outline';
 import { useAtom } from 'jotai';
 import { convertRemToPixels } from '../../../utils';
 import { TodoItem } from '../TodoItem';
@@ -32,7 +32,7 @@ const Todos = (): JSX.Element => {
       ) : (
         <div className="flex min-h-screen items-center justify-center pb-40 text-on-background">
           <div className="flex flex-col items-center">
-            <EmojiSadIcon className="h-40 w-40" />
+            <FaceFrownIcon className="h-40 w-40" />
             <span>No items available</span>
             {query !== '' && (
               <button

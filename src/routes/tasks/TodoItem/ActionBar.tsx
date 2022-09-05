@@ -1,4 +1,4 @@
-import { BellIcon, ColorSwatchIcon, PencilAltIcon, TrashIcon } from '@heroicons/react/outline';
+import { BellIcon, SwatchIcon, PencilSquareIcon, TrashIcon } from '@heroicons/react/24/outline';
 
 const ActionBar = ({ className = '', onDelete }: { className?: string; onDelete: () => void }): JSX.Element => {
   return (
@@ -7,10 +7,10 @@ const ActionBar = ({ className = '', onDelete }: { className?: string; onDelete:
         <BellIcon className="h-6 w-6 p-1 group-disabled:text-on-primary-container/25" />
       </button>
       <button type="button" className="group" disabled aria-label="Background Options">
-        <ColorSwatchIcon className="h-6 w-6 p-1 group-disabled:text-on-primary-container/25" />
+        <SwatchIcon className="h-6 w-6 p-1 group-disabled:text-on-primary-container/25" />
       </button>
       <button type="button" className="group" disabled aria-label="Edit Item">
-        <PencilAltIcon className="h-6 w-6 p-1 group-disabled:text-on-primary-container/25" />
+        <PencilSquareIcon className="h-6 w-6 p-1 group-disabled:text-on-primary-container/25" />
       </button>
       <button type="button" onClick={onDelete} aria-label="Delete Item">
         <TrashIcon className="h-6 w-6 rounded-xl p-1 hover:border hover:border-secondary hover:bg-secondary-container hover:text-on-secondary-container" />
