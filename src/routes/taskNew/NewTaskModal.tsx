@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { XIcon } from '@heroicons/react/outline';
+import { XMarkIcon } from '@heroicons/react/24/outline';
 import Dialog from '@reach/dialog';
 import VisuallyHidden from '@reach/visually-hidden';
 import { AddNewForm } from './AddNewForm';
@@ -21,7 +21,7 @@ const NewTaskModal = (): JSX.Element => {
         </h1>
         <button type="button" onClick={onDismiss}>
           <VisuallyHidden>Close</VisuallyHidden>
-          <XIcon className="h-10 w-10 text-on-primary" aria-hidden />
+          <XMarkIcon className="h-10 w-10 text-on-primary" aria-hidden />
         </button>
       </div>
 

@@ -1,4 +1,4 @@
-import { SearchIcon } from '@heroicons/react/outline';
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import type { ChangeEvent } from 'react';
 
 const SearchBox = ({
@@ -23,7 +23,7 @@ const SearchBox = ({
         aria-label="Search"
         className="pointer-events-auto -ml-px select-none rounded-sm bg-primary-container p-3 text-on-primary-container peer-focus:pointer-events-none peer-focus:rounded-l-none md:rounded-l-none"
       >
-        <SearchIcon className="pointer-events-none h-6 w-6 text-on-primary-container" />
+        <MagnifyingGlassIcon className="pointer-events-none h-6 w-6 text-on-primary-container" />
       </label>
     </div>
   );

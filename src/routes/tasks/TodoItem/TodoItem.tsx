@@ -1,4 +1,4 @@
-import { TrashIcon } from '@heroicons/react/outline';
+import { TrashIcon } from '@heroicons/react/24/outline';
 import { useMediaQuery } from '@react-hook/media-query';
 import { SwipeToAction } from '../../../components/SwipeToAction';
 import { ActionBar } from './ActionBar';

@@ -1,4 +1,4 @@
-import { PlusIcon } from '@heroicons/react/outline';
+import { PlusIcon } from '@heroicons/react/24/outline';
 import { useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useHeadroom } from '../../../components/Headroom';

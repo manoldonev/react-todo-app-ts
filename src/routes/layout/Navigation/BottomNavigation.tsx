@@ -1,15 +1,15 @@
-import { AdjustmentsIcon, ChartSquareBarIcon, ClipboardListIcon } from '@heroicons/react/outline';
+import { AdjustmentsVerticalIcon, ChartBarSquareIcon, ClipboardDocumentListIcon } from '@heroicons/react/24/outline';
 import { NavLink } from 'react-router-dom';
 import { navigationItems } from './navigationItems';
 
 const mapNavigationIcon = (item: string): JSX.Element => {
   switch (item) {
     case 'tasks':
-      return <ClipboardListIcon className="mx-auto mb-1 h-6 w-6" />;
+      return <ClipboardDocumentListIcon className="mx-auto mb-1 h-6 w-6" />;
     case 'analytics':
-      return <ChartSquareBarIcon className="mx-auto mb-1 h-6 w-6" />;
+      return <ChartBarSquareIcon className="mx-auto mb-1 h-6 w-6" />;
     case 'settings':
-      return <AdjustmentsIcon className="mx-auto mb-1 h-6 w-6" />;
+      return <AdjustmentsVerticalIcon className="mx-auto mb-1 h-6 w-6" />;
     default:
       throw new Error('Unrecognized navigation item.');
   }

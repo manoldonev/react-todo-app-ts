@@ -13,7 +13,7 @@
     "@graphql-codegen/typescript-msw": "^1.0.6",
     "@graphql-codegen/typescript-operations": "^2.3.4",
     "@graphql-codegen/typescript-react-query": "^4.0.0",
-    "@heroicons/react": "^1.0.5",
+    "@heroicons/react": "^2.0.0",
     "@hookform/resolvers": "^2.8.8",
     "@reach/dialog": "^0.17.0",
     "@reach/visually-hidden": "^0.17.0",

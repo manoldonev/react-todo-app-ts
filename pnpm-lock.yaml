@@ -10,7 +10,7 @@ specifiers:
   '@graphql-codegen/typescript-msw': ^1.0.6
   '@graphql-codegen/typescript-operations': ^2.3.4
   '@graphql-codegen/typescript-react-query': ^4.0.0
-  '@heroicons/react': ^1.0.5
+  '@heroicons/react': ^2.0.0
   '@hookform/resolvers': ^2.8.8
   '@reach/dialog': ^0.17.0
   '@reach/visually-hidden': ^0.17.0
@@ -98,7 +98,7 @@ dependencies:
   '@graphql-codegen/typescript-msw': 1.0.7_graphql@16.3.0
   '@graphql-codegen/typescript-operations': 2.3.5_graphql@16.3.0
   '@graphql-codegen/typescript-react-query': 4.0.0_graphql@16.3.0
-  '@heroicons/react': 1.0.6_react@18.0.0
+  '@heroicons/react': 2.0.10_react@18.0.0
   '@hookform/resolvers': 2.8.8_react-hook-form@7.29.0
   '@reach/dialog': 0.17.0_2g3flgdnu67wfuixfr5on2ermu
   '@reach/visually-hidden': 0.17.0_zpnidt7m3osuk7shl3s4oenomq
@@ -1614,8 +1614,8 @@ packages:
       '@hapi/hoek': 9.2.1
     dev: false
 
-  /@heroicons/react/1.0.6_react@18.0.0:
-    resolution: {integrity: sha512-JJCXydOFWMDpCP4q13iEplA503MQO3xLoZiKum+955ZCtHINWnx26CUxVxxFQu/uLb4LW3ge15ZpzIkXKkJ8oQ==}
+  /@heroicons/react/2.0.10_react@18.0.0:
+    resolution: {integrity: sha512-Ufr+pgAElNiRCSklnHGOR10bXb02BLlosvbDK7sCRUMOcQ3R/HCXTfXs4BUkYZ4dKpx6l5dUD06VSW1dTpTEDw==}
     peerDependencies:
       react: '>= 16 || 18'
     dependencies:
