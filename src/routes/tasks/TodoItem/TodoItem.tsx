@@ -1,5 +1,6 @@
 import { TrashIcon } from '@heroicons/react/24/outline';
 import { useMediaQuery } from '@react-hook/media-query';
+import { memo } from 'react';
 import { SwipeToAction } from '../../../components/SwipeToAction';
 import { ActionBar } from './ActionBar';
 import { useUpdateTodo, useDeleteTodo } from './query';
@@ -77,4 +78,6 @@ const TodoItem = ({
   );
 };
 
-export { TodoItem };
+const MemoTodoItem = memo(TodoItem);
+
+export { MemoTodoItem };
