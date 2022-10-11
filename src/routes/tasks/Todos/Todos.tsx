@@ -1,7 +1,7 @@
 import { FaceFrownIcon } from '@heroicons/react/24/outline';
 import { useAtom } from 'jotai';
 import { convertRemToPixels } from '../../../utils';
-import { TodoItem } from '../TodoItem';
+import { MemoTodoItem } from '../TodoItem';
 import { useTodos } from './query';
 import { queryAtom } from '../../../atoms';
 import { Masonry } from '../../../components/Masonry';
@@ -21,7 +21,7 @@ const Todos = (): JSX.Element => {
       {!isEmpty ? (
         <>
           <Masonry as="ul" options={masonryOptions}>
-            {data?.pages.map((page) => page.todos?.map((todo) => <TodoItem key={todo?.id} data={todo} />))}
+            {data?.pages.map((page) => page.todos?.map((todo) => <MemoTodoItem key={todo?.id} data={todo} />))}
           </Masonry>
           {hasNextPage && (
             <div ref={sentryRef}>
