@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { XMarkIcon } from '@heroicons/react/24/outline';
-import Dialog from '@reach/dialog';
-import VisuallyHidden from '@reach/visually-hidden';
+import { Dialog } from '@reach/dialog';
+import { VisuallyHidden } from '@reach/visually-hidden';
 import { AddNewForm } from './AddNewForm';
 
 const NewTaskModal = (): JSX.Element => {
