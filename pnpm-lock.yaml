@@ -67,7 +67,7 @@ specifiers:
   msw: ^0.44.0
   postcss: ^8.4.5
   prettier: ^2.6.2
-  prettier-plugin-tailwindcss: ^0.1.8
+  prettier-plugin-tailwindcss: ^0.2.0
   react: ^18.0.0
   react-dom: ^18.0.0
   react-error-boundary: ^3.1.4
@@ -155,7 +155,7 @@ dependencies:
   msw: 0.44.1_typescript@4.6.4
   postcss: 8.4.12
   prettier: 2.6.2
-  prettier-plugin-tailwindcss: 0.1.8_prettier@2.6.2
+  prettier-plugin-tailwindcss: 0.2.0_prettier@2.6.2
   react: 18.0.0
   react-dom: 18.0.0_react@18.0.0
   react-error-boundary: 3.1.4_react@18.0.0
@@ -7694,8 +7694,8 @@ packages:
       fast-diff: 1.2.0
     dev: false
 
-  /prettier-plugin-tailwindcss/0.1.8_prettier@2.6.2:
-    resolution: {integrity: sha512-hwarSBCswAXa+kqYtaAkFr3Vop9o04WOyZs0qo3NyvW8L7f1rif61wRyq0+ArmVThOuRBcJF5hjGXYk86cwemg==}
+  /prettier-plugin-tailwindcss/0.2.0_prettier@2.6.2:
+    resolution: {integrity: sha512-Ruqig/mdWCSpqdq9WK44nrmqM4BFWTzBPhPGwC5NK3coV9eZntEQPB84MGZbjAg0XQU02jVRHXNRPREBzxvM+A==}
     engines: {node: '>=12.17.0'}
     peerDependencies:
       prettier: '>=2.2.0'
