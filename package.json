@@ -64,7 +64,7 @@
     "identity-obj-proxy": "^3.0.0",
     "immer": "^9.0.12",
     "jotai": "^1.7.7",
-    "jsdom": "^20.0.0",
+    "jsdom": "^21.0.0",
     "lint-staged": "^13.0.0",
     "masonry-layout": "^4.2.2",
     "msw": "^0.44.0",
