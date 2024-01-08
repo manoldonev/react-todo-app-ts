@@ -63,7 +63,7 @@
     "husky": "^8.0.0",
     "identity-obj-proxy": "^3.0.0",
     "immer": "^9.0.12",
-    "jotai": "^1.7.7",
+    "jotai": "^2.0.0",
     "jsdom": "^20.0.0",
     "lint-staged": "^13.0.0",
     "masonry-layout": "^4.2.2",
