@@ -20,12 +20,12 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Install pnpm 7.x
-        uses: pnpm/action-setup@v2.2.4
+      - name: Install pnpm 8.x
+        uses: pnpm/action-setup@v3
         with:
-          version: 7
+          version: 8
           run_install: false
 
       - name: Get pnpm store directory
@@ -34,7 +34,7 @@ jobs:
           echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
 
       - name: Setup pnpm cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             /home/runner/.cache
@@ -49,14 +49,13 @@ jobs:
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run - Chrome
-        uses: cypress-io/github-action@v4.2.2
+        uses: cypress-io/github-action@v6
         with:
           # not working with pnpm
           install: false
-          browser: chrome
           record: true
           parallel: true
-          group: 'UI - Chrome'
+          group: 'UI - Electron'
           start: pnpm start
           wait-on: 'http://localhost:5173'
           # wait for 2 minutes for the server to respond

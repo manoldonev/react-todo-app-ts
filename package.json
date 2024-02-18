@@ -86,7 +86,7 @@
     "vite": "^3.0.0",
     "vite-tsconfig-paths": "^4.0.0",
     "vitest": "^0.20.2",
-    "wait-on": "^6.0.1",
+    "wait-on": "^7.0.0",
     "web-vitals": "^3.0.0",
     "whatwg-fetch": "^3.6.2",
     "yup": "^0.32.11"
@@ -141,5 +141,5 @@
       }
     }
   },
-  "packageManager": "pnpm@7.26.2"
+  "packageManager": "pnpm@8.15.3"
 }
