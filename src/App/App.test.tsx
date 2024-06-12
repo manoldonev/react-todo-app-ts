@@ -1,6 +1,5 @@
 import { act, fireEvent, render, screen, waitFor, waitForElementToBeRemoved, within } from '@testing-library/react';
 import { QueryCache, QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { BrowserRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 import { App } from './App';
@@ -33,11 +32,9 @@ const queryClient = new QueryClient({
 
 const TestApp = (): JSX.Element => {
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
-      <QueryClientProvider client={queryClient}>
-        <App />
-      </QueryClientProvider>
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <App />
+    </QueryClientProvider>
   );
 };
 
