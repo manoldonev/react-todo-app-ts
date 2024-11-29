@@ -70,12 +70,11 @@ specifiers:
   prettier-plugin-tailwindcss: ^0.2.0
   react: ^18.0.0
   react-dom: ^18.0.0
-  react-error-boundary: ^3.1.4
   react-hook-form: ^7.27.0
   react-hot-toast: ^2.2.0
   react-infinite-scroll-hook: ^4.0.1
   react-intersection-observer-hook: ^2.0.4
-  react-router-dom: ^6.2.1
+  react-router-dom: 6.4.0-pre.13
   react-swipeable: ^7.0.0
   tailwindcss: ^3.0.11
   tsc-files: ^1.1.3
@@ -158,12 +157,11 @@ dependencies:
   prettier-plugin-tailwindcss: 0.2.0_prettier@2.6.2
   react: 18.0.0
   react-dom: 18.0.0_react@18.0.0
-  react-error-boundary: 3.1.4_react@18.0.0
   react-hook-form: 7.29.0_react@18.0.0
   react-hot-toast: 2.2.0_zuewzcyw7pl6j4xhejet4ue6n4
   react-infinite-scroll-hook: 4.0.2_react@18.0.0
   react-intersection-observer-hook: 2.0.4_react@18.0.0
-  react-router-dom: 6.3.0_zpnidt7m3osuk7shl3s4oenomq
+  react-router-dom: 6.4.0-pre.13_zpnidt7m3osuk7shl3s4oenomq
   react-swipeable: 7.0.0_react@18.0.0
   tailwindcss: 3.0.23_balfb4xu3orvwfzgle32wkroya
   tsc-files: 1.1.3_typescript@4.6.4
@@ -1802,6 +1800,10 @@ packages:
       react: '>=16.8 || 18'
     dependencies:
       react: 18.0.0
+    dev: false
+
+  /@remix-run/router/0.2.0-pre.8:
+    resolution: {integrity: sha512-A+1xdIUrvlxSBilO6eDD9N2PIiPy/jRdj47td+sr7uTyD5v6MKsMZd/L70VzTig9oXi0p5Ae4iehE0pJZ/sq2g==}
     dev: false
 
   /@rooks/use-mutation-observer/4.11.2_react@18.0.0:
@@ -5479,12 +5481,6 @@ packages:
     resolution: {integrity: sha512-iXnAafUm3FdzfJ91uixLws2hkKI1jC8bAKK/pt7XYr8Ie1jO7xbK48Ycpl9tUPyBgkzuj1p/PhJS0fy4E/5anA==}
     dev: false
 
-  /history/5.3.0:
-    resolution: {integrity: sha512-ZqaKwjjrAYUYfLG+htGaIIZ4nioX2L70ZUMIFysS3xvBsSG4x/n1V6TXV3N8ZYNuFGlDirFg32T7B6WOUPDYcQ==}
-    dependencies:
-      '@babel/runtime': 7.18.6
-    dev: false
-
   /hoist-non-react-statics/3.3.2:
     resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==}
     dependencies:
@@ -7935,24 +7931,23 @@ packages:
       use-sidecar: 1.0.5_react@18.0.0
     dev: false
 
-  /react-router-dom/6.3.0_zpnidt7m3osuk7shl3s4oenomq:
-    resolution: {integrity: sha512-uaJj7LKytRxZNQV8+RbzJWnJ8K2nPsOOEuX7aQstlMZKQT0164C+X2w6bnkqU3sjtLvpd5ojrezAyfZ1+0sStw==}
+  /react-router-dom/6.4.0-pre.13_zpnidt7m3osuk7shl3s4oenomq:
+    resolution: {integrity: sha512-P9Fu9hBEREfVWo0eYwzyRFo3aZ5XIw7b2lrnFWaWUY4tuIIteiCePsw6W1z+7irBSLr2N6Tuku/aCmaXFlcbSg==}
     peerDependencies:
       react: '>=16.8 || 18'
       react-dom: '>=16.8 || 18'
     dependencies:
-      history: 5.3.0
       react: 18.0.0
       react-dom: 18.0.0_react@18.0.0
-      react-router: 6.3.0_react@18.0.0
+      react-router: 6.4.0-pre.13_react@18.0.0
     dev: false
 
-  /react-router/6.3.0_react@18.0.0:
-    resolution: {integrity: sha512-7Wh1DzVQ+tlFjkeo+ujvjSqSJmkt1+8JO+T5xklPlgrh70y7ogx75ODRW0ThWhY7S+6yEDks8TYrtQe/aoboBQ==}
+  /react-router/6.4.0-pre.13_react@18.0.0:
+    resolution: {integrity: sha512-cTZpVsh4mPvwe0gMPphZEOLIP5xfQV0DTgJ1L0wZj+pblT2QsAiRHEsWtq7fjKJ2MNE8nWJoHPRtCyTy46/Xjw==}
     peerDependencies:
       react: '>=16.8 || 18'
     dependencies:
-      history: 5.3.0
+      '@remix-run/router': 0.2.0-pre.8
       react: 18.0.0
     dev: false
 

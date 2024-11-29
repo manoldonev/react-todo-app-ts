@@ -1,9 +1,12 @@
 import { Outlet } from 'react-router-dom';
+import { useScrollToTop } from '../../App/useScrollToTop';
 import { Headroom, Legroom } from '../../components/Headroom';
 import { Header } from './Header';
 import { BottomNavigation } from './Navigation';
 
 const Layout = (): JSX.Element => {
+  useScrollToTop();
+
   return (
     // NOTE: cannot use Fragment here as it will break the sticky header
     <div className="min-h-screen bg-background">

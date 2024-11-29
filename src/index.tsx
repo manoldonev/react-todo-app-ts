@@ -2,7 +2,6 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import '@reach/dialog/styles.css';
 import './index.css';
-import { BrowserRouter } from 'react-router-dom';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Toaster } from 'react-hot-toast';
@@ -54,13 +53,11 @@ const main = async (): Promise<void> => {
   const root = createRoot(container);
   root.render(
     <React.StrictMode>
-      <BrowserRouter basename={import.meta.env.BASE_URL}>
-        <QueryClientProvider client={queryClient}>
-          <App />
-          <Toaster position="top-center" />
-          <ReactQueryDevtools />
-        </QueryClientProvider>
-      </BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <App />
+        <ReactQueryDevtools />
+      </QueryClientProvider>
+      <Toaster position="top-center" />
     </React.StrictMode>,
   );
 
